@@ -7,6 +7,12 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE users_friends (
+  id int NOT NULL AUTO_INCREMENT REFERENCES users,
+  userid int NOT NULL AUTO_INCREMENT REFERENCES users,
+  PRIMARY KEY (id)
+);
+
 CREATE TABLE forums (
   id int NOT NULL AUTO_INCREMENT,
   name varchar(25) NOT NULL,
@@ -15,8 +21,8 @@ CREATE TABLE forums (
 
 CREATE TABLE posts (
   id int NOT NULL AUTO_INCREMENT,
-  userid int NOT NULL,
-  forumid int NOT NULL,
+  userid int NOT NULL REFERENCES users,
+  forumid int NOT NULL REFERENCES forums,
   message varchar(255) NOT NULL
   PRIMARY KEY (id)
 );
@@ -27,8 +33,8 @@ CREATE TABLE posts (
   -- of events to encounters 1:many
 CREATE TABLE encounters (
   id int NOT NULL AUTO_INCREMENT,
-  userid int NOT NULL,
-  forumid int NOT NULL,
+  userid int NOT NULL REFERENCES users,
+  forumid int NOT NULL REFERENCES forums,
   title varchar(25) NOT NULL DEFAULT '',
   location varchar(25) NOT NULL DEFAULT '', --Tie into geo-location?  google maps api?
   posttime DATETIME NOT NULL, --Time encounter was posted on site
@@ -38,7 +44,7 @@ CREATE TABLE encounters (
 
 CREATE TABLE pictures (
   id int NOT NULL AUTO_INCREMENT,
-  encounterid int NOT NULL,
+  encounterid int NOT NULL REFERENCES encounters,
   file varchar(255) NOT NULL,
   PRIMARY KEY (id)
 );
