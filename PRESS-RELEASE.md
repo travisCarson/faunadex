@@ -1,4 +1,4 @@
-# Project Name #
+# Faunadex #
 
 <!-- 
 > This material was originally posted [here](http://www.quora.com/What-is-Amazons-approach-to-product-development-and-product-management). It is reproduced here for posterities sake.
@@ -15,24 +15,19 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
- 
-## Heading ##
-Faunadex
-## Sub-Heading ##
-Keeping track of every animal you have encountered and giving you information on said animals.
+
+#### Track and share your animal encounters, see what animals your friends are encountering, learn about wonderful wildlife, and talk with other animal enthusiasts! ####
 ## Summary ##
-When people encounter animals in the wild, they often wish to know more about that animal. People ask questions such as, 'Is it dangerous? Is this animal common in this area? Should I be on the lookout for more of them? What are some of their traits?' With Faunadex, a person can quickly locate information on that animal and make educated decisions on how to proceed and keep track of animals that they have encountered; an ideal app for any animal enthusiast.
-## Problem ##
-Animal enthusiasts want to keep track of which animals they have seen; this app will track those animals.
-## Solution ##
-Faunadex will document which animals a person has encountered and allow a person to quickly revist the information on those animals.
-## Quote from You ##
+When people encounter animals in the wild, they often wish to know more about that animal and to let their friends know of the awesome experience. People ask questions such as, 'Is it dangerous? Is this animal common in this area? Should I be on the lookout for more of them? What are some of their traits?' With Faunadex, a person can quickly locate information on that animal and make educated decisions on how to proceed and keep track of animals that they have encountered. With Faunadex, users can also track the animals their friends are encountering, talk with their friends about the encounter, and talk with other users about the animal; an ideal app for any animal enthusiast.
+
+## A word from the development team ##
 > Every animal on this planet is unique and interesting; an encouter with any of these animal is an opportunity to learn and celebrate and share that encounter with friends.
 
 ## How to Get Started ##
-To get started, one just has to create a user account and start adding animal encounters.
-## Customer Quote ##
-> Faunadex provided me a useful way to track which animals I have encountered and to give me information on those animals. I made me feel like I was really experiencing life.
+To get started, one just has to create a user account and start adding animal encounters!
+
+## User Feedback ##
+> Faunadex provided me a useful and easy way to track which animals I have encountered and to give me information on those animals. I also had fun chatting with my friends about animals and learning about experiences other users have had!
 
 ## Closing and Call to Action ##
 Go now out into the wild and see what animals this world has to offer!
