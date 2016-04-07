@@ -7,6 +7,12 @@ CREATE TABLE users (
   PRIMARY KEY (id)
 );
 
+CREATE TABLE users_friends (
+  id int NOT NULL AUTO_INCREMENT REFERENCES users,
+  userid int NOT NULL AUTO_INCREMENT REFERENCES users,
+  PRIMARY KEY (id)
+);
+
 CREATE TABLE forums (
   id int NOT NULL AUTO_INCREMENT,
   name varchar(25) NOT NULL,
