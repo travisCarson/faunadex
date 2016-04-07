@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var path = require('path');
 
-app.listen(9999);
+require('./config/middleware.js')(app, express);
+require('.config/routes.js')(app, express);
 
-app.use(express.static(path.join(__dirname, '../client')));
+app.listen(1337);
+
