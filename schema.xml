@@ -45,21 +45,21 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="users" row="id" />
 </row>
-<row name="location" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="title" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="encountertime" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
-<row name="posttime" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
-<default>NULL</default></row>
 <row name="id_forums" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="forums" row="id" />
+</row>
+<row name="title" null="0" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>''''</default></row>
+<row name="location" null="0" autoincrement="0">
+<datatype>VARCHAR</datatype>
+<default>''''</default></row>
+<row name="posttime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
+</row>
+<row name="encountertime" null="0" autoincrement="0">
+<datatype>DATETIME</datatype>
 </row>
 <key type="PRIMARY" name="">
 <part>id</part>
@@ -75,11 +75,11 @@
 <row name="password" null="1" autoincrement="0">
 <datatype>VARCHAR(25)</datatype>
 <default>NULL</default></row>
-<row name="avatar" null="0" autoincrement="0">
-<datatype>VARCHAR</datatype>
-<default>''''</default></row>
 <row name="description" null="0" autoincrement="0">
 <datatype>VARCHAR(140)</datatype>
+<default>''''</default></row>
+<row name="avatar" null="0" autoincrement="0">
+<datatype>VARCHAR</datatype>
 <default>''''</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
@@ -123,9 +123,22 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="encounters" row="id" />
 </row>
-<row name="path" null="1" autoincrement="0">
+<row name="file" null="1" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+</table>
+<table x="204" y="314" name="users_friends">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
+<row name="id_users" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default><relation table="users" row="id" />
+</row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
