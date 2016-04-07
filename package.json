@@ -17,6 +17,7 @@
   "author": "",
   "license": "",
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.0",
     "bookshelf": "^0.9.4",
     "express": "^4.13.4",
