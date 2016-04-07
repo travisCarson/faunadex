@@ -1,5 +1,5 @@
 var db = require('../config/db');
-var Encounter = require('../models/encounters/encounter-model');
+var Encounter = require('../models/encounter');
 
 var Encounters = new db.Collection();
 
