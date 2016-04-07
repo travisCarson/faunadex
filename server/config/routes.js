@@ -1,4 +1,3 @@
-// var userController = require('../models/user/userController.js');
 var path = require('path');
 var userModel = require('../models/user');
 var encounterModel = require('../models/encounter');
@@ -18,7 +17,6 @@ module.exports = function (app, express) {
 
   // app.post('/api/searchanimal', someController);
   // app.get('/api/friends/recentactivity', someController)
-  // app.post('/signup', userController.signUpUser);
 };
 
 
