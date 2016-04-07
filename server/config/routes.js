@@ -2,6 +2,8 @@
 var path = require('path');
 
 module.exports = function (app, express) {
-	app.use(express.static(path.join(__dirname, '../client')));
-	// app.post('/signup', userController.signUpUser);
+  app.use(express.static(path.join(__dirname, '../../client')));
+  // app.post('/signup', userController.signUpUser);
 }
+
+
