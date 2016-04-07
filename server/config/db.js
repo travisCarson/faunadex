@@ -5,7 +5,6 @@ var db = Bookshelf.initialize({
 	client: 'postgresql',
 	connection: {
 		host: 'localhost',
-		port: '1337',
 		user: '', //tbd
 		password: '', //tbd
 		database: '', //faunadex-db

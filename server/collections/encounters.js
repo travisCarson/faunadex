@@ -1,4 +1,3 @@
-
 var db = require('../config/db');
 var Encounter = require('../models/encounters/encounter-model');
 

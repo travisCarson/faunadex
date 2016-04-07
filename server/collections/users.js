@@ -1,4 +1,3 @@
-
 var db = require('../config/db');
 var User = require('../models/users/user-model');
 
