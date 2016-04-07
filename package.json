@@ -1,0 +1,19 @@
+{
+  "name": "server",
+  "version": "0.1.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "dependencies": {
+    "bookshelf": "^0.9.4",
+    "express": "^4.13.4",
+    "knex": "^0.10.0",
+    "path": "^0.12.7"
+  }
+}
