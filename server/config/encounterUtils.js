@@ -6,6 +6,9 @@ var Encounters = require('../models/encounters');
 var knex = require('knex');
 var bookshelf = require('bookshelf');
 
+// dummy file with dummy info
+var dummy = require('../../dummies/dummies');
+
 module.exports = {
 
   createEncounter: function() {
@@ -26,14 +29,18 @@ module.exports = {
   },
 
   showAllEncounters: function() {
-    Encounters.reset().fetch()
-      .then(function(encouters) {
-        res.status(200).send(encouters);
-      })
-      .catch(function(error) {
-        res.status(500).send(error.message);
-      });
+    res.status(200).send(dummy.dummyEncounter);
   },
+  // function to interact with the database
+  // showAllEncounters: function() {
+  //   Encounters.reset().fetch()
+  //     .then(function(encouters) {
+  //       res.status(200).send(encouters);
+  //     })
+  //     .catch(function(error) {
+  //       res.status(500).send(error.message);
+  //     });
+  // },
 
   recentActivity: function() {
     Encounters.reset().fetch()
