@@ -11,7 +11,6 @@ module.exports = {
   createEncounter: function() {
     Encounters.create({
       title: req.body.title,
-      // TODO add description to schema.sql encounter table
       description: req.body.description,
       location: req.body.location,
       encountertime: req.body.encountertime,
