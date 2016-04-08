@@ -1,22 +1,9 @@
-require db = ('../config/db.js');
-var knex = require('knex');
-var bookshelf = require('bookshelf');
-var bcrypt = require('bcrypt-nodejs');
+var userUtils = require('../config/userUtils.js')
 
 var User = db.Model.extend({
 
   tableName: 'users',
-  // ignoring the below since we don't care right now
-  // hasTimestamps: true,
-  signUp: function() {
 
-  },
-  singIn: function() {
-
-  },
-  signOut: function() {
-
-  },
   initialize: function() {
     this.on('creating', this.hashPassword);
   },
@@ -30,8 +17,15 @@ var User = db.Model.extend({
     return cipher(this.get('password'), null, null).bind(this)
       .then(function(hash) {
         this.set('password', hash);
-      });
-  }
+    });
+  },
+
+  // ignoring the below since we don't care right now
+  // hasTimestamps: true,
+
 });
 
 module.exports = User;
+
+
+
