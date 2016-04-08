@@ -43,14 +43,16 @@ module.exports = {
   // },
 
   recentActivity: function() {
-    Encounters.reset().fetch()
-      .then(function(encouters) {
-        // return the last five encounters
-        res.status(200).send(encounters.model.slice(encounters.model.length - 6));
-      })
-      .catch(function(error) {
-        res.status(500).send(error.message);
-      });
+    res.status(200).send(dummy.dummyEncounter);
+    // function to interact with the database
+    // Encounters.reset().fetch()
+    //   .then(function(encouters) {
+    //     // return the last five encounters
+    //     res.status(200).send(encounters.model.slice(encounters.model.length - 6));
+    //   })
+    //   .catch(function(error) {
+    //     res.status(500).send(error.message);
+    //   });
   }
 
 };
