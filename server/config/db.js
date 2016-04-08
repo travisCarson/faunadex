@@ -10,4 +10,6 @@ var db = Bookshelf.initialize({
 		database: '', //faunadex-db
 		charset: 'utf-8'
 	}
-})
+});
+
+module.exports = db;
