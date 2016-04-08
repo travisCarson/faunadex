@@ -27,6 +27,7 @@ module.exports = {
   },
 
   showAllEncounters: function() {
+    // TODO run .reset() on Encounters before fetch()
     Encounters.fetch()
       .then(function(encouters) {
         res.status(200).send(encouters);
@@ -37,7 +38,14 @@ module.exports = {
   },
 
   recentActivity: function() {
-
+    Encounters.reset().fetch()
+      .then(function(encouters) {
+        // return the last five encounters
+        res.status(200).send(encounters.model.slice(encounters.model.length - 6));
+      })
+      .catch(function(error) {
+        res.status(500).send(error.message);
+      });
   }
 
 };
