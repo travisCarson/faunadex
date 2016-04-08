@@ -21,11 +21,11 @@
     "body-parser": "^1.15.0",
     "bookshelf": "^0.9.4",
     "express": "^4.13.4",
+    "express-session": "^1.13.0",
     "knex": "^0.10.0",
     "path": "^0.12.7",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
-    "request": "^2.70.0"
   },
   "devDependencies": {
     "babel-core": "^6.7.4",
