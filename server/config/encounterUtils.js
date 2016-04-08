@@ -27,7 +27,13 @@ module.exports = {
   },
 
   showAllEncounters: function() {
-    
+    Encounters.fetch()
+      .then(function(encouters) {
+        res.status(200).send(encouters);
+      })
+      .catch(function(error) {
+        res.status(500).send(error.message);
+      });
   },
 
   recentActivity: function() {
