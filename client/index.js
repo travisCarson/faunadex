@@ -8,16 +8,24 @@ import App from './components/App';
 import {Router, Route, Link} from 'react-router';
 import {List, Map} from 'immutable';
 
-const pair = ['Trainspotting', '28 Days Later'];
+const store = createStore(function () {});
+store.dispatch({
+  type: 'SET_STATE',
+  state: {
+    vote: {
+      pair: ['Sunshine', '28 Days Later'],
+      tally: {Sunshine: 2}
+    }
+  }
+});
 
 const routes = (<Route component={App}>
-  <Route path="/results" component={Results} />
+  <Route path="/" component={App} />
 </Route>);
 
 ReactDOM.render(
-    (<Provider store={store}>
-    <Router history={hashHistory}>{routes}</Router>
-    </Provider>),
-    document.getElementById('app')
-    );
+  (<Provider store={store}>
+    <Router >{routes}</Router>
+  </Provider>),
+  document.getElementById('app'));
 
