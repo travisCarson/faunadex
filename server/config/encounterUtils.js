@@ -21,7 +21,7 @@ module.exports = {
     })
       // send back a status code to signify success and the encounter for the front-end to use (if necessary)
       .then(function(encounter) {
-        res.status(200).send(encounter);
+        res.status(200).json(encounter);
       })
       .catch(function(error) {
         res.status(500).send(error.message);
@@ -29,7 +29,7 @@ module.exports = {
   },
 
   showAllEncounters: function() {
-    res.status(200).send(dummy.dummyEncounter);
+    res.status(200).json(dummy.dummyEncounter);
   },
   // function to interact with the database
   // showAllEncounters: function() {
@@ -43,7 +43,7 @@ module.exports = {
   // },
 
   recentActivity: function() {
-    res.status(200).send(dummy.dummyEncounter);
+    res.status(200).json(dummy.dummyEncounter);
     // function to interact with the database
     // Encounters.reset().fetch()
     //   .then(function(encouters) {
