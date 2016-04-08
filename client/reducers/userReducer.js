@@ -1,0 +1,22 @@
+// Map is almost just like a normal object but it is immutable
+// by nature.  Using these objects prevents us from mutating the
+// state accidentally.
+import {Map} from 'immutable';
+
+// Helper function for below
+function setState(state, newState) {
+  return state.merge(newState);
+}
+
+// This is what does the heavy lifting, based on the action that the
+// reducer receives, it does something based on that.  Remember, this
+// must be a Pure Function.
+export default function(state = Map(), action) {
+  switch (action.type) {
+    case 'SET_STATE':
+      return setState(state, action.state);
+  }
+  console.log('New State Is: ', state);
+  window.state = state;
+  return state;
+}
