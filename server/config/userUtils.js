@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt-nodejs');
 // we may need the following line, not sure, it may be included in request
 // var session = require('request-session');
 
-exports.newUser = function(req) {
+exports.createUser = function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
 
@@ -14,16 +14,19 @@ exports.newUser = function(req) {
     .fetch()
     .then(function(user) {
       if (!user) {
-        bcrypt.hash(password, null, null, function(err, hash) {
-          Users.create({
-            username: username,
-            password: hash
-          }).then(function(user) {
-              util.createSession(req, res, user); 
-          });
+        var newUser = new User({
+          username: username,
+          password: password
         });
+        newUser.save()
+          .then(function(newUser) {
+            util.createSession(req, res, newUser);
+          });
+      } else {
+        console.log('Account already exists');
+        res.redirect('/signup');
       }
-  });
+    });
 };
 
 exports.createSession = function(req, res, newUser) {
@@ -63,8 +66,4 @@ exports.hashPassword = function() {
     .then(function(hash) {
       this.set('password', hash);
   });
-};
-
-exports.initializeNewUser = function() {
-  this.on('creating', this.hashPassword);
 };
