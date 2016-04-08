@@ -1,15 +1,14 @@
-var knex = require('knex');
-var bookshelf = require('bookshelf')(knex);
-
-var db = Bookshelf.initialize({
-	client: 'postgresql',
-	connection: {
-		host: 'localhost',
-		user: '', //tbd
-		password: '', //tbd
-		database: '', //faunadex-db
-		charset: 'utf-8'
-	}
+var knex = require('knex')({
+  client: 'pg',
+  connection: {
+    host: 'localhost',
+    user: '', //tbd
+    password: '', //tbd
+    database: '', //faunadex-db
+    charset: 'utf-8'
+  }
 });
 
-module.exports = db;
+var bookshelf = require('bookshelf')(knex);
+
+module.exports = bookshelf;
