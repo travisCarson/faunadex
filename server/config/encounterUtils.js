@@ -27,8 +27,7 @@ module.exports = {
   },
 
   showAllEncounters: function() {
-    // TODO run .reset() on Encounters before fetch()
-    Encounters.fetch()
+    Encounters.reset().fetch()
       .then(function(encouters) {
         res.status(200).send(encouters);
       })
