@@ -38,7 +38,7 @@ exports.createSession = function(req, res, newUser) {
 exports.endSession = function(req, res, user) {
   return req.session.destroy(function(err) {
     console.log('Error logging out user!');
-  };
+  });
 };
 
 var isLoggedIn = function(req) {

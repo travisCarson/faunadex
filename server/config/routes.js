@@ -15,7 +15,7 @@ module.exports = function (app, express) {
   // encounter routing
   app.get('/api/user/encounter', encounterUtils.showAllEncounters);
   app.post('/api/user/encounter', encounterUtils.createEncounter);
-  app.get('/api/recentactivity', encounterUtils.recentactivity);
+  app.get('/api/recentactivity', encounterUtils.recentActivity);
 
   // app.post('/api/searchanimal', someController);
   // app.get('/api/friends/recentactivity', someController)
