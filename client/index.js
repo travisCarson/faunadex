@@ -44,6 +44,10 @@ store.dispatch({
   }
 });
 
+// store.dispatch({
+//   type: 'SET_USERNAME',
+//   username: user.input.from.somewhere
+// });
 // Routes tell our app what to render at what urls
 // In the future, we can probably set the routes to some other 
 // module and include it.

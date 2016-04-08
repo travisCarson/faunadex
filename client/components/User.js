@@ -4,9 +4,11 @@ import {connect} from 'react-redux';
 // the first of two things that a React-Redux component exports is 
 // a standard React component which uses a bunch of props.
 export const User = React.createClass({
+  
   render: function() {
     return <div>
-      Username: {this.props.userName}
+      Username: {this.props.userName} <br />
+      And his description is {this.props.descr}
     </div>;
   }
 });
@@ -16,7 +18,9 @@ export const User = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
-    userName: state.getIn(['user', 'username'])
+    userName: state.getIn(['user', 'name']),
+    descr: state.getIn(['user', 'description']),
+
   };
 }
 
