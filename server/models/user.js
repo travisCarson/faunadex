@@ -1,37 +1,27 @@
-require db = ('../config/db.js');
-var knex = require('knex');
-var bookshelf = require('bookshelf');
-var bcrypt = require('bcrypt-nodejs');
+var userUtils = require('../config/userUtils.js')
 
 var User = db.Model.extend({
 
   tableName: 'users',
+
+  signUp: userUtils.newUser,
+
+  signIn: userUtils.createSession,
+
+  signOut: userUtils.endSession,
+
+  initialize: userUtils.initializeNewUser,
+
+  comparePassword: userUtils.comparePassword,
+
+  hashPassword: userUtils.hashPassword,
+
+  checkIfLoggedIn: userUtils.isLoggedIn,
   // ignoring the below since we don't care right now
   // hasTimestamps: true,
-  signUp: function() {
-
-  },
-  singIn: function() {
-
-  },
-  signOut: function() {
-
-  },
-  initialize: function() {
-    this.on('creating', this.hashPassword);
-  },
-  comparePassword: function(attemptedPassword, callback) {
-    bcrypt.compare(attemptedPassword, this.get('password'), function(err, isMatch) {
-      callback(isMatch);
-    });
-  },
-  hashPassword: function() {
-    var cipher = Promise.promisify(bcrypt.hash);
-    return cipher(this.get('password'), null, null).bind(this)
-      .then(function(hash) {
-        this.set('password', hash);
-      });
-  }
 });
 
 module.exports = User;
+
+
+
