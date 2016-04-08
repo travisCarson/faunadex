@@ -1,6 +1,7 @@
 var express = require('express');
-var app = express();
 var path = require('path');
+
+var app = express();
 
 require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
