@@ -36,6 +36,7 @@ CREATE TABLE encounters (
   userid int NOT NULL REFERENCES users,
   forumid int NOT NULL REFERENCES forums,
   title varchar(25) NOT NULL DEFAULT '',
+  description varchar(255) NOT NULL DEFAULT '',
   location varchar(25) NOT NULL DEFAULT '', --Tie into geo-location?  google maps api?
   posttime DATETIME NOT NULL, --Time encounter was posted on site
   encountertime DATETIME NOT NULL, --Time encounter occoured in reality

@@ -52,6 +52,9 @@
 <row name="title" null="0" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>''''</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(255)</datatype>
+<default>''''</default></row>
 <row name="location" null="0" autoincrement="0">
 <datatype>VARCHAR</datatype>
 <default>''''</default></row>
