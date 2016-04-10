@@ -3,18 +3,18 @@ USE faunadex;
 
 DROP TABLE IF EXISTS users;
 CREATE TABLE users (
-  id int NOT NULL AUTO_INCREMENT,
+  id INT NOT NULL AUTO_INCREMENT,
   username varchar(25) NOT NULL,
   password varchar(62) NOT NULL,
   description varchar(255) NOT NULL DEFAULT '',
-  avatar varchar(255) NOT NULL DEFAULT '', --How are we going to handle this?
+  avatar varchar(255) NOT NULL DEFAULT '', 
   PRIMARY KEY (id)
 );
 
 DROP TABLE IF EXISTS users_friends;
 CREATE TABLE users_friends (
-  id int NOT NULL AUTO_INCREMENT REFERENCES users,
-  userid int NOT NULL AUTO_INCREMENT REFERENCES users,
+  id int NOT NULL AUTO_INCREMENT,
+  userid int NOT NULL REFERENCES users,
   PRIMARY KEY (id)
 );
 
@@ -30,7 +30,7 @@ CREATE TABLE posts (
   id int NOT NULL AUTO_INCREMENT,
   userid int NOT NULL REFERENCES users,
   forumid int NOT NULL REFERENCES forums,
-  message varchar(255) NOT NULL
+  message varchar(255) NOT NULL,
   PRIMARY KEY (id)
 );
 
@@ -45,9 +45,9 @@ CREATE TABLE encounters (
   forumid int NOT NULL REFERENCES forums,
   title varchar(25) NOT NULL DEFAULT '',
   description varchar(255) NOT NULL DEFAULT '',
-  location varchar(25) NOT NULL DEFAULT '', --Tie into geo-location?  google maps api?
-  posttime DATETIME NOT NULL, --Time encounter was posted on site
-  encountertime DATETIME NOT NULL, --Time encounter occoured in reality
+  location varchar(25) NOT NULL DEFAULT '', 
+  posttime DATETIME NOT NULL, 
+  encountertime DATETIME NOT NULL, 
   PRIMARY KEY (id)
 );
 
