@@ -1,6 +1,6 @@
 var path = require('path');
-var userUtils = require('./userUtils.js');
-var encounterUtils = require('./encounterUtils.js');
+var userUtils = require('../utils/userUtils.js');
+var encounterUtils = require('../utils/encounterUtils.js');
 
 module.exports = function (app, express) {
   app.use(express.static(path.join(__dirname, '../../client')));
