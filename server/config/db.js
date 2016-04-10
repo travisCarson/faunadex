@@ -1,11 +1,10 @@
 var knex = require('knex')({
-  client: 'pg',
+  client: 'mysql',
   connection: {
-    user: 'postgres', //tbd
-    database: 'faunadex-db',
-    port: 5432,
+    user: 'root', //tbd
+    database: 'faunadex',
     host: 'localhost',
-    password: 'admin', //tbd
+    password: 'fordevonly', //tbd
     charset: 'utf-8',
   }
 });
