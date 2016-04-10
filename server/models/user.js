@@ -1,6 +1,6 @@
 var db = require('../config/db.js');
 var bookshelf = require('bookshelf');
-var userUtils = require('../config/userUtils.js')
+var userUtils = require('../utils/userUtils.js')
 
 var User = db.Model.extend({
 
