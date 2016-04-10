@@ -5,7 +5,6 @@ var knex = require('knex')({
     database: 'faunadex',
     host: 'localhost',
     password: 'fordevonly', //tbd
-    charset: 'utf-8',
   }
 });
 
