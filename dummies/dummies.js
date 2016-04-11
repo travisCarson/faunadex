@@ -1,9 +1,23 @@
-exports.dummyUser = [{
-	username: 'someguy',
-	password: 'password',
-	description: "hi, i'm someguy. i would love to encounter a hummingbird, but so far i've only seen a squirrel.",
-	avatar: 'http://40.media.tumblr.com/tumblr_lge5u2vHaN1qdnbvko1_500.jpg'
-}];
+exports.dummyUser = [
+  {
+  	username: 'William',
+  	password: 'password',
+  	description: "hi, i'm William. i would love to encounter any animal besides a squirrel, but so far i've only seen a squirrel.",
+  	avatar: 'http://40.media.tumblr.com/tumblr_lge5u2vHaN1qdnbvko1_500.jpg'
+  },
+  {
+    username: 'Travis',
+    password: '12345',
+    description: "hi, i'm Travis. i would love to encounter a tree, but so far i've only seen a squirrel.",
+    avatar: 'http://40.media.tumblr.com/tumblr_lge5u2vHaN1qdnbvko1_500.jpg'
+  },
+  {
+    username: 'Alexander',
+    password: 'password',
+    description: "hi, i'm Alexander. i would love to encounter a rhino, but so far i've only seen a squirrel.",
+    avatar: 'http://40.media.tumblr.com/tumblr_lge5u2vHaN1qdnbvko1_500.jpg'
+  }
+];
 
 exports.dummyEncounter = [
   {
