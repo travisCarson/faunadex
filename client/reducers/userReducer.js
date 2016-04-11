@@ -12,6 +12,12 @@ function setUserName(state, newUserName) {
   return state.merge({'user': {1: {username: newUserName}}});
 }
 
+function goToEncounter(state, encounter) {
+  // ideally below I would somehow change the path to only show the encounter
+  console.log('clicked');
+  return state.merge({'arrayEn': [encounter]});
+}
+
 // This is what does the heavy lifting, based on the action that the
 // reducer receives, it does something based on that.  Remember, this
 // must be a Pure Function.
@@ -21,6 +27,8 @@ export default function(state = Map(), action) {
       return setState(state, action.state);
     case 'CHANGE_USER_NAME':
       return setUserName(state, action.username);
+    case 'GO_TO_ENCOUNTER':
+      return goToEncounter(state, action.encounter);
   }
   console.log('New State Is: ', state);
   window.state = state;

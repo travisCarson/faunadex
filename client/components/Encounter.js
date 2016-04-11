@@ -6,13 +6,18 @@ import {connect} from 'react-redux';
 export const Encounter = React.createClass({
   
   render: function() {
-    return <div>
-      Title: {this.props.title} <br />
-      Description: {this.props.description} <br />
-      Location: {this.props.location} <br />
-      Encounter Time: {this.props.encounterTime} <br />
-      Post Time: {this.props.postTime} <br />
-    </div>;
+    return ( 
+      <div>
+        // There has to be a better way to access the information in the line below <br />
+        // The line below is so bad <br />
+        <span onClick={this.props.goToEncounter}>Synopsis: {this.props.encounter}</span><br />
+        <span>Title: {this.props.encounter._root.entries[0][1]}</span><br />
+        <span>Description: {this.props.description}</span><br />
+        <span>Location: {this.props.location}</span><br />
+        <span>Encounter Time: {this.props.encounterTime}</span><br />
+        <span>Post Time: {this.props.postTime}</span><br />
+      </div>
+    );
   }
 });
 
@@ -30,6 +35,16 @@ function mapStateToProps(state) {
   };
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    goToEncounter: (event) => {
+      dispatch({
+        type: 'GO_TO_ENCOUNTER',
+        encounter: event.target.value 
+      })
+    }
+  };
+}
 // Lastly, we export an object which tells what function to use to map
 // the state to the props
 export const EncounterContainer = connect(mapStateToProps)(Encounter);
