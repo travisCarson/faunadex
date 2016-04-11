@@ -1,20 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Encounter, EncounterContainer} from './Encounter';
+import {EncounterList, EncounterListContainer} from './EncounterList';
 
 export const App = React.createClass({
   // TODO how do we get store?
   // TODO figure out on click events in React 
   render: function() {
-    return (<div>
-      Welcome to Faunadex!
-      The user in the store is: {this.props.userName}
-      <form>
-      <input type='text' ref='inputForm' onChange={this.props.changeUserName}/>
-        <button type='submit'>Submit</button>
-      </form>
-      <EncounterContainer />
-    </div>);
+    return (
+      <div>
+        Welcome to Faunadex!
+        The user in the store is: {this.props.userName}
+        <form>
+        <input type='text' ref='inputForm' onChange={this.props.changeUserName}/>
+          <button type='submit'>Submit</button>
+        </form>
+        <EncounterListContainer />
+      </div>
+    );
   }
 });
 
