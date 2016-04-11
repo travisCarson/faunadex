@@ -6,6 +6,9 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux';
 import {App, AppContainer} from './components/App';
 import {User, UserContainer} from './components/User';
+import {Encounter, EncounterContainer} from './components/Encounter';
+import {EncounterList, EncounterListContainer} from './components/EncounterList';
+import {dummyUsers, dummyEncounters, dummyArrayEncounters} from '../dummies/dummies';
 // in ES6 you can assign variables from an object using 
 // what are called "Destructuring"
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment 
@@ -39,8 +42,9 @@ const store = createStore(reducer);
 store.dispatch({
   type: 'SET_STATE',
   state: {
-    user: { name: 'Joe Smoe', description: 'One day, Ill be set via an AJAX call' },
-    encounters: [ { description: 'Joes first encounter' }, { description: 'Joes second encounter' }, { description: 'Joes third encounter' }]
+    user: dummyUsers,
+    encounters: dummyEncounters,
+    arrayEn: dummyArrayEncounters
   }
 });
 
@@ -59,6 +63,7 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route component={AppContainer} path="/" />
       <Route component={UserContainer} path="/user" />
+      <Route component={EncounterContainer} path="/encounter" />
     </Router>
   </Provider>),
   // Do our inital render on the #app element in index.html
