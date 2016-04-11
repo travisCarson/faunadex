@@ -21,7 +21,8 @@ export const Encounter = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
-    title: state.getIn(['encounters', '1', 'username']),
+    // TODO don't hardcode the number 1 into the below. Make that be dynamic
+    title: state.getIn(['encounters', '1', 'title']),
     description: state.getIn(['encounters', '1', 'description']),
     location: state.getIn(['encounters', '1', 'location']),
     encounterTime: state.getIn(['encounters', '1', 'encountertime']),
