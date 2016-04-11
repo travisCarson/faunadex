@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {createStore} from 'redux';
 import {Provider} from 'react-redux';
+var $ = require('jquery');
 import {App, AppContainer} from './components/App';
 import {User, UserContainer} from './components/User';
 import {Encounter, EncounterContainer} from './components/Encounter';
@@ -68,4 +69,5 @@ ReactDOM.render(
   </Provider>),
   // Do our inital render on the #app element in index.html
   document.getElementById('app'));
+
 
