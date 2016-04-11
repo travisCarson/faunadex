@@ -18,8 +18,8 @@ export const User = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
-    userName: state.getIn(['user', 'name']),
-    descr: state.getIn(['user', 'description']),
+    userName: state.getIn(['user', '1', 'username']),
+    descr: state.getIn(['user', '1', 'description']),
 
   };
 }

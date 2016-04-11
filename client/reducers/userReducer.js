@@ -9,7 +9,7 @@ function setState(state, newState) {
 }
 
 function setUserName(state, newUserName) {
-  return state.merge({user: {name: newUserName}});
+  return state.merge({'user': {1: {username: newUserName}}});
 }
 
 // This is what does the heavy lifting, based on the action that the
