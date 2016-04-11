@@ -11,7 +11,7 @@ var dummy = require('../../dummies/dummies');
 
 module.exports = {
 
-  createEncounter: function() {
+  createEncounter: function(req, res) {
     Encounters.create({
       title: req.body.title,
       description: req.body.description,
@@ -42,7 +42,7 @@ module.exports = {
   //     });
   // },
 
-  recentActivity: function() {
+  recentActivity: function(req, res) {
     res.status(200).json(dummy.dummyEncounter);
     // function to interact with the database
     // Encounters.reset().fetch()
