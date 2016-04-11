@@ -3,12 +3,15 @@ import {connect} from 'react-redux';
 
 // the first of two things that a React-Redux component exports is 
 // a standard React component which uses a bunch of props.
-export const User = React.createClass({
+export const Encounter = React.createClass({
   
   render: function() {
     return <div>
-      Username: {this.props.userName} <br />
-      And his description is {this.props.descr}
+      Title: {this.props.title} <br />
+      Description: {this.props.description} <br />
+      Location: {this.props.location} <br />
+      Encounter Time: {this.props.encounterTime} <br />
+      Post Time: {this.props.postTime} <br />
     </div>;
   }
 });
@@ -18,12 +21,14 @@ export const User = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
-    userName: state.getIn(['user', 'name']),
-    descr: state.getIn(['user', 'description']),
-
+    title: state.getIn(['encounters', '1', 'username']),
+    description: state.getIn(['encounters', '1', 'description']),
+    location: state.getIn(['encounters', '1', 'location']),
+    encounterTime: state.getIn(['encounters', '1', 'encountertime']),
+    postTime: state.getIn(['encounters', '1', 'posttime'])
   };
 }
 
 // Lastly, we export an object which tells what function to use to map
 // the state to the props
-export const UserContainer = connect(mapStateToProps)(User);
+export const EncounterContainer = connect(mapStateToProps)(Encounter);
