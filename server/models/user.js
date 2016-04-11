@@ -1,6 +1,8 @@
 var db = require('../config/db.js');
 var bookshelf = require('bookshelf');
 var userUtils = require('../utils/userUtils.js')
+var bcrypt = require('bcrypt-nodejs');
+var Promise = require('bluebird');
 
 var User = db.Model.extend({
 
