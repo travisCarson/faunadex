@@ -7,7 +7,7 @@ var knex = require('knex');
 var bookshelf = require('bookshelf');
 
 // dummy file with dummy info
-var dummy = require('../../dummies/dummies');
+var dummy = require('../../dummies/dummies.js');
 
 module.exports = {
 
@@ -29,7 +29,7 @@ module.exports = {
   },
 
   showAllEncounters: function(req, res) {
-    res.status(200).json(dummy.dummyEncounter);
+    res.status(200).json(dummy.dummyEncounters);
   },
   // function to interact with the database
   // showAllEncounters: function() {
