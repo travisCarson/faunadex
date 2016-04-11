@@ -4,7 +4,7 @@ var ip = require('ip').address();
 module.exports = {
   entry: [
     'webpack-dev-server/client?http://' + ip + ':8080',
-    'webpack/hot/only-dev-server',
+    'webpack/hot/dev-server',
     './client/index.js'
   ],
   module: {
@@ -19,11 +19,14 @@ module.exports = {
   },
   output: {
     path: __dirname + '/client',
-    publicPath: '/',
+    publicPath: 'http://' + ip + ':8080/',
     filename: 'bundle.js'
   },
+  externals: {
+    "jquery": "$"
+  },
   devServer: {
-    contentBase: './client',
+    contentBase: 'client/',
     hot: true
   },
   plugins: [
