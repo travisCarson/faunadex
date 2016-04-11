@@ -28,7 +28,7 @@ module.exports = {
       });
   },
 
-  showAllEncounters: function() {
+  showAllEncounters: function(req, res) {
     res.status(200).json(dummy.dummyEncounter);
   },
   // function to interact with the database
