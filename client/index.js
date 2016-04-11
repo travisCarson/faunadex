@@ -7,6 +7,7 @@ import {Provider} from 'react-redux';
 import {App, AppContainer} from './components/App';
 import {User, UserContainer} from './components/User';
 import {Encounter, EncounterContainer} from './components/Encounter';
+import {dummyUsers, dummyEncounters} from '../dummies/dummies';
 // in ES6 you can assign variables from an object using 
 // what are called "Destructuring"
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment 
@@ -40,8 +41,8 @@ const store = createStore(reducer);
 store.dispatch({
   type: 'SET_STATE',
   state: {
-    user: { name: 'Joe Smoe', description: 'One day, Ill be set via an AJAX call' },
-    encounters: [ { description: 'Joes first encounter' }, { description: 'Joes second encounter' }, { description: 'Joes third encounter' }]
+    user: dummyUsers,
+    encounters: dummyEncounters
   }
 });
 
