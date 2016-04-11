@@ -7,11 +7,11 @@ var knex = require('knex');
 var bookshelf = require('bookshelf');
 
 // dummy file with dummy info
-var dummy = require('../../dummies/dummies');
+var dummy = require('../../dummies/dummies.js');
 
 module.exports = {
 
-  createEncounter: function() {
+  createEncounter: function(req, res) {
     Encounters.create({
       title: req.body.title,
       description: req.body.description,
@@ -28,8 +28,8 @@ module.exports = {
       });
   },
 
-  showAllEncounters: function() {
-    res.status(200).json(dummy.dummyEncounter);
+  showAllEncounters: function(req, res) {
+    res.status(200).json(dummy.dummyEncounters);
   },
   // function to interact with the database
   // showAllEncounters: function() {
@@ -42,7 +42,7 @@ module.exports = {
   //     });
   // },
 
-  recentActivity: function() {
+  recentActivity: function(req, res) {
     res.status(200).json(dummy.dummyEncounter);
     // function to interact with the database
     // Encounters.reset().fetch()

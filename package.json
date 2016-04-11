@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/mocha --bail test/",
     "start": "npm run start-backend & npm run start-dev-server",
-    "start-backend": "node server/server.js",
+    "start-backend": "nodemon server/server.js",
     "start-dev-server": "webpack-dev-server --host 0.0.0.0 --port 8080 --hot --inline"
   },
   "babel": {
@@ -27,6 +27,7 @@
     "immutable": "^3.7.6",
     "knex": "^0.10.0",
     "mysql": "^2.10.2",
+    "nodemon": "^1.9.1",
     "path": "^0.12.7",
     "react": "^0.14.8",
     "react-dom": "^0.14.8",
