@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Encounter, EncounterContainer} from './Encounter';
 
 export const App = React.createClass({
   // TODO how do we get store?
@@ -12,6 +13,7 @@ export const App = React.createClass({
       <input type='text' ref='inputForm' onChange={this.props.changeUserName}/>
         <button type='submit'>Submit</button>
       </form>
+      <EncounterContainer />
     </div>);
   }
 });
