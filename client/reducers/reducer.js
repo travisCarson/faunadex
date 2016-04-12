@@ -4,19 +4,6 @@
 import {Map, List} from 'immutable';
 
 // Helper function for below
-function setState(state, newState) {
-  return state.merge(newState);
-}
-
-function setUserName(state, newUserName) {
-  return state.merge({'user': {username: newUserName}});
-}
-
-function goToEncounter(state, encounter) {
-  // ideally below I would somehow change the path to only show the encounter
-  console.log('clicked');
-  return state.merge({'encounter': encounter});
-}
 
 function signInAttempt(state, action) {
   // ideally below I would somehow change the path to only show the encounter
@@ -36,11 +23,11 @@ function signUpAttempt(state, action) {
 export default function(state = Map(), action) {
   switch (action.type) {
     case 'SET_STATE':
-      return setState(state, action.state);
+      return state.merge(action.state);
     case 'CHANGE_USER_NAME':
-      return setUserName(state, action.username);
+      return state.merge({'user': {username: action.username}});
     case 'GO_TO_ENCOUNTER':
-      return goToEncounter(state, action.encounter);
+      return state.merge({'encounter': action.encounter});
     case 'SIGN_IN_ATTEMPT':
       return signInAttempt(state, action);
     case 'SIGN_UP_ATTEMPT':
