@@ -78,4 +78,5 @@ exports.dummyEncounters = [
     // how do we access the photos? don't have a collection setup for that
     // photo: 'http://i.telegraph.co.uk/multimedia/archive/02845/potd-squirrel_2845650b.jpg',
   }
+];
 
