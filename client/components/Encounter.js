@@ -42,4 +42,4 @@ function mapDispatchToProps(dispatch) {
 }
 // Lastly, we export an object which tells what function to use to map
 // the state to the props
-export const EncounterContainer = connect(mapStateToProps)(Encounter);
+export const EncounterContainer = connect(mapStateToProps, mapDispatchToProps)(Encounter);
