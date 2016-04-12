@@ -24,6 +24,12 @@ function signInAttempt(state, action) {
   console.log(action.username, ' ', action.password);
 }
 
+function signUpAttempt(state, action) {
+  // ideally below I would somehow change the path to only show the encounter
+  console.log('sign up attempted');
+  console.log(action.username, ' ', action.password);
+}
+
 // This is what does the heavy lifting, based on the action that the
 // reducer receives, it does something based on that.  Remember, this
 // must be a Pure Function.
@@ -37,8 +43,11 @@ export default function(state = Map(), action) {
       return goToEncounter(state, action.encounter);
     case 'SIGN_IN_ATTEMPT':
       return signInAttempt(state, action);
+    case 'SIGN_UP_ATTEMPT':
+      return signUpAttempt(state, action);
   }
   console.log('New State Is: ', state);
   window.state = state;
   return state;
 }
+
