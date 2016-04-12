@@ -2,8 +2,9 @@
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
+import thunk from 'redux-thunk';
 var $ = require('jquery');
 import {App, AppContainer} from './components/App';
 import {User, UserContainer} from './components/User';
@@ -31,7 +32,7 @@ import reducer from './reducers/reducer.js';
 // be mutated.  To change it's values you have to dispatch an action
 // which calls a reducer and returns a new state, which is set
 // to the current state.
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 // Here we dispatch a simple action which sets the state.  To see the
 // details of what this function is doing, look in the following folder:
