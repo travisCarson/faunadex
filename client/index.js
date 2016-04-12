@@ -43,9 +43,9 @@ const store = createStore(reducer);
 store.dispatch({
   type: 'SET_STATE',
   state: {
-    user: dummyUsers,
-    encounters: dummyEncounters,
-    arrayEn: dummyArrayEncounters
+    user: dummyUsers[0], //Represents the user logged in
+    encounter: dummyEncounters[0], //Represents the selected encouter
+    encounters: dummyEncounters //Represents all encounters the user has
   }
 });
 
