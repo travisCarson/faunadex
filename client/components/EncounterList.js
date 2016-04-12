@@ -11,7 +11,7 @@ export const EncounterList = React.createClass({
       <div>
         {this.props.encounters.map(encounter =>
           // I don't know what to pass in below so I just put encounter
-          <EncounterContainer encounter={encounter} />
+          <EncounterContainer key={encounter.get('id')} encounter={encounter} />
         )}
       </div>
     );
