@@ -41,9 +41,8 @@ function mapDispatchToProps(dispatch) {
         $.get('https://thesession.org/tunes/2?format=json', function(data) {
           console.log('got data from thesession.org');
           console.log(data);
-
+          //We could dispatch another action here using the data we got
         });
-        
       });
     }
   };
