@@ -10,7 +10,7 @@ export const SignUp = React.createClass({
   },
 
   render: function() {
-    return <div>
+    return <div className='sign-up'>
       <h2>Sign Up</h2>
       <div>Username: <input ref="username" /></div>
       <div>Password: <input ref="password" /></div>
