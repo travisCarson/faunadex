@@ -19,37 +19,6 @@ exports.dummyUsers = [
   }
 ];
 
-exports.dummyObjEncounters = {
-  1: {
-  	title: 'Grey Squirrel',
-  	description: 'today i encountered a squirrel. luckily, he was not aggressive',
-    location: 'the park',
-    encounterTime: '2016-04-03 22:22',
-    postTime: '2016-04-03 22:22',
-    // how do we access the photos? don't have a collection setup for that
-    // photo: 'http://i.telegraph.co.uk/multimedia/archive/02845/potd-squirrel_2845650b.jpg',
-  },
-  2: {
-    title: 'Elephant',
-    description: 'why is there an elephant around here?',
-    location: 'market',
-    encounterTime: '2016-04-04 12:22',
-    postTime: '2016-04-06 22:22',
-    // how do we access the photos? don't have a collection setup for that
-    // photo: 'http://i.telegraph.co.uk/multimedia/archive/02845/potd-squirrel_2845650b.jpg',
-  },
-  3: {
-    title: 'Grey African Parrot',
-    description: 'it landed on my head!',
-    location: 'Hack Reactor',
-    encounterTime: '2016-04-07 04:22',
-    postTime: '2016-04-07 22:22',
-    // how do we access the photos? don't have a collection setup for that
-    // photo: 'http://i.telegraph.co.uk/multimedia/archive/02845/potd-squirrel_2845650b.jpg',
-  }
-};
-
-
 exports.dummyEncounters = [
   {
     title: 'Grey Squirrel',
