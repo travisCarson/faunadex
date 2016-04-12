@@ -9,6 +9,7 @@ import {App, AppContainer} from './components/App';
 import {User, UserContainer} from './components/User';
 import {Encounter, EncounterContainer} from './components/Encounter';
 import {SignIn, SignInContainer} from './components/SignIn';
+import {SignUp, SignUpContainer} from './components/SignUp';
 import {EncounterList, EncounterListContainer} from './components/EncounterList';
 import {dummyUsers, dummyEncounters, dummyArrayEncounters} from '../dummies/dummies';
 // in ES6 you can assign variables from an object using 
@@ -67,6 +68,7 @@ ReactDOM.render(
       <Route component={UserContainer} path="/user" />
       <Route component={EncounterContainer} path="/encounter" />
       <Route component={SignInContainer} path="/signin" />
+      <Route component={SignUpContainer} path="/signin" />
     </Router>
   </Provider>),
   // Do our inital render on the #app element in index.html
