@@ -9,7 +9,7 @@ export const Encounter = React.createClass({
     // <div onClick={this.props.goToEncounter}>Synopsis: {this.props.encounter}</div>
     var enc = this.props.encounter;
     return ( 
-      <div>
+      <div className='encounter'>
         <div>Title: {enc.get('title')}</div>
         <div>Description: {enc.get('description')}</div>
         <div>Location: {enc.get('location')}</div>

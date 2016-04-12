@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 export const User = React.createClass({
   
   render: function() {
-    return <div>
+    return <div className='user'>
       Username: {this.props.userName} <br />
       And his description is {this.props.descr}
     </div>;

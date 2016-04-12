@@ -7,7 +7,7 @@ export const App = React.createClass({
   // TODO figure out on click events in React 
   render: function() {
     return (
-      <div>
+      <div className='app'>
         Welcome to Faunadex!
         The user in the store is: {this.props.userName}
         <form>

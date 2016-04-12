@@ -8,7 +8,7 @@ export const EncounterList = React.createClass({
   
   render: function() {
     return (
-      <div>
+      <div className='encounter-list'>
         {this.props.encounters.map(encounter =>
           // I don't know what to pass in below so I just put encounter
           <EncounterContainer key={encounter.get('id')} encounter={encounter} />
