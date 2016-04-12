@@ -23,7 +23,7 @@ import {List, Map} from 'immutable';
 //   2) MUST return a state, even if the state is empty or the same
 //   3) MUST NEVER alter the existing state, only return a new one
 //   4) MUST NEVER call non-pure functions, like AJAX calls
-import reducer from './reducers/userReducer.js'; 
+import reducer from './reducers/reducer.js'; 
 
 // Create the Redux Store, this should be a representation of the
 // entire application in the form of an object.  This should never
