@@ -8,6 +8,7 @@ var $ = require('jquery');
 import {App, AppContainer} from './components/App';
 import {User, UserContainer} from './components/User';
 import {Encounter, EncounterContainer} from './components/Encounter';
+import {SignIn, SignInContainer} from './components/SignIn';
 import {EncounterList, EncounterListContainer} from './components/EncounterList';
 import {dummyUsers, dummyEncounters, dummyArrayEncounters} from '../dummies/dummies';
 // in ES6 you can assign variables from an object using 
@@ -22,7 +23,7 @@ import {List, Map} from 'immutable';
 //   2) MUST return a state, even if the state is empty or the same
 //   3) MUST NEVER alter the existing state, only return a new one
 //   4) MUST NEVER call non-pure functions, like AJAX calls
-import reducer from './reducers/userReducer.js'; 
+import reducer from './reducers/reducer.js'; 
 
 // Create the Redux Store, this should be a representation of the
 // entire application in the form of an object.  This should never
@@ -65,6 +66,7 @@ ReactDOM.render(
       <Route component={AppContainer} path="/" />
       <Route component={UserContainer} path="/user" />
       <Route component={EncounterContainer} path="/encounter" />
+      <Route component={SignInContainer} path="/signin" />
     </Router>
   </Provider>),
   // Do our inital render on the #app element in index.html
