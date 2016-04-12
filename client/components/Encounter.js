@@ -6,16 +6,16 @@ import {connect} from 'react-redux';
 export const Encounter = React.createClass({
   
   render: function() {
+    // <div onClick={this.props.goToEncounter}>Synopsis: {this.props.encounter}</div>
+    var enc = this.props.encounter;
     return ( 
       <div>
-        // There has to be a better way to access the information in the line below <br />
-        // The line below is so bad <br />
-        <span onClick={this.props.goToEncounter}>Synopsis: {this.props.encounter}</span><br />
-        <span>Title: {this.props.encounter._root.entries[0][1]}</span><br />
-        <span>Description: {this.props.description}</span><br />
-        <span>Location: {this.props.location}</span><br />
-        <span>Encounter Time: {this.props.encounterTime}</span><br />
-        <span>Post Time: {this.props.postTime}</span><br />
+        <div>Title: {enc.get('title')}</div>
+        <div>Description: {enc.get('description')}</div>
+        <div>Location: {enc.get('location')}</div>
+        <div>Encounter Time: {enc.get('encounterTime')}</div>
+        <div>Post Time: {enc.get('postTime')}</div>
+        <hr />
       </div>
     );
   }
@@ -27,11 +27,6 @@ export const Encounter = React.createClass({
 function mapStateToProps(state) {
   return {
     // TODO don't hardcode the number 1 into the below. Make that be dynamic
-    title: state.getIn(['encounters', '1', 'title']),
-    description: state.getIn(['encounters', '1', 'description']),
-    location: state.getIn(['encounters', '1', 'location']),
-    encounterTime: state.getIn(['encounters', '1', 'encountertime']),
-    postTime: state.getIn(['encounters', '1', 'posttime'])
   };
 }
 
