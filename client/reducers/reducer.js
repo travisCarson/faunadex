@@ -1,7 +1,7 @@
 // Map is almost just like a normal object but it is immutable
 // by nature.  Using these objects prevents us from mutating the
 // state accidentally.
-import {Map} from 'immutable';
+import {Map, List} from 'immutable';
 
 // Helper function for below
 function setState(state, newState) {
@@ -9,13 +9,19 @@ function setState(state, newState) {
 }
 
 function setUserName(state, newUserName) {
-  return state.merge({'user': {1: {username: newUserName}}});
+  return state.merge({'user': {username: newUserName}});
 }
 
 function goToEncounter(state, encounter) {
   // ideally below I would somehow change the path to only show the encounter
   console.log('clicked');
-  return state.merge({'arrayEn': [encounter]});
+  return state.merge({'encounter': encounter});
+}
+
+function signInAttempt(state, action) {
+  // ideally below I would somehow change the path to only show the encounter
+  console.log('sign in attempted');
+  console.log(action.username, ' ', action.password);
 }
 
 // This is what does the heavy lifting, based on the action that the
@@ -29,6 +35,8 @@ export default function(state = Map(), action) {
       return setUserName(state, action.username);
     case 'GO_TO_ENCOUNTER':
       return goToEncounter(state, action.encounter);
+    case 'SIGN_IN_ATTEMPT':
+      return signInAttempt(state, action);
   }
   console.log('New State Is: ', state);
   window.state = state;

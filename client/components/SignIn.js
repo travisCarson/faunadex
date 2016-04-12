@@ -5,12 +5,16 @@ import {connect} from 'react-redux';
 // a standard React component which uses a bunch of props.
 
 export const SignIn = React.createClass({
+  signIn: function() {
+    this.props.dispatchSignIn(this.refs.username.value, this.refs.password.value);
+  },
+
   render: function() {
     return <div>
       <h2>Sign In</h2>
       <div>Username: <input ref="username" /></div>
       <div>Password: <input ref="password" /></div>
-      <button onClick={this.props.dispatchSignIn.bind(this)}>Sign In</button>
+      <button onClick={this.signIn}>Sign In</button>
     </div>;
   }
 });
@@ -29,11 +33,11 @@ function mapStateToProps(state) {
 // There is also a function for mapping functions to the dispatching of actions
 function mapDispatchToProps(dispatch) {
   return {
-    dispatchSignIn: (event) => {
+    dispatchSignIn: (username, password) => {
       dispatch({
-        type: 'SIGN_IN',
-        username: this.refs.username,
-        password: this.refs.password
+        type: 'SIGN_IN_ATTEMPT',
+        username: username,
+        password: password
       });
     }
   };
