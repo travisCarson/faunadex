@@ -3,8 +3,6 @@ var ip = require('ip').address();
 
 module.exports = {
   entry: [
-    'webpack-dev-server/client?http://' + ip + ':8080',
-    'webpack/hot/dev-server',
     './client/index.js'
   ],
   module: {
