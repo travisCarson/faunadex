@@ -7,10 +7,18 @@ module.exports = function (app, express) {
 
   // user routing
   app.post('/api/user/signup', userUtils.createUser);
-  // TODO check that createSession actually signs in a user
-  // I don't think it does. I don't think there is a signin function
+
+  /* 
+
+  Done but not tested: check that createSession actually signs in a user. I don't think it does. I don't think there is a signin function 
+
+   */
+
   app.post('/api/user/signin', userUtils.logInUser);
   app.post('/api/user/signout', userUtils.endSession);
+
+  // allow viewing of a user's profile
+  app.get('/api/:userName', userUtils.fetchUserProfile);
 
   // encounter routing
   app.get('/api/user/encounter', encounterUtils.showAllEncounters);
