@@ -23,7 +23,7 @@ export const App = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    userName: state.getIn(['user', '1', 'username'])
+    userName: state.getIn(['user', 'username'])
   };
 }
 
