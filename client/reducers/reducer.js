@@ -17,6 +17,12 @@ function signUpAttempt(state, action) {
   return state; //must ALWAYS return state, or state will become undefined
 }
 
+function createNewEncounter(state, action) {
+
+  console.log('new encounter created');
+  return state;
+}
+
 // This is what does the heavy lifting, based on the action that the
 // reducer receives, it does something based on that.  Remember, this
 // must be a Pure Function.
@@ -32,6 +38,8 @@ export default function(state = Map(), action) {
       return signInAttempt(state, action);
     case 'SIGN_UP_ATTEMPT':
       return signUpAttempt(state, action);
+    case 'CREATE_NEW_ENCOUNTER':
+      return createNewEncounter(state, action);
   }
   console.log('New State Is: ', state);
   window.state = state;
