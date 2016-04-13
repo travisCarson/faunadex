@@ -2,7 +2,7 @@ var db = require('../config/db.js');
 var knex = require('knex');
 var bookshelf = require('bookshelf');
 var bcrypt = require('bcrypt-nodejs');
-var User = require('../models.js');
+var User = require('../models/user.js');
 
 exports.createUser = function(req, res) {
   var username = req.body.username;
