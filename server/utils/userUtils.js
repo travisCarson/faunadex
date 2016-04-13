@@ -2,8 +2,7 @@ var db = require('../config/db.js');
 var knex = require('knex');
 var bookshelf = require('bookshelf');
 var bcrypt = require('bcrypt-nodejs');
-// we may need the following line, not sure, it may be included in request
-// var session = require('request-session');
+var User = require('../models/user.js');
 
 exports.createUser = function(req, res) {
   var username = req.body.username;
@@ -28,6 +27,20 @@ exports.createUser = function(req, res) {
     });
 };
 
+exports.logInUser = function(req, res, user) {
+  var username = req.body.username;
+  var password = req.body.password;
+
+  user.comparePassword(password, function(isMatch) {
+    if (isMatch) {
+      exports.createSession(req, res, user);
+    } else {
+      console.log('error logging in');
+      res.redirect('/api/user/signin');
+    }
+  });
+};
+
 exports.createSession = function(req, res, newUser) {
   return req.session.regenerate(function() {
     req.session.user = newUser;
@@ -41,7 +54,7 @@ exports.endSession = function(req, res, user) {
   });
 };
 
-var isLoggedIn = function(req) {
+exports.isLoggedIn = function(req) {
   return req.session ? !!req.session.user : false;
 };
 

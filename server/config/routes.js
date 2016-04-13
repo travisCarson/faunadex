@@ -9,7 +9,7 @@ module.exports = function (app, express) {
   app.post('/api/user/signup', userUtils.createUser);
   // TODO check that createSession actually signs in a user
   // I don't think it does. I don't think there is a signin function
-  app.post('/api/user/signin', userUtils.createSession);
+  app.post('/api/user/signin', userUtils.logInUser);
   app.post('/api/user/signout', userUtils.endSession);
 
   // encounter routing
