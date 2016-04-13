@@ -32,7 +32,12 @@ import reducer from './reducers/reducer.js';
 // be mutated.  To change it's values you have to dispatch an action
 // which calls a reducer and returns a new state, which is set
 // to the current state.
-const store = createStore(reducer, applyMiddleware(thunk));
+var initalState = Map({
+  user: {}, //Represents the user logged in
+  encounter: {}, //Represents the selected encouter
+  encounters: [] //Represents all encounters the user has
+});
+const store = createStore(reducer, initalState, applyMiddleware(thunk));
 
 // Here we dispatch a simple action which sets the state.  To see the
 // details of what this function is doing, look in the following folder:
@@ -43,13 +48,17 @@ const store = createStore(reducer, applyMiddleware(thunk));
 // and the reducer does the work of returning a new state
 // Behind the scenes, you'll write reducers that merge new elements into
 // your state, which you can see in the client/reducers files
-store.dispatch({
-  type: 'SET_STATE',
-  state: {
-    user: dummyUsers[0], //Represents the user logged in
-    encounter: dummyEncounters[0], //Represents the selected encouter
-    encounters: dummyEncounters //Represents all encounters the user has
-  }
+store.dispatch({ type: 'SET_STATE', state: { user: dummyUsers[0]} })
+
+store.dispatch(function(dispatch) {
+  $.get('/api/user/encounter', (data) => {
+    if (data) {
+      dispatch({ type: 'SET_STATE', state: { encounters: data } });
+    } else {
+      dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
+    }
+  });
+
 });
 
 // store.dispatch({
