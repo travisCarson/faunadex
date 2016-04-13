@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {EncounterList, EncounterListContainer} from './EncounterList';
+import {UserProfileContainer} from './UserProfile.js';
 
 export const App = React.createClass({
   // TODO how do we get store?
@@ -16,6 +17,7 @@ export const App = React.createClass({
           <button type='submit' onClick={this.props.testAction}>Submit</button>
         </form>
         <EncounterListContainer />
+        <UserProfileContainer />
       </div>
     );
   }
