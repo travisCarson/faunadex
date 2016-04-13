@@ -8,13 +8,13 @@ import {Map, List} from 'immutable';
 function signInAttempt(state, action) {
   // ideally below I would somehow change the path to only show the encounter
   console.log('sign in attempted');
-  console.log(action.username, ' ', action.password);
+  return state; //must ALWAYS return state
 }
 
 function signUpAttempt(state, action) {
   // ideally below I would somehow change the path to only show the encounter
   console.log('sign up attempted');
-  console.log(action.username, ' ', action.password);
+  return state; //must ALWAYS return state, or state will become undefined
 }
 
 // This is what does the heavy lifting, based on the action that the
