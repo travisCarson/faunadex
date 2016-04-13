@@ -50,7 +50,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-webpack-without-server');
   grunt.loadNpmTasks('grunt-nodemon');
 
-  grunt.registerTask('default', '', function () {
+  grunt.registerTask('startserver', '', function () {
     var taskList = ['concurrent', 'nodemon', 'watch'];
     grunt.task.run(taskList);
   });
