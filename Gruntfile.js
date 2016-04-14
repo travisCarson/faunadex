@@ -51,7 +51,7 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-nodemon');
 
   grunt.registerTask('startserver', '', function () {
-    var taskList = ['concurrent', 'nodemon', 'watch'];
+    var taskList = ['webpack', 'concurrent', 'nodemon', 'watch'];
     grunt.task.run(taskList);
   });
 
