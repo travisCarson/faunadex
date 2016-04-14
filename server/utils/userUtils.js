@@ -27,35 +27,53 @@ exports.createUser = function(req, res) {
     });
 };
 
-exports.logInUser = function(req, res, user) {
+exports.logInUser = function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
+  console.log(username, password);
 
-  user.comparePassword(password, function(isMatch) {
-    if (isMatch) {
-      exports.createSession(req, res, user);
-    } else {
-      console.log('error logging in');
-      res.redirect('/api/user/signin');
-    }
-  });
+  new User({ username: username})
+    .fetch()
+    .then(function(user) {
+      if (!user) {
+        console.log('user not found');
+        res.redirect('/#/signin');
+      } else {
+        user.comparePassword(password, function(isMatch) {
+          if (isMatch) {
+            exports.createSession(req, res, user);
+            console.log('session created');
+            res.json(user);
+      
+          } else {
+            console.log('error logging in');
+            res.redirect('/#/signin');
+          }
+        });
+      }
+    });
 };
 
 exports.createSession = function(req, res, newUser) {
-  return req.session.regenerate(function() {
-    req.session.user = newUser;
-    res.redirect('/');
-  });
+  req.session.user = newUser;
 };
 
 exports.endSession = function(req, res, user) {
   return req.session.destroy(function(err) {
-    console.log('Error logging out user!');
+    if (err) {
+      console.log('Error logging out user!');
+    }
+    res.redirect('/#/signin');
   });
 };
 
-exports.isLoggedIn = function(req) {
-  return req.session ? !!req.session.user : false;
+exports.isLoggedIn = function(req, res) {
+  console.log(req.session);
+  if (req.session.user) {
+    res.send('true');
+  } else {
+    res.send('false');
+  }
 };
 
 exports.checkUser = function(req, res, next){
