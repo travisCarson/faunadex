@@ -30,8 +30,10 @@ module.exports = {
       });
   },
 
-  showAllEncounters: function(req, res) {
-    Encounters.reset().fetch()
+  showAllEncountersFromUser: function(req, res) {
+    Encounters.reset()
+      .query({where: {userid: req.params.id}})
+      .fetch()
       .then(function(encounters) {
         res.status(200).send(encounters);
       })
