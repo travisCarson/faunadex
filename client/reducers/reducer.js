@@ -2,7 +2,6 @@
 // by nature.  Using these objects prevents us from mutating the
 // state accidentally.
 import {Map, List} from 'immutable';
-
 // Helper function for below
 
 function signInAttempt(state, action) {
@@ -15,6 +14,12 @@ function signUpAttempt(state, action) {
   // ideally below I would somehow change the path to only show the encounter
   console.log('sign up attempted');
   return state; //must ALWAYS return state, or state will become undefined
+}
+
+function createNewEncounter(state, action) {
+
+  console.log('new encounter created');
+  return state;
 }
 
 // This is what does the heavy lifting, based on the action that the
@@ -32,6 +37,8 @@ export default function(state = Map(), action) {
       return signInAttempt(state, action);
     case 'SIGN_UP_ATTEMPT':
       return signUpAttempt(state, action);
+    case 'CREATE_NEW_ENCOUNTER':
+      return createNewEncounter(state, action);
   }
   console.log('New State Is: ', state);
   window.state = state;
