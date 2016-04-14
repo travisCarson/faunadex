@@ -44,11 +44,11 @@ module.exports = {
       });
   },
 
-  recentActivity: function(req, res) {
+  recentEncounters: function(req, res) {
 
     // line to server up dummy data
     // res.status(200).json(dummy.dummyEncounter);
-    
+
     // function to interact with the database
     Encounters.reset().fetch()
       .then(function(encouters) {
