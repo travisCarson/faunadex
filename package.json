@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha test/",
+    "test": "./node_modules/.bin/mocha --recursive test/",
     "start": "grunt startserver",
     "start-backend": "nodemon server/server.js",
     "start-dev-server": "webpack-dev-server --host 0.0.0.0 --port 8080 --hot --inline"

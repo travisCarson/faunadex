@@ -1,8 +1,8 @@
 var expect = require('chai').expect;
 
-var db = require('../server/config/db.js');
-var User = require('../server/models/user.js');
-var userUtils = require('../server/utils/userUtils.js');
+var db = require('../../server/config/db.js');
+var User = require('../../server/models/user.js');
+var userUtils = require('../../server/utils/userUtils.js');
 var bcrypt = require('bcrypt-nodejs');
 
 var serverURL = 'http://127.0.0.1:1337';

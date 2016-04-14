@@ -4,9 +4,9 @@ chai.should();
 var request = require('supertest');
 
 
-var db = require('../server/config/db.js');
-var User = require('../server/models/user.js');
-var app = require('../server/server.js');
+var db = require('../../server/config/db.js');
+var User = require('../../server/models/user.js');
+var app = require('../../server/server.js');
 
 //Create an object for testing use
 var Site = function() {

@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 
-var db = require('../server/config/db.js');
-var User = require('../server/models/user.js');
+var db = require('../../server/config/db.js');
+var User = require('../../server/models/user.js');
 
 var serverURL = 'http://127.0.0.1:1337';
 
