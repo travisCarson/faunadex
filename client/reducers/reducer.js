@@ -2,7 +2,6 @@
 // by nature.  Using these objects prevents us from mutating the
 // state accidentally.
 import {Map, List} from 'immutable';
-
 // Helper function for below
 
 function signInAttempt(state, action) {

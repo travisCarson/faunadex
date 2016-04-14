@@ -13,6 +13,7 @@ import {SignIn, SignInContainer} from './components/SignIn';
 import {SignUp, SignUpContainer} from './components/SignUp';
 import {EncounterList, EncounterListContainer} from './components/EncounterList';
 import {dummyUsers, dummyEncounters, dummyArrayEncounters} from '../dummies/dummies';
+import {NewEncounterContainer} from './components/NewEncounter';
 // in ES6 you can assign variables from an object using 
 // what are called "Destructuring"
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment 
@@ -79,6 +80,7 @@ ReactDOM.render(
       <Route component={EncounterContainer} path="/encounter" />
       <Route component={SignInContainer} path="/signin" />
       <Route component={SignUpContainer} path="/signin" />
+      <Route component={NewEncounterContainer} path="/newencounter" />
     </Router>
   </Provider>),
   // Do our inital render on the #app element in index.html

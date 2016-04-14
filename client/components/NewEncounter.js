@@ -11,15 +11,22 @@ export const NewEncounter = React.createClass({
   },
 
   render: function() {
-    return <div className="new-encounter">
-      <h2>Create new encounter</h2>
-      <div>Title: <input ref="title" /></div>
-      <div>Description: <input ref="description" /></div>
-      <div>Location: <input ref="location" /></div>
-      <div>Time of encounter: <input ref="encounterTime" /></div>
-      <div>Photo URL: <input ref="photoUrl" /></div>;
-  },
+    return (<div className="new-encounter">
+              <h2>Create new encounter</h2>
+              <div>Title: <input ref="title" /></div>
+              <div>Description: <input ref="description" /></div>
+              <div>Location: <input ref="location" /></div>
+              <div>Time of encounter: <input ref="encounterTime" /></div>
+              <div>Photo URL: <input ref="photoUrl" /></div>
+              <button onClick={this.newEncounter}>Add New Encounter</button>
+            </div>);
+  } 
 });
+
+function mapStateToProps(state) {
+  return {
+  };
+}
 
 function mapDispatchToProps(dispatch) {  
   return {
@@ -34,6 +41,6 @@ function mapDispatchToProps(dispatch) {
       });
     }
   };
-}
+};
 
-export const NewEncounterContainer = connect(mapDispatchToProps)(NewEncounter);
+export const NewEncounterContainer = connect(mapStateToProps, mapDispatchToProps)(NewEncounter);

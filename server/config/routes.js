@@ -18,11 +18,11 @@ module.exports = function (app, express) {
   app.post('/api/user/signout', userUtils.endSession);
 
   // allow viewing of a user's profile
-  app.get('/api/:userName', userUtils.fetchUserProfile);
+  // app.get('/api/:userName', userUtils.fetchUserProfile);
 
   // encounter routing
   app.get('/api/user/encounter', encounterUtils.showAllEncounters);
-  app.post('/api/user/encounter', encounterUtils.createEncounter);
+  // app.post('/api/user/encounter', encounterUtils.createEncounter);
   app.get('/api/recentactivity', encounterUtils.recentActivity);
 
   // app.post('/api/searchanimal', someController);
