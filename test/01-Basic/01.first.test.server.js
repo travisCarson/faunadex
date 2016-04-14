@@ -42,20 +42,42 @@ describe('Basic Server Functions', function () {
       }, callback);
     };
     
-    it('will respond to GET /api/user/encounter', function (done) {
-      makeGET('/api/user/encounter', function(error, res, body) {
+    it('will respond to GET /api/user/encounters/:id', function (done) {
+      makeGET('/api/user/encounters/1', function(error, res, body) {
         expect(error).to.equal(null);
         expect(res.statusCode).to.equal(200);
         done();
       });
     });
 
-    it('will respond to GET /api/recentactivity', function (done) {
-      makeGET('/api/recentactivity', function(error, res, body) {
+    it('will respond to GET /api/recentencounters', function (done) {
+      makeGET('/api/recentencounters', function(error, res, body) {
         expect(error).to.equal(null);
         expect(res.statusCode).to.equal(200);
         done();
       });
+    });
+
+    it('will respond to POST /api/user/encounter', function(done) {
+      makePOST('/api/user/encounter',
+        {
+          userid: 1,
+          forumid: 1,
+          title: 'Marmot',
+          description: 'It stole my stuff',
+          location: 'Yosemite',
+          posttime: '2015-06-05',
+          encountertime: '2016-04-14'
+        }, 
+        function(error, res, body) {
+          expect(error).to.equal(null);
+          expect(res.statusCode).to.equal(200);
+          expect(body.userid).to.equal(1);
+          expect(body.title).to.equal('Marmot');
+          expect(body.description).to.equal('It stole my stuff');
+          expect(body.id).to.not.be.null;
+          done();
+        });
     });
 
   }); //END describe('Basic REST API endpoints' function () {

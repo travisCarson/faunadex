@@ -13,6 +13,8 @@ module.exports = {
 
   createEncounter: function(req, res) {
     Encounters.create({
+      userid: req.body.userid,
+      forumid: req.body.forumid,
       title: req.body.title,
       description: req.body.description,
       location: req.body.location,
@@ -28,31 +30,27 @@ module.exports = {
       });
   },
 
-  showAllEncounters: function(req, res) {
-    res.status(200).json(dummy.dummyEncounters);
+  showAllEncountersFromUser: function(req, res) {
+    Encounters.reset()
+      .query({where: {userid: req.params.id}})
+      .fetch()
+      .then(function(encounters) {
+        res.status(200).send(encounters);
+      })
+      .catch(function(error) {
+        res.status(500).send(error.message);
+      });
   },
-  // function to interact with the database
-  // showAllEncounters: function() {
-  //   Encounters.reset().fetch()
-  //     .then(function(encouters) {
-  //       res.status(200).send(encouters);
-  //     })
-  //     .catch(function(error) {
-  //       res.status(500).send(error.message);
-  //     });
-  // },
 
-  recentActivity: function(req, res) {
-    res.status(200).json(dummy.dummyEncounter);
-    // function to interact with the database
-    // Encounters.reset().fetch()
-    //   .then(function(encouters) {
-    //     // return the last five encounters
-    //     res.status(200).send(encounters.model.slice(encounters.model.length - 6));
-    //   })
-    //   .catch(function(error) {
-    //     res.status(500).send(error.message);
-    //   });
+  recentEncounters: function(req, res) {
+    Encounters.reset().fetch()
+      .then(function(encounters) {
+        // return the last five encounters
+        res.status(200).send(encounters.slice(encounters.length - 5));
+      })
+      .catch(function(error) {
+        res.status(500).send(error.message);
+      });
   }
 
 };
