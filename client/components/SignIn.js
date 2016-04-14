@@ -40,7 +40,7 @@ function mapDispatchToProps(dispatch) {
       dispatch((dispatch) => {
         dispatch({ type: 'SIGN_IN_ATTEMPT' });
         router.push('/user');
-        $.get('/api/user/signin', (data) => {
+        $.post('/api/user/signin', {username: username, password: password}, (data) => {
           console.log('data: ', data);
           if (data) {
             dispatch({ type: 'SET_STATE', state: { user: data } });

@@ -15,7 +15,8 @@ module.exports = function (app, express) {
    */
 
   app.post('/api/user/signin', userUtils.logInUser);
-  app.post('/api/user/signout', userUtils.endSession);
+  app.get('/api/user/signout', userUtils.endSession);
+  app.get('/api/user/isloggedin', userUtils.isLoggedIn);
 
   // allow viewing of a user's profile
   // app.get('/api/:userName', userUtils.fetchUserProfile);
