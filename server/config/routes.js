@@ -22,7 +22,7 @@ module.exports = function (app, express) {
   // app.get('/api/:userName', userUtils.fetchUserProfile);
 
   // encounter routing
-  app.get('/api/user/encounters/:id', encounterUtils.showAllEncountersFromUser);
+  app.get('/api/user/encounters/:userName', encounterUtils.showAllEncountersFromUser);
   app.post('/api/user/encounter', encounterUtils.createEncounter);
   app.get('/api/recentencounters', encounterUtils.recentEncounters);
 

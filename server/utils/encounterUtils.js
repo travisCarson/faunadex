@@ -31,7 +31,7 @@ module.exports = {
   },
 
   showAllEncountersFromUser: function(req, res) {
-    new User({ username: req.params.id })
+    new User({ username: req.params.userName })
       .fetch({withRelated: ['encounters']})
       .then(function(user) {
         res.status(200).send(user.related('encounters'));

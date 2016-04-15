@@ -3,7 +3,7 @@ var bookshelf = require('bookshelf');
 var User = require('./user');
 
 var Encounter = db.Model.extend({
-	tableName: 'encounters',
+  tableName: 'encounters',
   
   user: function() {
     return this.belongsTo(User, 'userid');
