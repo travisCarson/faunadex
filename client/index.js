@@ -52,7 +52,7 @@ const store = createStore(reducer, initalState, applyMiddleware(thunk));
 store.dispatch({ type: 'SET_STATE', state: { user: dummyUsers[0]} })
 
 store.dispatch(function(dispatch) {
-  $.get('/api/user/encounter', (data) => {
+  $.get('/api/recentencounters', (data) => {
     if (data) {
       dispatch({ type: 'SET_STATE', state: { encounters: data } });
     } else {

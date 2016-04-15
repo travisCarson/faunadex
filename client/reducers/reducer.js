@@ -40,7 +40,6 @@ export default function(state = Map(), action) {
     case 'CREATE_NEW_ENCOUNTER':
       return createNewEncounter(state, action);
   }
-  console.log('New State Is: ', state);
   window.state = state;
   return state;
 }
