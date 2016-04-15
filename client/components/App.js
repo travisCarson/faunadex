@@ -2,6 +2,8 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {EncounterList, EncounterListContainer} from './EncounterList';
 import {UserProfileContainer} from './UserProfile.js';
+import {AuthBannerContainer} from './AuthBanner.js';
+import {NoAuthBannerContainer} from './NoAuthBanner.js';
 
 export const App = React.createClass({
   // TODO how do we get store?
@@ -9,6 +11,9 @@ export const App = React.createClass({
   render: function() {
     return (
       <div className='app'>
+      <nav className='banner'>
+        <{this.props.banner} />
+      </nav>
         Welcome to Faunadex!
         The user in the store is: {this.props.userName}
         <form>
@@ -23,8 +28,13 @@ export const App = React.createClass({
 });
 
 function mapStateToProps(state) {
+  var banner = NoAuthBannerContainer;
+  if (state.getIn(['user', 'username'])) {
+    banner = AuthBannerContainer;
+  }
   return {
-    userName: state.getIn(['user', 'username'])
+    userName: state.getIn(['user', 'username']),
+    banner: banner,
   };
 }
 
