@@ -8,9 +8,11 @@ export const NoAuthNav = React.createClass({
       <div className="no-auth-nav">
         <img className="faunadex-logo" src="http://vignette2.wikia.nocookie.net/farmville/images/c/c2/Deep_Sea_Manatee-icon.png" />
         <h1 className="faunadex-title">Faunadex</h1>
-        <a className="share-new-encounter-link" href="/#/newencounter">Share New Encounter</a>
-        <a className="signin-link" href="/#/signin">Sign in</a>
-        <a className="Signup-link" href="/#/signout">Sign up</a>
+        <ul className="nav-links">
+          <li className="share-new-encounter-link"><a href="/#/signup">Share New Encounter</a></li>
+          <li className="signin-link"><a href="/#/signin">Sign in</a></li>
+          <li className="signup-link"><a href="/#/signup">Sign up</a></li>
+        </ul>
       </div>
     );
   }

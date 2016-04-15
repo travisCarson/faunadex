@@ -8,9 +8,11 @@ export const AuthNav = React.createClass({
       <div className="auth-nav">
         <img className="faunadex-logo" src="http://vignette2.wikia.nocookie.net/farmville/images/c/c2/Deep_Sea_Manatee-icon.png" />
         <h1 className="faunadex-title">Faunadex</h1>
-        <a className="share-new-encounter-link" href="/#/newencounter">Share New Encounter</a>
-        <a className="user-profile-link" href="/#/userprofile">{this.props.username}</a>
-        <a className="logout-link" href="/api/user/signout">Logout</a> { /* this doesn't do anything at present */ }
+        <ul className="nav-links">
+          <li className="share-new-encounter-link"><a href="/#/newencounter">Share New Encounter</a></li>
+          <li className="user-profile-link"><a href="/#/userprofile">{this.props.username}</a></li>
+          <li className="logout-link"><a href="/api/user/signout">Logout</a></li>
+        </ul>
       </div>
     );
   }
