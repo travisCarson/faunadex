@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {Link} from 'react-router';
 
 export const AuthNav = React.createClass({
 
@@ -8,9 +9,11 @@ export const AuthNav = React.createClass({
       <div className="auth-nav">
         <img className="faunadex-logo" src="http://vignette2.wikia.nocookie.net/farmville/images/c/c2/Deep_Sea_Manatee-icon.png" />
         <h1 className="faunadex-title">Faunadex</h1>
-        <a className="share-new-encounter-link" href="/#/newencounter">Share New Encounter</a>
-        <a className="user-profile-link" href="/#/userprofile">{this.props.username}</a>
-        <a className="logout-link" href="/api/user/signout">Logout</a> { /* this doesn't do anything at present */ }
+        <ul className="nav-links">
+          <li className="share-new-encounter-link"><Link to="/newencounter">Share New Encounter</Link></li>
+          <li className="user-profile-link"><Link to="/userprofile">{this.props.username}</Link></li>
+          <li className="logout-link"><a href="/api/user/signout">Logout</a></li>
+        </ul>
       </div>
     );
   }
