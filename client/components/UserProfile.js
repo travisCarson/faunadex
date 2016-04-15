@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {EncounterList, EncounterListContainer} from './EncounterList';
 
 export const UserProfile = React.createClass({
   render: function() {
@@ -8,9 +9,10 @@ export const UserProfile = React.createClass({
         <h3 className='user-headline'> {this.props.userName} </h3>
         <img className='user-avatar' src={this.props.avatar} />
         <p className='user-description'> {this.props.description} </p>
-        {/*
-          Later we'll map all of the user's perosnal encounters here
-        */}
+        <p>Recent Activity</p>
+        <div>
+          <EncounterListContainer username='userName' />
+        </div>
       </div>
     )
   }
