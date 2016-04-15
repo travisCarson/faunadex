@@ -5,7 +5,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     watch: {
       scripts: {
-        files: 'client/**/*.js',
+        files: ['client/**/*.js', '!client/bundle.js'],
         tasks: ['webpack']
       }
     },
