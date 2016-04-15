@@ -17,13 +17,7 @@ module.exports = function (grunt) {
           path: __dirname + '/client',
           filename: 'bundle.js'
         },
-
-        stats: {
-          colors: true,
-          modules: true,
-          reasons: true
-        },
-
+        stats: 'errors-only',
         watch: false,
         progress: true
         
