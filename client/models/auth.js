@@ -1,6 +1,6 @@
 module.exports = {
   login: (email, password, callback) => {
-    if (this.loggedIn()) {
+    if (this.isSignedIn()) {
       return callback(null, true);
     }
     $.post('/api/user/signin', {username: username, password: password})
