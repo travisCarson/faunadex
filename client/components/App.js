@@ -11,7 +11,8 @@ export const App = React.createClass({
       <div className='app'>
         Welcome to Faunadex!
         The user in the store is: {this.props.username}
-        <EncounterListContainer />
+        <h2>Recent Activity</h2>
+        <EncounterListContainer encounters={this.props.recentEncounters} />
         <UserProfileContainer />
       </div>
     );
