@@ -11,12 +11,7 @@ export const App = React.createClass({
       <div className='app'>
         Welcome to Faunadex!
         The user in the store is: {this.props.username}
-        <form>
-        <input type='text' ref='inputForm' onChange={this.props.changeUserName}/>
-          <button type='submit' onClick={this.props.testAction}>Submit</button>
-        </form>
-        <p>Recent Activity</p>
-        <EncounterListContainer encounters={this.props.recentEncounters} />
+        <EncounterListContainer />
         <UserProfileContainer />
       </div>
     );
