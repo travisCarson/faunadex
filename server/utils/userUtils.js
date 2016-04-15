@@ -30,7 +30,6 @@ exports.createUser = function(req, res) {
 exports.logInUser = function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
-  console.log(username, password);
 
   new User({ username: username})
     .fetch()
