@@ -67,7 +67,6 @@ exports.endSession = function(req, res, user) {
 };
 
 exports.isLoggedIn = function(req, res) {
-  console.log(req.session);
   if (req.session.user) {
     res.json(true);
   } else {
