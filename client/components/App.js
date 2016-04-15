@@ -15,7 +15,7 @@ export const App = React.createClass({
         <input type='text' ref='inputForm' onChange={this.props.changeUserName}/>
           <button type='submit' onClick={this.props.testAction}>Submit</button>
         </form>
-        <EncounterListContainer />
+        <EncounterListContainer encounters={this.props.recentEncounters} />
         <UserProfileContainer />
       </div>
     );
@@ -24,7 +24,9 @@ export const App = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    userName: state.getIn(['user', 'username']),
+    recentEncounters: state.getIn(['recentEncounters']),
+    username: state.getIn(['user', 'username']),
+    nav: nav
   };
 }
 
@@ -50,4 +52,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
-

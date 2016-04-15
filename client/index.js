@@ -38,7 +38,7 @@ var initalState = Map({
   user: {}, //Represents the user logged in
   encounter: {}, //Represents the selected encouter
   encounters: [], //Represents all encounters the user has
-  recentEncounters: []
+  recentEncounters: [] //Represents all the recent encounters
 });
 const store = createStore(reducer, initalState, applyMiddleware(thunk));
 
@@ -60,7 +60,6 @@ store.dispatch(function(dispatch) {
       dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
     }
   });
-
 });
 
 function requireAuth(nextState, replace) {
@@ -98,5 +97,3 @@ ReactDOM.render(
   </Provider>),
   // Do our inital render on the #app element in index.html
   document.getElementById('app'));
-
-
