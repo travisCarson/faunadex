@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router';
 
 export const NoAuthNav = React.createClass({
 
@@ -10,9 +9,9 @@ export const NoAuthNav = React.createClass({
         <img className="faunadex-logo" src="http://vignette2.wikia.nocookie.net/farmville/images/c/c2/Deep_Sea_Manatee-icon.png" />
         <h1 className="faunadex-title">Faunadex</h1>
         <ul className="nav-links">
-          <li className="share-new-encounter-link"><Link to="/signup">Share New Encounter</Link></li>
-          <li className="signin-link"><Link to="/signin">Sign in</Link></li>
-          <li className="signup-link"><Link to="/signup">Sign up</Link></li>
+          <li className="share-new-encounter-link"><a href="/#/signup">Share New Encounter</a></li>
+          <li className="signin-link"><a href="/#/signin">Sign in</a></li>
+          <li className="signup-link"><a href="/#/signup">Sign up</a></li>
         </ul>
       </div>
     );

@@ -72,15 +72,19 @@ store.dispatch(function(dispatch) {
 // Provider is a special built in component which gives all child
 // components access to the store.
 ReactDOM.render(
-  (<Provider store={store}>
-    <Router history={hashHistory}>
-      <Route component={AppContainer} path="/" />
-      <Route component={EncounterListEntryContainer} path="/encounter" />
-      <Route component={SignInContainer} path="/signin" />
-      <Route component={SignUpContainer} path="/signup" />
-      <Route component={NewEncounterContainer} path="/newencounter" />
-      <Route component={UserProfileContainer} path="/userprofile" />
-    </Router>
+  (
+  <Provider store={store}>
+    <div>
+      <NavContainer />
+      <Router history={hashHistory}>
+        <Route component={AppContainer} path="/" />
+        <Route component={EncounterListEntryContainer} path="/encounter" />
+        <Route component={SignInContainer} path="/signin" />
+        <Route component={SignUpContainer} path="/signup" />
+        <Route component={NewEncounterContainer} path="/newencounter" />
+        <Route component={UserProfileContainer} path="/userprofile" />
+      </Router>
+    </div>
   </Provider>),
   // Do our inital render on the #app element in index.html
   document.getElementById('app'));
