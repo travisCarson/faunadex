@@ -40,7 +40,7 @@ new User({ username: 'bob123456' }).fetch().then (function (user) {
 var bob = new User({ username: 'bob123456', password: 'bob' }).save();
 
 describe('Basic Authentication', function () {
-  describe('/api/user/signin and /api/user/isloggedin', function () {
+  describe('/api/user/signin and /api/user/issignedin', function () {
     
     it('will not 404 when POST to /api/user/signin', function (done) {
       site.username = 'nancy';
@@ -50,8 +50,8 @@ describe('Basic Authentication', function () {
       });
     });
 
-    it('/api/user/isloggedin should return false when not logged in', function (done) {
-      site.get('/api/user/isloggedin', function(error, res, body) {
+    it('/api/user/issignedin should return false when not logged in', function (done) {
+      site.get('/api/user/issignedin', function(error, res, body) {
         body.should.equal('false');
         done();
       });
@@ -62,7 +62,7 @@ describe('Basic Authentication', function () {
       site.password = '';
       site.post('/api/user/signin', function(error, res, body) {
         expect(error).to.equal(null);
-        site.get('/api/user/isloggedin', function(error, res, body) {
+        site.get('/api/user/issignedin', function(error, res, body) {
           body.should.equal('false');
           done();
         });
@@ -80,8 +80,8 @@ describe('Basic Authentication', function () {
       });
     });
 
-    it('/api/user/isloggedin should return true when logged in', function (done) {
-      site.get('/api/user/isloggedin', function(error, res, body) {
+    it('/api/user/issignedin should return true when logged in', function (done) {
+      site.get('/api/user/issignedin', function(error, res, body) {
         body.should.equal('true');
         done();
       });
@@ -92,7 +92,7 @@ describe('Basic Authentication', function () {
     it('should sign a user out', function(done) {
       site.get('/api/user/signout', function(error, res, body) {
         expect(error).to.equal(null);
-        site.get('/api/user/isloggedin', function(error, res, body) {
+        site.get('/api/user/issignedin', function(error, res, body) {
           body.should.equal('false');
           done();
         });
