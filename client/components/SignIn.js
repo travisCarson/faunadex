@@ -39,7 +39,7 @@ function mapDispatchToProps(dispatch) {
     dispatchSignIn: (username, password, router) => {
       dispatch((dispatch) => {
         dispatch({ type: 'SIGN_IN_ATTEMPT' });
-        router.push('/user');
+        router.push('/');
         $.post('/api/user/signin', {username: username, password: password}, (data) => {
           console.log('data: ', data);
           if (data) {

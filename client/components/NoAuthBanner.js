@@ -9,23 +9,20 @@ export const NoAuthBanner = React.createClass({
         <img className="faunadex-logo" src="http://vignette2.wikia.nocookie.net/farmville/images/c/c2/Deep_Sea_Manatee-icon.png" />
         <h1 className="faunadex-title">Faunadex</h1>
         <a className="share-new-encounter-link" href="/#/newencounter">Share New Encounter</a>
-        <a className="logout-link" href="">Logout</a> { /* this doesn't do anything at present */ }
-        <a className="user-profile-link" href="/#/userprofile">{this.props.username}</a>
+        <a className="signin-link" href="/#/signin">Sign in</a>
+        <a className="Signup-link" href="/#/signout">Sign up</a>
       </div>
     );
   }
 });
 
 function mapStateToProps(state) {
-  return ({
-    username: state.getIn(['user', 'username']),
-  });
-};
+  return {};
+}
 
 function mapDispatchToProps(dispatch) {
-  return {
-
-  };
+  return {};
 }
 
 export const NoAuthBannerContainer = connect(mapStateToProps, mapDispatchToProps)(NoAuthBanner);
+

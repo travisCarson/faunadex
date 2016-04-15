@@ -7,13 +7,12 @@ import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 var $ = require('jquery');
 import {App, AppContainer} from './components/App';
-import {User, UserContainer} from './components/User';
 import {SignIn, SignInContainer} from './components/SignIn';
 import {SignUp, SignUpContainer} from './components/SignUp';
 import {EncounterList, EncounterListContainer} from './components/EncounterList';
 import {EncounterListEntry, EncounterListEntryContainer} from './components/EncounterListEntry';
 import {NewEncounterContainer} from './components/NewEncounter';
-import {dummyUsers, dummyEncounters, dummyArrayEncounters} from '../dummies/dummies';
+import {UserProfileContainer} from './components/UserProfile';
 // in ES6 you can assign variables from an object using 
 // what are called "Destructuring"
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment 
@@ -49,7 +48,6 @@ const store = createStore(reducer, initalState, applyMiddleware(thunk));
 // and the reducer does the work of returning a new state
 // Behind the scenes, you'll write reducers that merge new elements into
 // your state, which you can see in the client/reducers files
-store.dispatch({ type: 'SET_STATE', state: { user: dummyUsers[0]} })
 
 store.dispatch(function(dispatch) {
   $.get('/api/recentencounters', (data) => {
@@ -76,11 +74,11 @@ ReactDOM.render(
   (<Provider store={store}>
     <Router history={hashHistory}>
       <Route component={AppContainer} path="/" />
-      <Route component={UserContainer} path="/user" />
       <Route component={EncounterListEntryContainer} path="/encounter" />
       <Route component={SignInContainer} path="/signin" />
       <Route component={SignUpContainer} path="/signin" />
       <Route component={NewEncounterContainer} path="/newencounter" />
+      <Route component={UserProfileContainer} path="/userprofile" />
     </Router>
   </Provider>),
   // Do our inital render on the #app element in index.html

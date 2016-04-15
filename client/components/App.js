@@ -12,10 +12,10 @@ export const App = React.createClass({
     return (
       <div className='app'>
       <nav className='banner'>
-        <{this.props.banner} />
+        {this.props.banner}
       </nav>
         Welcome to Faunadex!
-        The user in the store is: {this.props.userName}
+        The user in the store is: {this.props.username}
         <form>
         <input type='text' ref='inputForm' onChange={this.props.changeUserName}/>
           <button type='submit' onClick={this.props.testAction}>Submit</button>
@@ -28,9 +28,9 @@ export const App = React.createClass({
 });
 
 function mapStateToProps(state) {
-  var banner = NoAuthBannerContainer;
+  var banner = <NoAuthBannerContainer />;
   if (state.getIn(['user', 'username'])) {
-    banner = AuthBannerContainer;
+    banner = <AuthBannerContainer />;
   }
   return {
     userName: state.getIn(['user', 'username']),
