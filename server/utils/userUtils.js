@@ -27,7 +27,7 @@ exports.createUser = function(req, res) {
     });
 };
 
-exports.logInUser = function(req, res) {
+exports.signInUser = function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
 
@@ -44,7 +44,7 @@ exports.logInUser = function(req, res) {
             console.log('session created');
             res.json(user);
           } else {
-            console.log('error logging in');
+            console.log('error signing in');
             res.json({ error: 'Your username or password did not match' });
           }
         });
@@ -59,13 +59,13 @@ exports.createSession = function(req, res, newUser) {
 exports.endSession = function(req, res, user) {
   return req.session.destroy(function(err) {
     if (err) {
-      console.log('Error logging out user!');
+      console.log('Error signing out user!');
     }
     res.redirect('/');
   });
 };
 
-exports.isLoggedIn = function(req, res) {
+exports.isSignedIn= function(req, res) {
   if (req.session.user) {
     res.json(true);
   } else {
@@ -74,8 +74,8 @@ exports.isLoggedIn = function(req, res) {
 };
 
 exports.checkUser = function(req, res, next){
-  if (!isLoggedIn(req)) {
-    res.redirect('/login');
+  if (!isSignedIn(req)) {
+    return false;
   } else {
     next();
   }

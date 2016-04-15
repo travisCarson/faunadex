@@ -11,11 +11,7 @@ export const App = React.createClass({
       <div className='app'>
         Welcome to Faunadex!
         The user in the store is: {this.props.username}
-        <form>
-        <input type='text' ref='inputForm' onChange={this.props.changeUserName}/>
-          <button type='submit' onClick={this.props.testAction}>Submit</button>
-        </form>
-        <p>Recent Activity</p>
+        <h2>Recent Activity</h2>
         <EncounterListContainer encounters={this.props.recentEncounters} />
         <UserProfileContainer />
       </div>
@@ -32,22 +28,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    changeUserName: (event) => {
-      dispatch({
-        type: 'CHANGE_USER_NAME',
-        username: event.target.value 
-      });
-    },
-    testAction: (event) => {
-      event.preventDefault();
-      dispatch((dispatch) => {
-        $.get('https://thesession.org/tunes/2?format=json', function(data) {
-          console.log('got data from thesession.org');
-          console.log(data);
-          //We could dispatch another action here using the data we got
-        });
-      });
-    }
   };
 }
 
