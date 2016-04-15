@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Encounter, EncounterContainer} from './Encounter';
+import {EncounterListEntry, EncounterListEntryContainer} from './EncounterListEntry';
 
 // the first of two things that a React-Redux component exports is 
 // a standard React component which uses a bunch of props.
@@ -11,7 +11,7 @@ export const EncounterList = React.createClass({
       <div className='encounter-list'>
         {this.props.encounters.map(encounter =>
           // I don't know what to pass in below so I just put encounter
-          <EncounterContainer key={encounter.get('id')} encounter={encounter} />
+          <EncounterListEntryContainer key={encounter.get('id')} encounter={encounter} />
         )}
       </div>
     );

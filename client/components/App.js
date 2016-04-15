@@ -7,7 +7,6 @@ export const App = React.createClass({
   // TODO how do we get store?
   // TODO figure out on click events in React 
   render: function() {
-    console.log(this.props.dispatch);
     return (
       <div className='app'>
         Welcome to Faunadex!
