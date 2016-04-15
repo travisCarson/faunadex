@@ -37,17 +37,16 @@ exports.logInUser = function(req, res) {
     .then(function(user) {
       if (!user) {
         console.log('user not found');
-        res.redirect('/#/signin');
+        res.json({ error: 'Your username or password did not match' });
       } else {
         user.comparePassword(password, function(isMatch) {
           if (isMatch) {
             exports.createSession(req, res, user);
             console.log('session created');
             res.json(user);
-      
           } else {
             console.log('error logging in');
-            res.redirect('/#/signin');
+            res.json({ error: 'Your username or password did not match' });
           }
         });
       }
@@ -70,9 +69,9 @@ exports.endSession = function(req, res, user) {
 exports.isLoggedIn = function(req, res) {
   console.log(req.session);
   if (req.session.user) {
-    res.send('true');
+    res.json(true);
   } else {
-    res.send('false');
+    res.json(false);
   }
 };
 
