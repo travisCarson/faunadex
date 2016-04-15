@@ -27,7 +27,6 @@ function mapStateToProps(state) {
   return {
     recentEncounters: state.getIn(['recentEncounters']),
     username: state.getIn(['user', 'username']),
-    nav: nav
   };
 }
 
