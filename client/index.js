@@ -87,7 +87,6 @@ ReactDOM.render(
       <NavContainer />
       <Router history={hashHistory}>
         <Route component={AppContainer} path="/" />
-        <Route component={EncounterListEntryContainer} onEnter={requireAuth} path="/encounter" />
         <Route component={SignInContainer} path="/signin" />
         <Route component={SignUpContainer} path="/signup" />
         <Route component={NewEncounterContainer} onEnter={requireAuth} path="/newencounter" />
