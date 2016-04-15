@@ -63,7 +63,7 @@ exports.endSession = function(req, res, user) {
     if (err) {
       console.log('Error logging out user!');
     }
-    res.redirect('/#/signin');
+    res.redirect('/');
   });
 };
 
