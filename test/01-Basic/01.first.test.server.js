@@ -42,7 +42,7 @@ describe('Basic Server Functions', function () {
       }, callback);
     };
     
-    it('will respond to GET /api/user/encounters/:username', function (done) {
+    it('will respond to GET /api/user/encounters/:userName', function (done) {
       makeGET('/api/user/encounters/a', function(error, res, body) {
         expect(error).to.equal(null);
         expect(res.statusCode).to.equal(200);
