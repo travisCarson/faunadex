@@ -16,7 +16,7 @@ module.exports = {
     });
   },
 
-  isLoggedIn: () => {
+  isSignedIn: () => {
     $.get('/api/user/issignedin')
     .done((data) => {
       return data;

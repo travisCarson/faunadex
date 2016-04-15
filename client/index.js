@@ -63,7 +63,7 @@ store.dispatch(function(dispatch) {
 });
 
 function requireAuth(nextState, replace) {
-  if (!auth.isLoggedIn()) {
+  if (!auth.isSignedIn()) {
     replace({
       pathname: '/signin',
       state: { nextPathname: nextState.location.pathname }
