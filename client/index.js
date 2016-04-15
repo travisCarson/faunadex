@@ -14,6 +14,7 @@ import {EncounterListEntry, EncounterListEntryContainer} from './components/Enco
 import {NewEncounterContainer} from './components/NewEncounter';
 import {UserProfileContainer} from './components/UserProfile';
 import {NavContainer} from './components/Nav';
+import auth from './lib/auth.js';
 // in ES6 you can assign variables from an object using 
 // what are called "Destructuring"
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment 
@@ -61,6 +62,15 @@ store.dispatch(function(dispatch) {
 
 });
 
+function requireAuth(nextState, replace) {
+  if (!auth.isLoggedIn()) {
+    replace({
+      pathname: '/signin',
+      state: { nextPathname: nextState.location.pathname }
+    })
+  }
+}
+
 // store.dispatch({
 //   type: 'SET_USERNAME',
 //   username: user.input.from.somewhere
@@ -72,17 +82,16 @@ store.dispatch(function(dispatch) {
 // Provider is a special built in component which gives all child
 // components access to the store.
 ReactDOM.render(
-  (
-  <Provider store={store}>
+  (<Provider store={store}>
     <div>
       <NavContainer />
       <Router history={hashHistory}>
         <Route component={AppContainer} path="/" />
-        <Route component={EncounterListEntryContainer} path="/encounter" />
+        <Route component={EncounterListEntryContainer} onEnter={requireAuth} path="/encounter" />
         <Route component={SignInContainer} path="/signin" />
         <Route component={SignUpContainer} path="/signup" />
-        <Route component={NewEncounterContainer} path="/newencounter" />
-        <Route component={UserProfileContainer} path="/userprofile" />
+        <Route component={NewEncounterContainer} onEnter={requireAuth} path="/newencounter" />
+        <Route component={UserProfileContainer} onEnter={requireAuth} path="/userprofile" />
       </Router>
     </div>
   </Provider>),
