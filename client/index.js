@@ -37,7 +37,8 @@ import reducer from './reducers/reducer.js';
 var initalState = Map({
   user: {}, //Represents the user logged in
   encounter: {}, //Represents the selected encouter
-  encounters: [] //Represents all encounters the user has
+  encounters: [], //Represents all encounters the user has
+  recentEncounters: []
 });
 const store = createStore(reducer, initalState, applyMiddleware(thunk));
 
@@ -54,7 +55,7 @@ const store = createStore(reducer, initalState, applyMiddleware(thunk));
 store.dispatch(function(dispatch) {
   $.get('/api/recentencounters', (data) => {
     if (data) {
-      dispatch({ type: 'SET_STATE', state: { encounters: data } });
+      dispatch({ type: 'SET_STATE', state: { recentEncounters: data } });
     } else {
       dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
     }
