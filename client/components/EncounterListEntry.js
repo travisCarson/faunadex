@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 // the first of two things that a React-Redux component exports is 
 // a standard React component which uses a bunch of props.
-export const Encounter = React.createClass({
+export const EncounterListEntry = React.createClass({
   
   render: function() {
     // <div onClick={this.props.goToEncounter}>Synopsis: {this.props.encounter}</div>
@@ -42,4 +42,4 @@ function mapDispatchToProps(dispatch) {
 }
 // Lastly, we export an object which tells what function to use to map
 // the state to the props
-export const EncounterContainer = connect(mapStateToProps, mapDispatchToProps)(Encounter);
+export const EncounterListEntryContainer = connect(mapStateToProps, mapDispatchToProps)(Encounter);

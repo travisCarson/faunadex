@@ -8,12 +8,12 @@ import thunk from 'redux-thunk';
 var $ = require('jquery');
 import {App, AppContainer} from './components/App';
 import {User, UserContainer} from './components/User';
-import {Encounter, EncounterContainer} from './components/Encounter';
 import {SignIn, SignInContainer} from './components/SignIn';
 import {SignUp, SignUpContainer} from './components/SignUp';
+import {EncounterListEntry, EncounterListEntryContainer} from './components/EncounterListEntry';
 import {EncounterList, EncounterListContainer} from './components/EncounterList';
-import {dummyUsers, dummyEncounters, dummyArrayEncounters} from '../dummies/dummies';
 import {NewEncounterContainer} from './components/NewEncounter';
+import {dummyUsers, dummyEncounters, dummyArrayEncounters} from '../dummies/dummies';
 // in ES6 you can assign variables from an object using 
 // what are called "Destructuring"
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment 
@@ -77,7 +77,7 @@ ReactDOM.render(
     <Router history={hashHistory}>
       <Route component={AppContainer} path="/" />
       <Route component={UserContainer} path="/user" />
-      <Route component={EncounterContainer} path="/encounter" />
+      <Route component={EncounterListContainer} path="/encounter" />
       <Route component={SignInContainer} path="/signin" />
       <Route component={SignUpContainer} path="/signin" />
       <Route component={NewEncounterContainer} path="/newencounter" />
