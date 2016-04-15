@@ -62,12 +62,11 @@ describe('Basic Server Functions', function () {
       makePOST('/api/user/encounter',
         {
           userid: 1,
-          forumid: 1,
           title: 'Marmot',
           description: 'It stole my stuff',
           location: 'Yosemite',
-          posttime: '2015-06-05',
-          encountertime: '2016-04-14'
+          encountertime: '2016-04-14',
+          photo: 'nophoto.com'
         }, 
         function(error, res, body) {
           expect(error).to.equal(null);
