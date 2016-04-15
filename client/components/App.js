@@ -15,6 +15,7 @@ export const App = React.createClass({
         <input type='text' ref='inputForm' onChange={this.props.changeUserName}/>
           <button type='submit' onClick={this.props.testAction}>Submit</button>
         </form>
+        <p>Recent Activity</p>
         <EncounterListContainer encounters={this.props.recentEncounters} />
         <UserProfileContainer />
       </div>

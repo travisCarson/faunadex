@@ -4,13 +4,13 @@ import {EncounterList, EncounterListContainer} from './EncounterList';
 
 export const UserProfile = React.createClass({
   componentDidMount: function() {
-    this.props.retrieveUserEncounters();
+    this.props.retrieveUserEncounters(this.props.username);
   },
 
   render: function() {
     return (
       <div className='user-profile'>
-        <h3 className='user-headline'> {this.props.userName} </h3>
+        <h3 className='user-headline'> {this.props.username} </h3>
         <img className='user-avatar' src={this.props.avatar} />
         <p className='user-description'> {this.props.description} </p>
         <p>Recent Activity</p>
@@ -49,9 +49,9 @@ function mapDispatchToProps(dispatch) {
         });
       });
     },
-    retrieveUserEncounters: () => {
+    retrieveUserEncounters: (username) => {
       dispatch((dispatch) => {
-        $.get('/api/recentencounters', (data) => {
+        $.get('/api/user/encounters/' + username, (data) => {
           if (data) {
             dispatch({ type: 'SET_STATE', state: { encounters: data } });
           } else {
