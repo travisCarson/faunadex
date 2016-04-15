@@ -7,7 +7,7 @@ CREATE TABLE users (
   username varchar(25) NOT NULL,
   password varchar(62) NOT NULL,
   description varchar(255) NOT NULL DEFAULT '',
-  avatar varchar(255) NOT NULL DEFAULT '', 
+  avatar varchar(255) NOT NULL DEFAULT 'http://vignette3.wikia.nocookie.net/yugioh/images/0/05/Male_silhouette.png', 
   PRIMARY KEY (id)
 );
 
@@ -42,10 +42,10 @@ DROP TABLE IF EXISTS encounters;
 CREATE TABLE encounters (
   id int NOT NULL AUTO_INCREMENT,
   userid int NOT NULL REFERENCES users,
-  forumid int NOT NULL REFERENCES forums,
   title varchar(25) NOT NULL DEFAULT '',
   description varchar(255) NOT NULL DEFAULT '',
   location varchar(25) NOT NULL DEFAULT '', 
+  photo varchar(255) NOT NULL DEFAULT 'https://umexpert.um.edu.my/Avatar/no-image-found.jpg',
   posttime DATETIME NOT NULL, 
   encountertime DATETIME NOT NULL, 
   PRIMARY KEY (id)
