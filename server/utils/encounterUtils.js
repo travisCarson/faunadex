@@ -31,11 +31,10 @@ module.exports = {
   },
 
   showAllEncountersFromUser: function(req, res) {
-    Encounters.reset()
-      .query({where: {userid: req.params.id}})
-      .fetch()
-      .then(function(encounters) {
-        res.status(200).send(encounters);
+    new User({ username: req.params.userName })
+      .fetch({withRelated: ['encounters']})
+      .then(function(user) {
+        res.status(200).send(user.related('encounters'));
       })
       .catch(function(error) {
         res.status(500).send(error.message);

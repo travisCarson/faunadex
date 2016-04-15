@@ -14,7 +14,7 @@ import {EncounterListEntry, EncounterListEntryContainer} from './components/Enco
 import {NewEncounterContainer} from './components/NewEncounter';
 import {UserProfileContainer} from './components/UserProfile';
 import {NavContainer} from './components/Nav';
-import auth from './modules/auth.js';
+import auth from './models/auth.js';
 // in ES6 you can assign variables from an object using 
 // what are called "Destructuring"
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment 
@@ -37,7 +37,8 @@ import reducer from './reducers/reducer.js';
 var initalState = Map({
   user: {}, //Represents the user logged in
   encounter: {}, //Represents the selected encouter
-  encounters: [] //Represents all encounters the user has
+  encounters: [], //Represents all encounters the user has
+  recentEncounters: [] //Represents all the recent encounters
 });
 const store = createStore(reducer, initalState, applyMiddleware(thunk));
 
@@ -54,12 +55,11 @@ const store = createStore(reducer, initalState, applyMiddleware(thunk));
 store.dispatch(function(dispatch) {
   $.get('/api/recentencounters', (data) => {
     if (data) {
-      dispatch({ type: 'SET_STATE', state: { encounters: data } });
+      dispatch({ type: 'SET_STATE', state: { recentEncounters: data } });
     } else {
       dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
     }
   });
-
 });
 
 function requireAuth(nextState, replace) {
@@ -97,5 +97,3 @@ ReactDOM.render(
   </Provider>),
   // Do our inital render on the #app element in index.html
   document.getElementById('app'));
-
-

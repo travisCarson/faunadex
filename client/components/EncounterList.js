@@ -23,7 +23,6 @@ export const EncounterList = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
-    encounters: state.get('encounters')
   };
 }
 

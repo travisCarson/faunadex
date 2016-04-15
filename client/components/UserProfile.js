@@ -1,16 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {EncounterList, EncounterListContainer} from './EncounterList';
 
 export const UserProfile = React.createClass({
+  componentDidMount: function() {
+    this.props.retrieveUserEncounters(this.props.username);
+  },
+
   render: function() {
     return (
       <div className='user-profile'>
-        <h3 className='user-headline'> {this.props.userName} </h3>
+        <h3 className='user-headline'> {this.props.username} </h3>
         <img className='user-avatar' src={this.props.avatar} />
         <p className='user-description'> {this.props.description} </p>
-        {/*
-          Later we'll map all of the user's perosnal encounters here
-        */}
+        <p>Recent Activity</p>
+        <div>
+          <EncounterListContainer encounters={this.props.encounters} />
+        </div>
       </div>
     )
   }
@@ -18,10 +24,27 @@ export const UserProfile = React.createClass({
 
 function mapStateToProps(state) {
   return {
-    userName: state.getIn(['user', 'username']),
+    encounters: state.getIn(['encounters']),
+    username: state.getIn(['user', 'username']),
     avatar: state.getIn(['user', 'avatar']),
-    description: state.getIn(['user', 'description']),
+    description: state.getIn(['user', 'description'])
   }
 }
 
-export const UserProfileContainer = connect(mapStateToProps)(UserProfile);
+function mapDispatchToProps(dispatch) {
+  return {
+    retrieveUserEncounters: (username) => {
+      dispatch((dispatch) => {
+        $.get('/api/user/encounters/' + username, (data) => {
+          if (data) {
+            dispatch({ type: 'SET_STATE', state: { encounters: data } });
+          } else {
+            dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
+          }
+        });
+      });
+    }
+  };
+}
+
+export const UserProfileContainer = connect(mapStateToProps, mapDispatchToProps)(UserProfile);

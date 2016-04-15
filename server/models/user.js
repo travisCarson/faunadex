@@ -3,10 +3,15 @@ var bookshelf = require('bookshelf');
 var userUtils = require('../utils/userUtils.js')
 var bcrypt = require('bcrypt-nodejs');
 var Promise = require('bluebird');
+var Encounter = require('./encounter');
 
 var User = db.Model.extend({
 
   tableName: 'users',
+
+  encounters: function() {
+    return this.hasMany(Encounter, 'userid');
+  },
 
   initialize: function() {
     this.on('creating', this.hashPassword);
