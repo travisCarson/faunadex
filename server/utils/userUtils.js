@@ -67,7 +67,6 @@ exports.signInUser = function(req, res) {
 
 exports.getSignedInUser = function(req, res) {
   var token = req.headers['x-access-token'];
-  console.log('request headers', req.headers);
   if (!token) {
     res.sendStatus(401);
   } else {
@@ -86,7 +85,6 @@ exports.getSignedInUser = function(req, res) {
 
 exports.authenticationRequired = function(req, res, next){
   var token = req.headers['x-access-token'];
-  console.log('request headers', req.headers);
   if (!token) {
     res.sendStatus(401);
   } else {
