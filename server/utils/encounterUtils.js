@@ -37,7 +37,7 @@ module.exports = {
     new User({ username: req.params.userName })
       .fetch({withRelated: ['encounters']})
       .then(function(user) {
-        res.status(200).send(user.related('encounters'));
+        res.status(200).send({username: user.get('username'), encounters: user.related('encounters')});
       })
       .catch(function(error) {
         res.status(500).send(error.message);
@@ -45,7 +45,8 @@ module.exports = {
   },
 
   recentEncounters: function(req, res) {
-    Encounters.reset().fetch()
+    Encounters.reset()
+      .fetch({withRelated: ['user']})
       .then(function(encounters) {
         // return the last five encounters
         res.status(200).send(encounters.slice(encounters.length - 5));

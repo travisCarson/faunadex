@@ -10,6 +10,7 @@ export const Encounter = React.createClass({
     var enc = this.props.encounter;
     return ( 
       <div className='encounter'>
+        <div>User: {this.props.username}<div>
         <div>Title: {enc.get('title')}</div>
         <div>Description: {enc.get('description')}</div>
         <div>Location: {enc.get('location')}</div>
@@ -26,7 +27,7 @@ export const Encounter = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
-    // TODO don't hardcode the number 1 into the below. Make that be dynamic
+    username: state.getIn(['user', 'username']),
   };
 }
 

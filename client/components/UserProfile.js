@@ -37,7 +37,7 @@ function mapDispatchToProps(dispatch) {
       dispatch((dispatch) => {
         $.get('/api/user/encounters/' + username, (data) => {
           if (data) {
-            dispatch({ type: 'SET_STATE', state: { encounters: data } });
+            dispatch({ type: 'SET_STATE', state: { encounters: data.encounters } });
           } else {
             dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
           }
