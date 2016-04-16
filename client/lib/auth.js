@@ -22,8 +22,11 @@ exports.login = (username, password, callback) => {
 
 exports.isSignedIn = () => !!window.localStorage.getItem('com.faunadex');
 
-exports.signOut = function(callback) {
+exports.signOut = function() {
   window.localStorage.removeItem('com.faunadex');
-  $.get('/api/user/signout', callback);
+  $.get('/api/user/signout')
+    .done(function(data) {
+      console.log('byebye!');
+    });
 };
 
