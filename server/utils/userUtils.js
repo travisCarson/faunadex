@@ -7,10 +7,10 @@ var jwt = require('jwt-simple');
 var secret = 'cats have no wit but have spices';
 
 var createSession = function(req, res, user) {
-  req.session.user = newUser;
-  var token = jwt.encode(newUser, secret);
+  req.session.user = user;
+  var token = jwt.encode(user, secret);
   res.json({
-    username: newUser.get('username'),
+    username: user.get('username'),
     token: token
   });
   console.log('session created');
@@ -60,7 +60,7 @@ exports.signInUser = function(req, res) {
 exports.authenticationRequired = function(req, res, next){
   var token = req.headers['x-access-token'];
   if (!token) {
-    next(new Error('No token'));
+    res.send(401);
   } else {
     var user = jwt.decode(token, secret);
     new User({ username: user.username })
