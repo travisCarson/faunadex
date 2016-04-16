@@ -62,15 +62,6 @@ store.dispatch(function(dispatch) {
   });
 });
 
-function requireAuth(nextState, replace) {
-  if (!store.getState().getIn('user', 'username')) {
-    replace({
-      pathname: '/signin',
-      state: { nextPathname: nextState.location.pathname }
-    });
-  }
-}
-
 // store.dispatch({
 //   type: 'SET_USERNAME',
 //   username: user.input.from.somewhere
@@ -89,8 +80,8 @@ ReactDOM.render(
         <Route component={AppContainer} path="/" />
         <Route component={SignInContainer} path="/signin" />
         <Route component={SignUpContainer} path="/signup" />
-        <Route component={NewEncounterContainer} onEnter={requireAuth} path="/newencounter" />
-        <Route component={UserProfileContainer} onEnter={requireAuth} path="/userprofile" />
+        <Route component={NewEncounterContainer} onEnter={auth.isSignedIn} path="/newencounter" />
+        <Route component={UserProfileContainer} onEnter={auth.isSignedIn} path="/userprofile" />
       </Router>
     </div>
   </Provider>),
