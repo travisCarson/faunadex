@@ -15,6 +15,7 @@ export const EncounterListEntry = React.createClass({
         <div>Location: {enc.get('location')}</div>
         <div>Encounter Time: {enc.get('encounterTime')}</div>
         <div>Post Time: {enc.get('postTime')}</div>
+        <div>User: {enc.get('user').get('username')}</div>
         <hr />
       </div>
     );
@@ -26,7 +27,6 @@ export const EncounterListEntry = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
-    // TODO don't hardcode the number 1 into the below. Make that be dynamic
   };
 }
 

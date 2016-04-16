@@ -1,13 +1,12 @@
 var db = require('../config/db.js');
-var bookshelf = require('bookshelf');
-var User = require('./user');
+require('./user');
 
 var Encounter = db.Model.extend({
   tableName: 'encounters',
   
   user: function() {
-    return this.belongsTo(User, 'userid');
+    return this.belongsTo('User', 'userid');
   }
 });
 
-module.exports = Encounter;
+module.exports = db.model('Encounter', Encounter);
