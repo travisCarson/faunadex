@@ -24,7 +24,7 @@ export const SignUp = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
-    userName: state.getIn(['user', 'username']),
+    username: state.getIn(['user', 'username']),
     descr: state.getIn(['user', 'description']),
 
   };
