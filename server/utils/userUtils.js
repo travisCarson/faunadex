@@ -21,6 +21,7 @@ exports.signOutUser = function(req, res) {
     if (err) {
       console.log(err.message);
     }
+    res.sendStatus(200);
   });
 }
 
