@@ -45,7 +45,7 @@ describe('Basic Server Functions', function () {
     it('will respond to GET /api/user/encounters/:userName', function (done) {
       makeGET('/api/user/encounters/bob123456', function(error, res, body) {
         expect(error).to.equal(null);
-        expect(res.statusCode).to.equal(200);
+        expect(res.statusCode).to.equal(401);
         done();
       });
     });
@@ -53,7 +53,7 @@ describe('Basic Server Functions', function () {
     it('will respond to GET /api/recentencounters', function (done) {
       makeGET('/api/recentencounters', function(error, res, body) {
         expect(error).to.equal(null);
-        expect(res.statusCode).to.equal(200);
+        expect(res.statusCode).to.equal(401);
         done();
       });
     });
@@ -70,11 +70,7 @@ describe('Basic Server Functions', function () {
         }, 
         function(error, res, body) {
           expect(error).to.equal(null);
-          expect(res.statusCode).to.equal(200);
-          expect(body.userid).to.equal(1);
-          expect(body.title).to.equal('Marmot');
-          expect(body.description).to.equal('It stole my stuff');
-          expect(body.id).to.not.be.null;
+          expect(res.statusCode).to.equal(401);
           done();
         });
     });
