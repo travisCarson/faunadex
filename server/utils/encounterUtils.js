@@ -39,8 +39,9 @@ module.exports = {
       .then(function(user) {
         res.status(200).send({username: user.get('username'), encounters: user.related('encounters')});
       })
+      // catch will respond with an empty array if the user doesn't have any encounters
       .catch(function(error) {
-        res.status(500).send(error.message);
+        res.status(200).send({encounters: []});
       });
   },
 
