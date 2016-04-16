@@ -3,6 +3,18 @@ var knex = require('knex');
 var bookshelf = require('bookshelf');
 var bcrypt = require('bcrypt-nodejs');
 var User = require('../models/user.js');
+var jwt = require('jwt-simple');
+var secret = 'cats have no wit but have spices';
+
+var createSession = function(req, res, user) {
+  req.session.user = newUser;
+  var token = jwt.encode(newUser, secret);
+  res.json({
+    username: newUser.get('username'),
+    token: token
+  });
+  console.log('session created');
+}
 
 exports.createUser = function(req, res) {
   var username = req.body.username;
@@ -12,18 +24,13 @@ exports.createUser = function(req, res) {
     .fetch()
     .then(function(user) {
       if (!user) {
-        var newUser = new User({
-          username: username,
-          password: password
-        });
-        newUser.save()
-          .then(function(newUser) {
-            exports.createSession(req, res, newUser);
-            res.json({username: newUser.get('username')});
+        new User({ username: username, password: password })
+          .save()
+          .then(function(newUser) { 
+            createSession(req, res, newUser); 
           });
       } else {
-        console.log('Account already exists');
-        res.json(undefined);
+        res.json({ username: null, error: 'Account already exists' });
       }
     });
 };
@@ -37,15 +44,12 @@ exports.signInUser = function(req, res) {
     .then(function(user) {
       if (!user) {
         console.log('user not found');
-        res.json({ error: 'Your username or password did not match' });
+        res.json({ username: null, error: 'Your username or password did not match' });
       } else {
         user.comparePassword(password, function(isMatch) {
           if (isMatch) {
-            exports.createSession(req, res, user);
-            console.log('session created');
-            res.json({username: user.get('username')});
+            createSession(req, res, user); 
           } else {
-            console.log('error signing in');
             res.json({ username: null, error: 'Your username or password did not match' });
           }
         });
@@ -53,32 +57,24 @@ exports.signInUser = function(req, res) {
     });
 };
 
-exports.createSession = function(req, res, newUser) {
-  req.session.user = newUser;
-};
-
-exports.endSession = function(req, res, user) {
-  return req.session.destroy(function(err) {
-    if (err) {
-      console.log('Error signing out user!');
-    }
-    res.redirect('/');
-  });
-};
-
-exports.isSignedIn= function(req, res) {
-  if (req.session.user) {
-    res.json(true);
+exports.authenticationRequired = function(req, res, next){
+  var token = req.headers['x-access-token'];
+  if (!token) {
+    next(new Error('No token'));
   } else {
-    res.json(false);
-  }
-};
-
-exports.checkUser = function(req, res, next){
-  if (!isSignedIn(req)) {
-    return false;
-  } else {
-    next();
+    var user = jwt.decode(token, secret);
+    new User({ username: user.username })
+      .fetch()
+      .then(function (foundUser) {
+        if (foundUser) {
+          next();
+        } else {
+          res.send(401);
+        }
+      })
+    .fail(function (error) {
+      next(error);
+    });
   }
 };
 
