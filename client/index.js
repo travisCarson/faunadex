@@ -52,6 +52,13 @@ const store = createStore(reducer, initalState, applyMiddleware(thunk));
 // Behind the scenes, you'll write reducers that merge new elements into
 // your state, which you can see in the client/reducers files
 
+if (auth.isSignedIn()) {
+  $.ajaxSetup({ headers: { 'x-access-token': window.localStorage.getItem('com.faunadex') } });
+  $.post('/api/user/getsignedinuser', function(data) {
+    store.dispatch({ type: 'SET_STATE', state: { user: { username: data.username } } });
+  });
+}
+
 store.dispatch(function(dispatch) {
   $.get('/api/recentencounters', (data) => {
     if (data) {
