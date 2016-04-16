@@ -18,11 +18,12 @@ exports.createUser = function(req, res) {
         });
         newUser.save()
           .then(function(newUser) {
-            util.createSession(req, res, newUser);
+            exports.createSession(req, res, newUser);
+            res.json({username: newUser.get('username')});
           });
       } else {
         console.log('Account already exists');
-        res.redirect('/signup');
+        res.json(undefined);
       }
     });
 };
