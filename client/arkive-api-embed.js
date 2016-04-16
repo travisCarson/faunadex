@@ -2,7 +2,12 @@ function arkiveEmbedCallback(data) {
   var iframeCreation = '<iframe id="frame" name="widget" src ="#" width="100%" height="1" marginheight="0" marginwidth="0" frameborder="no"></iframe>';
   var iframe = window.location.protocol + "//" + (data.results[0].url);
   if (data.error != 'null') {
-        document.getElementById("arkiveIframe").innerHTML = iframeCreation;
+      // var $faunad = $('\"#' + arkiveApiSpeciesName + '\"');
+      // $(document.body).append($faunad);
+      var $fauna = $('<div></div>');
+      $fauna.attr('id', arkiveApiSpeciesName);
+      $fauna.html(iframeCreation);
+      $(document.body).append($fauna);
       var iframeAttr = parent.document.getElementById("frame");
       iframeAttr.height = arkiveApiHeight;
       iframeAttr.width = arkiveApiWidth + 22;
