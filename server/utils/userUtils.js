@@ -16,6 +16,14 @@ var createSession = function(req, res, user) {
   console.log('session created');
 }
 
+exports.signOutUser = function(req, res) {
+  req.session.destroy(function (err) {
+    if (err) {
+      console.log(err.message);
+    }
+  });
+}
+
 exports.createUser = function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
@@ -57,10 +65,30 @@ exports.signInUser = function(req, res) {
     });
 };
 
+exports.getSignedInUser = function(req, res) {
+  var token = req.headers['x-access-token'];
+  console.log('request headers', req.headers);
+  if (!token) {
+    res.sendStatus(401);
+  } else {
+    var user = jwt.decode(token, secret);
+    new User({ username: user.username })
+      .fetch()
+      .then(function (foundUser) {
+        if (foundUser) {
+          res.json({ username: user.username });
+        } else {
+          res.sendStatus(401);
+        }
+      });
+  }
+}
+
 exports.authenticationRequired = function(req, res, next){
   var token = req.headers['x-access-token'];
+  console.log('request headers', req.headers);
   if (!token) {
-    res.send(401);
+    res.sendStatus(401);
   } else {
     var user = jwt.decode(token, secret);
     new User({ username: user.username })
@@ -69,12 +97,9 @@ exports.authenticationRequired = function(req, res, next){
         if (foundUser) {
           next();
         } else {
-          res.send(401);
+          res.sendStatus(401);
         }
-      })
-    .fail(function (error) {
-      next(error);
-    });
+      });
   }
 };
 
