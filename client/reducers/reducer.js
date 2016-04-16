@@ -37,6 +37,8 @@ export default function(state = Map(), action) {
       return signInAttempt(state, action);
     case 'SIGN_UP_ATTEMPT':
       return signUpAttempt(state, action);
+    case 'SIGNOUT':
+      return state.set('user', {});
     case 'CREATE_NEW_ENCOUNTER':
       return createNewEncounter(state, action);
   }
