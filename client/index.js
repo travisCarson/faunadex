@@ -63,11 +63,11 @@ store.dispatch(function(dispatch) {
 });
 
 function requireAuth(nextState, replace) {
-  if (!auth.isSignedIn()) {
+  if (!store.getState().getIn('user', 'username')) {
     replace({
       pathname: '/signin',
       state: { nextPathname: nextState.location.pathname }
-    })
+    });
   }
 }
 
