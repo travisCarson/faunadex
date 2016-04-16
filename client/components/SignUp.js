@@ -5,8 +5,11 @@ import {connect} from 'react-redux';
 // a standard React component which uses a bunch of props.
 
 export const SignUp = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   signUp: function() {
-    this.props.dispatchSignUp(this.refs.username.value, this.refs.password.value);
+    this.props.dispatchSignUp(this.refs.username.value, this.refs.password.value, this.context.router);
   },
 
   render: function() {
@@ -24,7 +27,7 @@ export const SignUp = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
-    userName: state.getIn(['user', 'username']),
+    username: state.getIn(['user', 'username']),
     descr: state.getIn(['user', 'description']),
 
   };
@@ -33,11 +36,21 @@ function mapStateToProps(state) {
 // There is also a function for mapping functions to the dispatching of actions
 function mapDispatchToProps(dispatch) {
   return {
-    dispatchSignUp: (username, password) => {
-      dispatch({
-        type: 'SIGN_UP_ATTEMPT',
-        username: username,
-        password: password
+    dispatchSignUp: (username, password, router) => {
+      dispatch((dispatch) => {
+        dispatch({
+          type: 'SIGN_UP_ATTEMPT',
+          username: username,
+          password: password
+        });
+        $.post('/api/user/signup', {username: username, password: password}, (data) => {
+          if (data) {
+            dispatch({ type: 'SET_STATE', state: { user: data } });
+            router.push('/');
+          } else {
+            dispatch({ type: 'SIGN_UP_FAIL' });
+          }
+        });
       });
     }
   };

@@ -28,7 +28,7 @@ export const SignIn = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
-    userName: state.getIn(['user', 'username']),
+    username: state.getIn(['user', 'username']),
     descr: state.getIn(['user', 'description']),
   };
 }
@@ -39,11 +39,11 @@ function mapDispatchToProps(dispatch) {
     dispatchSignIn: (username, password, router) => {
       dispatch((dispatch) => {
         dispatch({ type: 'SIGN_IN_ATTEMPT' });
-        router.push('/');
         $.post('/api/user/signin', {username: username, password: password}, (data) => {
           console.log('data: ', data);
-          if (data) {
+          if (data.username) {
             dispatch({ type: 'SET_STATE', state: { user: data } });
+            router.push('/');
           } else {
             dispatch({ type: 'SIGN_IN_FAIL' });
           }

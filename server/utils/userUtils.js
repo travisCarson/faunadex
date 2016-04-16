@@ -18,11 +18,12 @@ exports.createUser = function(req, res) {
         });
         newUser.save()
           .then(function(newUser) {
-            util.createSession(req, res, newUser);
+            exports.createSession(req, res, newUser);
+            res.json({username: newUser.get('username')});
           });
       } else {
         console.log('Account already exists');
-        res.redirect('/signup');
+        res.json(undefined);
       }
     });
 };
@@ -42,10 +43,10 @@ exports.signInUser = function(req, res) {
           if (isMatch) {
             exports.createSession(req, res, user);
             console.log('session created');
-            res.json(user);
+            res.json({username: user.get('username')});
           } else {
             console.log('error signing in');
-            res.json({ error: 'Your username or password did not match' });
+            res.json({ username: null, error: 'Your username or password did not match' });
           }
         });
       }

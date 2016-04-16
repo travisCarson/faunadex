@@ -20,7 +20,7 @@ function mapStateToProps(state) {
     nav = <AuthNavContainer />;
   }
   return {
-    userName: state.getIn(['user', 'username']),
+    username: state.getIn(['user', 'username']),
     nav: nav,
   };
 }
