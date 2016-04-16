@@ -50,22 +50,13 @@ describe('Basic Authentication', function () {
       });
     });
 
-    it('/api/user/issignedin should return false when not logged in', function (done) {
-      site.get('/api/user/issignedin', function(error, res, body) {
-        body.should.equal('false');
-        done();
-      });
-    });
-
-    it('will not sign a user in with improper credentials, and redirect to login page', function (done) {
+    it('will not sign a user in with improper credentials', function (done) {
       site.username = 'bob123456';
       site.password = '';
       site.post('/api/user/signin', function(error, res, body) {
-        expect(error).to.equal(null);
-        site.get('/api/user/issignedin', function(error, res, body) {
-          body.should.equal('false');
-          done();
-        });
+        var jsonBody = JSON.parse(body);
+        expect(jsonBody.error).to.contain('not match');
+        done();
       });
     });
 
@@ -74,26 +65,21 @@ describe('Basic Authentication', function () {
       site.password = 'bob';
       site.post('/api/user/signin', function(error, res, body) {
         var jsonBody = JSON.parse(body);
-        expect(error).to.equal(null);
+        expect(body.error).to.be.undefined;
         expect(jsonBody.username).to.equal('bob123456');
         done();
       });
     });
 
-    it('/api/user/issignedin should return true when logged in', function (done) {
-      site.get('/api/user/issignedin', function(error, res, body) {
-        body.should.equal('true');
-        done();
-      });
-    });
   }); 
 
   describe('/api/user/signout', function() {
     it('should sign a user out', function(done) {
       site.get('/api/user/signout', function(error, res, body) {
         expect(error).to.equal(null);
-        site.get('/api/user/issignedin', function(error, res, body) {
-          body.should.equal('false');
+        site.get('/api/user/encounters/bob123456', function(err, res, body) {
+          expect(error).to.equal(null);
+          expect(res.statusCode).to.equal(401);
           done();
         });
       });
