@@ -12,27 +12,9 @@ export const EncounterListEntry = React.createClass({
     // arkiveEmbedCallback is a global variable at this moment
     // TODO somehow put arkiveEmbedCallback into this file
     // var arkiveEmbedCallback = this.arkiveEmbedCallback;
-    function arkiveApi(key, animal, animalId, width, height, imgs, text, cb) {
-      function async_load() {
-        var s = document.createElement('script'); 
-        s.type = 'text/javascript';
-        s.async = true;
-        s.src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + animal 
-        + '?key=' + key + (animalId ? '&id=' + animalId : '') + '&mtype=all&w=' 
-        + width + '&h=' + height + '&tn=' + (imgs ? 1 : 0) + '&text=' 
-        + (text ? 1 : 0) + '&callback=' + cb;
-        var x = document.getElementsByTagName('script')[0];
-        x.parentNode.insertBefore(s, x);
-      };
-      if (window.attachEvent)
-          window.attachEvent('onload', async_load);
-      else
-          window.addEventListener('load', async_load, false);
-    };
-    arkiveApi(this.props.key, this.props.animal, this.props.id, this.props.width, this.props.height, this.props.images, this.props.text, 'arkiveEmbedCallback');
+    this.props.arkiveApi(this.props.key, this.props.animal, this.props.id, this.props.width, this.props.height, this.props.images, this.props.text, 'arkiveEmbedCallback');
   },
   render: function() {
-    // <div onClick={this.props.goToEncounter}>Synopsis: {this.props.encounter}</div>
     var enc = this.props.encounter;
     var encUser = enc.get('user');
     // This logic is for the difference in data structure between api calls to /api/recentencounters
@@ -82,7 +64,21 @@ function mapDispatchToProps(dispatch) {
         encounter: event.target.value 
       })
     },
-    apiARKive: (data) => {
+    arkiveApi: (key, animal, animalId, width, height, imgs, text, cb) => {
+      function async_load() {
+        var s = document.createElement('script'); 
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + animal 
+        + '?key=' + key + (animalId ? '&id=' + animalId : '') + '&mtype=all&w=' 
+        + width + '&h=' + height + '&tn=' + (imgs ? 1 : 0) + '&text=' 
+        + (text ? 1 : 0) + '&callback=' + cb;
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      };
+      async_load();
+    },
+    arkiveDOM: (data) => {
       dispatch((dispatch) => {
         var iframeCreation = '<iframe id="frame" name="widget" src ="#" width="100%" height="1" marginheight="0" marginwidth="0" frameborder="no"></iframe>';
         var iframe = window.location.protocol + "//" + (data.results[0].url);
