@@ -9,6 +9,7 @@ export const Nav = React.createClass({
       <header>
         <img src="/images/manatee.png" />
         <h1>Faunadex</h1>
+        <h2>Gotta encounter em all!</h2>
       <nav>
         {this.props.nav}
       </nav>
