@@ -9,7 +9,7 @@ export const NavAuth = React.createClass({
       <ul>
         <li className="share-new-encounter-link"><a href="/#/newencounter">Share New Encounter</a></li>
         <li className="user-profile-link"><a href="/#/userprofile">{this.props.username}</a></li>
-        <li className="logout-link"><a onClick={this.props.signOut} href="/#/">Signout</a></li>
+        <li className="signout-link"><a onClick={this.props.signOut} href="/#/">Signout</a></li>
       </ul>
     );
   }
