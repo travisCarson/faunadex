@@ -43,6 +43,8 @@ CREATE TABLE encounters (
   id int NOT NULL AUTO_INCREMENT,
   userid int NOT NULL REFERENCES users,
   title varchar(50) NOT NULL DEFAULT '',
+  animal varchar(80) NOT NULL DEFAULT '',
+  scientificname varchar(140) NOT NULL DEFAULT '',
   description varchar(255) NOT NULL DEFAULT '',
   location varchar(50) NOT NULL DEFAULT '', 
   photo varchar(255) NOT NULL DEFAULT 'https://umexpert.um.edu.my/Avatar/no-image-found.jpg',
