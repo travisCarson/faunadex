@@ -42,9 +42,9 @@ DROP TABLE IF EXISTS encounters;
 CREATE TABLE encounters (
   id int NOT NULL AUTO_INCREMENT,
   userid int NOT NULL REFERENCES users,
-  title varchar(25) NOT NULL DEFAULT '',
+  title varchar(50) NOT NULL DEFAULT '',
   description varchar(255) NOT NULL DEFAULT '',
-  location varchar(25) NOT NULL DEFAULT '', 
+  location varchar(50) NOT NULL DEFAULT '', 
   photo varchar(255) NOT NULL DEFAULT 'https://umexpert.um.edu.my/Avatar/no-image-found.jpg',
   posttime DATETIME NOT NULL, 
   encountertime DATETIME NOT NULL, 
