@@ -7,7 +7,9 @@ export const NewEncounter = React.createClass({
   },
   newEncounter: function() {
     this.props.dispatchNewEncounter(this.props.userid,
-                                    this.refs.title.value, 
+                                    this.refs.title.value,
+                                    this.refs.animal.value,
+                                    this.refs.scientificName.value, 
                                     this.refs.description.value, 
                                     this.refs.location.value, 
                                     this.refs.encounterTime.value,
@@ -20,6 +22,8 @@ export const NewEncounter = React.createClass({
     return (<div className="new-encounter">
               <h2>Create new encounter</h2>
               <div>Title: <input ref="title" /></div>
+              <div>Animal type: <input ref="animal" /></div>
+              <div>Scientific name: <input ref="scientificName" /></div>
               <div>Description: <input ref="description" /></div>
               <div>Location: <input ref="location" /></div>
               <div>Date of encounter:<input ref="encounterTime" /> (format: YYYY-MM-DD)</div>
@@ -37,16 +41,19 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatchNewEncounter: (userid, title, description, location, encounterTime, photo, router) => {
+    dispatchNewEncounter: (userid, title, animalType, scientificName, description, location, encounterTime, photo, router) => {
       var encounter = {
         type: 'CREATE_NEW_ENCOUNTER',
         userid: userid,
         title: title, 
+        animalType: animalType,
+        scientificName: scientificName,
         description: description,
         location: location,
         encountertime: encounterTime,
         photo: photo
       };
+      console.log(encounter);
       dispatch(encounter);
       router.push('/userprofile');
       $.post('/api/user/encounter', encounter);

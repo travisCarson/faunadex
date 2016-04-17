@@ -9,10 +9,13 @@ var bookshelf = require('bookshelf');
 module.exports = {
 
   createEncounter: function(req, res) {
+    console.log(req.body);
     Encounters.create({
       userid: req.body.userid,
       // forumid: req.body.forumid,
       title: req.body.title,
+      animal: req.body.animalType,
+      scientificname: req.body.scientificName,
       description: req.body.description,
       location: req.body.location,
       encountertime: req.body.encountertime,
