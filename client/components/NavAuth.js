@@ -7,6 +7,7 @@ export const NavAuth = React.createClass({
   render: function() {
     return (
       <ul>
+        <li className="home-link"><a href="/#/">Home</a></li>
         <li className="share-new-encounter-link"><a href="/#/newencounter">Share New Encounter</a></li>
         <li className="user-profile-link"><a href="/#/userprofile">{this.props.username}</a></li>
         <li className="signout-link"><a onClick={this.props.signOut} href="/#/">Signout</a></li>
