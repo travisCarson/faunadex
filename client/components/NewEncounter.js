@@ -22,7 +22,7 @@ export const NewEncounter = React.createClass({
               <div>Title: <input ref="title" /></div>
               <div>Description: <input ref="description" /></div>
               <div>Location: <input ref="location" /></div>
-              <div>Time of encounter: <input ref="encounterTime" /></div>
+              <div>Date of encounter:<input ref="encounterTime" /> (format: YYYY-MM-DD)</div>
               <div>Photo: <input ref="photo" /></div>
               <button onClick={this.newEncounter}>Add New Encounter</button>
             </div>);
