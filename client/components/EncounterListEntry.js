@@ -4,28 +4,32 @@ import {connect} from 'react-redux';
 // the first of two things that a React-Redux component exports is 
 // a standard React component which uses a bunch of props.
 export const EncounterListEntry = React.createClass({
-  arkiveEmbedCallback: function(data) { 
-    console.log('yiss');
-    this.props.apiARKive(data);
-  },
+  // TODO make the below function be used as the callback for arkiveApi
+  // arkiveEmbedCallback: function(data) { 
+  //   this.props.apiARKive(data);
+  // },
   componentDidMount: function() {
-    (function (animal, cb) {
-        function async_load() {
-          var s = document.createElement('script'); 
-          s.type = 'text/javascript';
-          s.async = true;
-          s.src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + animal 
-          + '?key=' + arkiveApiKey + (arkiveApiSpeciesId ? '&id=' + arkiveApiSpeciesId : '') + '&mtype=all&w=' 
-          + arkiveApiWidth + '&h=' + arkiveApiHeight + '&tn=' + (arkiveApiImages ? 1 : 0) + '&text=' 
-          + (arkiveApiText ? 1 : 0) + '&callback=' + cb;
-          var x = document.getElementsByTagName('script')[0];
-          x.parentNode.insertBefore(s, x);
-        }
-        if (window.attachEvent)
-            window.attachEvent('onload', async_load);
-        else
-            window.addEventListener('load', async_load, false);
-    })(arkiveApiSpeciesName, 'arkiveEmbedCallback');
+    // arkiveEmbedCallback is a global variable at this moment
+    // TODO somehow put arkiveEmbedCallback into this file
+    // var arkiveEmbedCallback = this.arkiveEmbedCallback;
+    function arkiveApi(key, animal, animalId, width, height, imgs, text, cb) {
+      function async_load() {
+        var s = document.createElement('script'); 
+        s.type = 'text/javascript';
+        s.async = true;
+        s.src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + animal 
+        + '?key=' + key + (animalId ? '&id=' + animalId : '') + '&mtype=all&w=' 
+        + width + '&h=' + height + '&tn=' + (imgs ? 1 : 0) + '&text=' 
+        + (text ? 1 : 0) + '&callback=' + cb;
+        var x = document.getElementsByTagName('script')[0];
+        x.parentNode.insertBefore(s, x);
+      };
+      if (window.attachEvent)
+          window.attachEvent('onload', async_load);
+      else
+          window.addEventListener('load', async_load, false);
+    };
+    arkiveApi(this.props.key, this.props.animal, this.props.id, this.props.width, this.props.height, this.props.images, this.props.text, 'arkiveEmbedCallback');
   },
   render: function() {
     // <div onClick={this.props.goToEncounter}>Synopsis: {this.props.encounter}</div>
@@ -51,6 +55,13 @@ export const EncounterListEntry = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
+    key: state.getIn(['arkiveApiKey']),
+    animal: state.getIn(['arkiveApiSpeciesName']),
+    id: state.getIn(['arkiveApiSpeciesId']),
+    width: state.getIn(['arkiveApiWidth']),
+    height: state.getIn(['arkiveApiHeight']),
+    images: state.getIn(['arkiveApiImages']),
+    text: state.getIn(['arkiveApiText']),
   };
 }
 
@@ -70,12 +81,12 @@ function mapDispatchToProps(dispatch) {
             // var $faunad = $('\"#' + arkiveApiSpeciesName + '\"');
             // $(document.body).append($faunad);
             var $fauna = $('<div></div>');
-            $fauna.attr('id', arkiveApiSpeciesName);
+            $fauna.attr('id', this.props.animal);
             $fauna.html(iframeCreation);
             $(document.body).append($fauna);
             var iframeAttr = parent.document.getElementById("frame");
-            iframeAttr.height = arkiveApiHeight;
-            iframeAttr.width = arkiveApiWidth + 22;
+            iframeAttr.height = this.props.height;
+            iframeAttr.width = this.props.width + 22;
             iframeAttr.src = iframe;
         }
       });
