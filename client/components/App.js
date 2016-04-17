@@ -9,7 +9,7 @@ export const App = React.createClass({
   render: function() {
     return (
       <div className='app'>
-        Welcome to Faunadex!
+        Welcome back to the Faunadex {this.props.username}!
         <h2>Recent Activity</h2>
         <EncounterListContainer encounters={this.props.recentEncounters} />
         <UserProfileContainer />
