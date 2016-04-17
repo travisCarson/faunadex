@@ -1,0 +1,65 @@
+header {
+  margin-bottom: 10px;
+}
+
+header img {
+  width: 100px;
+  float: left;
+}
+
+header h1 {
+  margin: 3px;
+  margin-left: 110px;
+}
+
+header h2 {
+  margin: 0px;
+  margin-left: 115px;
+  font-size: 15px;
+  font-style: italic;
+  font-weight: normal;
+}
+
+header nav:before {
+  content:"";
+  display:block;
+  clear:both;
+  margin-bottom: 10px;
+}
+
+header nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+  overflow: hidden;
+}
+
+header nav ul li {
+  float: left;
+  margin: 0 7px;
+}
+
+header nav ul li.signin-link,
+header nav ul li.signup-link,
+header nav ul li.signout-link {
+  float: right;
+}
+
+header nav ul li a {
+  display: block;
+  font-size: 10px;
+  color: white;
+  text-decoration: none;
+  padding: 5px;
+}
+
+header nav ul li:hover {
+  background-color: green;
+}
+
+header nav ul li a.active {
+  background-color: green;
+}
+
+

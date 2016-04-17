@@ -7,10 +7,13 @@ export const App = React.createClass({
   // TODO how do we get store?
   // TODO figure out on click events in React 
   render: function() {
+    var welcome = <div>Welcome to the Faunadex!</div>;
+    if (this.props.username) {
+      var welcome = <div>Welcome back to the Faunadex {this.props.username}!</div>;
+    }
     return (
-      <div className='app'>
-        Welcome to Faunadex!
-        The user in the store is: {this.props.username}
+      <div className='welcome'>
+        {welcome}
         <h2>Recent Activity</h2>
         <EncounterListContainer encounters={this.props.recentEncounters} />
         <UserProfileContainer />

@@ -1,23 +1,27 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {AuthNavContainer} from './AuthNav.js';
-import {NoAuthNavContainer} from './NoAuthNav.js';
+import {NavAuthContainer} from './NavAuth.js';
+import {NavNoAuthContainer} from './NavNoAuth.js';
 
 export const Nav = React.createClass({
-
   render: function() {
     return (
-      <nav className='nav'>
+      <header>
+        <img src="/images/manatee.png" />
+        <h1>Faunadex</h1>
+        <h2>Gotta encounter em all!</h2>
+      <nav>
         {this.props.nav}
       </nav>
+      </header>
     );
   }
 });
 
 function mapStateToProps(state) {
-  var nav = <NoAuthNavContainer />;
+  var nav = <NavNoAuthContainer />;
   if (state.getIn(['user', 'username'])) {
-    nav = <AuthNavContainer />;
+    nav = <NavAuthContainer />;
   }
   return {
     username: state.getIn(['user', 'username']),
