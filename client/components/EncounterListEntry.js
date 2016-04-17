@@ -9,15 +9,15 @@ export const EncounterListEntry = React.createClass({
     this.props.apiARKive(data);
   },
   componentDidMount: function() {
-    (function () {
+    (function (animal, cb) {
         function async_load() {
           var s = document.createElement('script'); 
           s.type = 'text/javascript';
           s.async = true;
-          s.src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + arkiveApiSpeciesName 
+          s.src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + animal 
           + '?key=' + arkiveApiKey + (arkiveApiSpeciesId ? '&id=' + arkiveApiSpeciesId : '') + '&mtype=all&w=' 
           + arkiveApiWidth + '&h=' + arkiveApiHeight + '&tn=' + (arkiveApiImages ? 1 : 0) + '&text=' 
-          + (arkiveApiText ? 1 : 0) + '&callback=this.arkiveEmbedCallback';
+          + (arkiveApiText ? 1 : 0) + '&callback=' + cb;
           var x = document.getElementsByTagName('script')[0];
           x.parentNode.insertBefore(s, x);
         }
@@ -25,7 +25,7 @@ export const EncounterListEntry = React.createClass({
             window.attachEvent('onload', async_load);
         else
             window.addEventListener('load', async_load, false);
-    })();
+    })(arkiveApiSpeciesName, 'arkiveEmbedCallback');
   },
   render: function() {
     // <div onClick={this.props.goToEncounter}>Synopsis: {this.props.encounter}</div>
