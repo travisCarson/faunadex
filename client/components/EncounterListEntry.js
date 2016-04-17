@@ -42,7 +42,7 @@ export const EncounterListEntry = React.createClass({
         <div>Encounter Time: {enc.get('encounterTime')}</div>
         <div>Post Time: {enc.get('postTime')}</div>
         <div>User: {enc.getIn(['user', 'username'])}</div>
-        <div id={enc.get('title').toLowerCase().split(' ').join('%20')}></div>
+        <div id={enc.get('title').toLowerCase().split(' ').join('%20')} className='animal'></div>
         <hr />
       </div>
     );
