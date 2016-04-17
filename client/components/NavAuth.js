@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import auth from '../lib/auth.js';
 
-export const AuthNav = React.createClass({
+export const NavAuth = React.createClass({
 
   render: function() {
     return (
@@ -32,4 +32,5 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export const AuthNavContainer = connect(mapStateToProps, mapDispatchToProps)(AuthNav);
+export const NavAuthContainer = connect(mapStateToProps, mapDispatchToProps)(NavAuth);
+
