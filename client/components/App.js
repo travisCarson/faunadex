@@ -16,7 +16,6 @@ export const App = React.createClass({
         {welcome}
         <h2>Recent Activity</h2>
         <EncounterListContainer encounters={this.props.recentEncounters} />
-        <UserProfileContainer />
       </div>
     );
   }
