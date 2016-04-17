@@ -27,6 +27,7 @@ exports.signOut = function() {
   $.get('/api/user/signout')
     .done(function(data) {
       console.log('byebye!');
+      window.location = '/';
     });
 };
 
