@@ -1,3 +1,10 @@
+// This is here because the function below needs to be a global variable and defined so for the api call to ARKive
+// I don't want it to be global and want to move it to EncounterListEntry.js, but I couldn't figure out how
+
+var arkiveApiSpeciesName = 'panthera%20tigris'; // note spaces replaced by %20
+var arkiveApiWidth = 320;
+var arkiveApiHeight = 355;
+
 function arkiveEmbedCallback(data) {
   var iframeCreation = '<iframe id="frame" name="widget" src ="#" width="100%" height="1" marginheight="0" marginwidth="0" frameborder="no"></iframe>';
   var iframe = window.location.protocol + "//" + (data.results[0].url);
@@ -14,20 +21,3 @@ function arkiveEmbedCallback(data) {
       iframeAttr.src = iframe;
     }
 }
-// (function () {
-//     function async_load() {
-//         var s = document.createElement('script'); 
-//         s.type = 'text/javascript';
-//         s.async = true;
-//         s.src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + arkiveApiSpeciesName 
-//         + '?key=' + arkiveApiKey + (arkiveApiSpeciesId ? '&id=' + arkiveApiSpeciesId : '') + '&mtype=all&w=' 
-//         + arkiveApiWidth + '&h=' + arkiveApiHeight + '&tn=' + (arkiveApiImages ? 1 : 0) + '&text=' 
-//         + (arkiveApiText ? 1 : 0) + '&callback=arkiveEmbedCallback';
-//         var x = document.getElementsByTagName('script')[0];
-//         x.parentNode.insertBefore(s, x);
-//     }
-//     if (window.attachEvent)
-//         window.attachEvent('onload', async_load);
-//     else
-//         window.addEventListener('load', async_load, false);
-// })();
