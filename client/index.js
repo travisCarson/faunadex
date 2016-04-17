@@ -39,7 +39,7 @@ var initalState = Map({
   encounters: [], //Represents all encounters the user has
   recentEncounters: [], //Represents all the recent encounters
   arkiveApiKey: '4tqY8uUz1mcB5vu0W80z_RK8jgr2dfghJWjOOVtEWUU1',
-  arkiveApiSpeciesName: 'panthera%20tigris', // note spaces replaced by %20
+  arkiveApiSpeciesName: 'loxodonta%20africana', // note spaces replaced by %20
   arkiveApiSpeciesId: undefined, 
   arkiveApiWidth: 320,
   arkiveApiHeight: 355,
