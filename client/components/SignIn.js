@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import auth from '../lib/auth.js';
 
 // the first of two things that a React-Redux component exports is 
 // a standard React component which uses a bunch of props.
@@ -39,10 +40,11 @@ function mapDispatchToProps(dispatch) {
     dispatchSignIn: (username, password, router) => {
       dispatch((dispatch) => {
         dispatch({ type: 'SIGN_IN_ATTEMPT' });
-        $.post('/api/user/signin', {username: username, password: password}, (data) => {
+        auth.login(username, password, function(err, data) {
           console.log('data: ', data);
           if (data.username) {
-            dispatch({ type: 'SET_STATE', state: { user: data } });
+            console.log('got back username: ', data.username);
+            dispatch({ type: 'SET_STATE', state: { user: { username: data.username } } });
             router.push('/');
           } else {
             dispatch({ type: 'SIGN_IN_FAIL' });

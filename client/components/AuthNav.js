@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import auth from '../lib/auth.js';
 
 export const AuthNav = React.createClass({
 
@@ -11,7 +12,7 @@ export const AuthNav = React.createClass({
         <ul className="nav-links">
           <li className="share-new-encounter-link"><a href="/#/newencounter">Share New Encounter</a></li>
           <li className="user-profile-link"><a href="/#/userprofile">{this.props.username}</a></li>
-          <li className="logout-link"><a href="/api/user/signout">Logout</a></li>
+          <li className="logout-link"><a onClick={this.props.signOut} href="/#/">Signout</a></li>
         </ul>
       </div>
     );
@@ -25,7 +26,14 @@ function mapStateToProps(state) {
 };
 
 function mapDispatchToProps(dispatch) {
-  return {};
+  return {
+    signOut: function(e) {
+      e.preventDefault();
+      dispatch({ type: 'SIGNOUT'});
+      $.ajaxSetup({ headers: { 'x-access-token': '' } });
+      auth.signOut();
+    }
+  };
 }
 
 export const AuthNavContainer = connect(mapStateToProps, mapDispatchToProps)(AuthNav);

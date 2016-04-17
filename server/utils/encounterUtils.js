@@ -6,9 +6,6 @@ var Encounters = require('../collections/encounters');
 var knex = require('knex');
 var bookshelf = require('bookshelf');
 
-// dummy file with dummy info
-var dummy = require('../../dummies/dummies.js');
-
 module.exports = {
 
   createEncounter: function(req, res) {
