@@ -34,6 +34,14 @@ export const EncounterListEntry = React.createClass({
   render: function() {
     // <div onClick={this.props.goToEncounter}>Synopsis: {this.props.encounter}</div>
     var enc = this.props.encounter;
+    var encUser = enc.get('user');
+    // This logic is for the difference in data structure between api calls to /api/recentencounters
+    // and /api/user/encounters
+    if (encUser) {
+      encUser = enc.getIn(['user', 'username']);
+    } else {
+      encUser = this.props.username;
+    }
     return ( 
       <div className='encounter'>
         <div>Title: {enc.get('title')}</div>
@@ -41,7 +49,7 @@ export const EncounterListEntry = React.createClass({
         <div>Location: {enc.get('location')}</div>
         <div>Encounter Time: {enc.get('encounterTime')}</div>
         <div>Post Time: {enc.get('postTime')}</div>
-        <div>User: {enc.getIn(['user', 'username'])}</div>
+        <div>User: {encUser}</div>
         <div id={enc.get('title').toLowerCase().split(' ').join('%20')} className='animal'></div>
         <hr />
       </div>
@@ -55,6 +63,7 @@ export const EncounterListEntry = React.createClass({
 // props refered to in the above component
 function mapStateToProps(state) {
   return {
+    username: state.getIn(['user', 'username']),
     key: state.getIn(['arkiveApiKey']),
     animal: state.getIn(['arkiveApiSpeciesName']),
     id: state.getIn(['arkiveApiSpeciesId']),
