@@ -39,6 +39,12 @@ export default function(state = Map(), action) {
       return signUpAttempt(state, action);
     case 'SIGNOUT':
       return state.set('user', {});
+    case 'SIGN_IN_FAIL':
+      return state.set('errorMessage', action.message);
+    case 'SIGN_UP_FAIL':
+      return state.set('errorMessage', action.message);
+    case 'CLEAR_ERRORS':
+      return state.set('errorMessage', '');
     case 'CREATE_NEW_ENCOUNTER':
       return createNewEncounter(state, action);
   }

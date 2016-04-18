@@ -66,7 +66,7 @@ describe('Basic Authentication', function () {
       site.post('/api/user/signin', function(error, res, body) {
         var jsonBody = JSON.parse(body);
         expect(body.error).to.be.undefined;
-        expect(jsonBody.username).to.equal('bob123456');
+        expect(jsonBody.user.username).to.equal('bob123456');
         done();
       });
     });

@@ -10,9 +10,10 @@ var createSession = function(req, res, user) {
   req.session.user = user;
   var token = jwt.encode(user, secret);
   res.json({
-    username: user.get('username'),
+    type: 'USER',
+    user: { username: user.get('username'), id: user.get('id') },
     token: token,
-    id: user.get('id'),
+    error: ''
   });
   console.log('session created');
 }
@@ -40,7 +41,12 @@ exports.createUser = function(req, res) {
             createSession(req, res, newUser); 
           });
       } else {
-        res.json({ username: null, error: 'Account already exists' });
+        res.json({
+          type: 'ERROR',
+          user: {},
+          token: null,
+          error: 'Account already exists'
+        });
       }
     });
 };
@@ -54,13 +60,23 @@ exports.signInUser = function(req, res) {
     .then(function(user) {
       if (!user) {
         console.log('user not found');
-        res.json({ username: null, error: 'Your username or password did not match' });
+        res.json({
+          type: 'ERROR',
+          user: {},
+          token: null,
+          error: 'Your username or password did not match'
+        });
       } else {
         user.comparePassword(password, function(isMatch) {
           if (isMatch) {
             createSession(req, res, user); 
           } else {
-            res.json({ username: null, error: 'Your username or password did not match' });
+            res.json({
+              type: 'ERROR',
+              user: {},
+              token: null,
+              error: 'Your username or password did not match'
+            });
           }
         });
       }
@@ -77,7 +93,12 @@ exports.getSignedInUser = function(req, res) {
       .fetch()
       .then(function (foundUser) {
         if (foundUser) {
-          res.json({ username: user.username });
+          res.json({
+            type: 'USER',
+            user: { username: user.username, id: user.id },
+            token: token,
+            error: ''
+          });
         } else {
           res.sendStatus(401);
         }
