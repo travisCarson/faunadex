@@ -7,7 +7,7 @@ export const Nav = React.createClass({
   render: function() {
     return (
       <header>
-        <img src="/images/manatee.png" />
+        <a href='/#/'><img src="/images/manatee.png" /></a>
         <h1>Faunadex</h1>
         <h2>Gotta encounter em all!</h2>
       <nav>
