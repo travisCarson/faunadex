@@ -15,7 +15,8 @@ var populate = function() {
           animal: 'Grey Squirrel',
           scientificname: 'Sciurus carolinensis',
           description: 'I saw a squirrel and it bit me!',
-          location: 'Central Park'
+          location: 'Central Park',
+          photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Sciurus_carolinensis_in_Hyde_Park,_London_spring_2013.JPG',
         },
         { 
           title: 'Silly rabbit', 
@@ -23,6 +24,7 @@ var populate = function() {
           scientificname: 'Brachylagus idahoensis',
           description: 'tricks are for kids, noooooooo',
           location: 'tv',
+          photo: 'https://upload.wikimedia.org/wikipedia/commons/e/ed/BRACHYLAGUS_IDAHOENSIS.jpg'
         },
       ]
     },
@@ -38,6 +40,7 @@ var populate = function() {
           scientificname: '',
           description: 'It shot my lamb with an arrow then ate it',
           location: 'The woods outside of Hogwarts',
+          photo: 'http://images.vice.com/munchies/wp_upload/centaur3.jpg',
         },
         { 
           title: 'Unicorn', 
@@ -45,6 +48,7 @@ var populate = function() {
           scientificname: '',
           description: 'Im already hearing voices, just try to contradict me',
           location: 'Manhattan',
+          photo: 'https://s-media-cache-ak0.pinimg.com/736x/e5/7e/51/e57e51be417ed775c051dea35cb0b7a8.jpg',
         },
         { 
           title: 'Griffin', 
@@ -52,6 +56,7 @@ var populate = function() {
           scientificname: '',
           description: 'It was perched up high, on some cliffs somewhere',
           location: 'Mount Doom',
+          photo: 'http://img04.deviantart.net/5f3a/i/2015/102/d/8/griffin_by_jade_soccer_dance-d8pin9j.jpg',
         },
         { 
           title: 'Manticore', 
@@ -59,6 +64,7 @@ var populate = function() {
           scientificname: '',
           description: 'It tried to eat me, but I ran away',
           location: 'The beach',
+          photo: 'https://upload.wikimedia.org/wikipedia/commons/b/b6/Martigora_engraving.jpg',
         },
       ]
     },
@@ -74,6 +80,7 @@ var populate = function() {
           scientificname: 'Ursus arctos',
           description: 'There were three of them, a momma, a popa and a baby bear',
           location: 'Yellowstone',
+          photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Ursus_arctos_middendorffi_qtl1.jpg',
         },
         { 
           title: 'Mouse', 
@@ -81,6 +88,7 @@ var populate = function() {
           scientificname: 'Mus musculus',
           description: 'It was so cute',
           location: 'My house',
+          photo: 'https://upload.wikimedia.org/wikipedia/commons/b/bd/Apodemus_sylvaticus_bosmuis.jpg',
         },
         { 
           title: 'Moth', 
@@ -88,6 +96,7 @@ var populate = function() {
           scientificname: 'Attacus atlas',
           description: 'It was a big moth',
           location: 'My porch',
+          photo: 'https://c2.staticflickr.com/2/1305/860218865_779ab1cfe9_z.jpg',
         },
       ]
     },
@@ -103,6 +112,7 @@ var populate = function() {
           scientificname: 'Turdus migratorius',
           description: 'It had a red breast',
           location: 'London',
+          photo: 'http://www.birdzilla.com/images/stories/amaze/american-robin-a500.jpg',
         },
         { 
           title: 'Sparrow', 
@@ -110,6 +120,7 @@ var populate = function() {
           scientificname: 'Arremonops conirostris',
           description: 'African or European?',
           location: 'Bridge of doom',
+          photo: 'https://upload.wikimedia.org/wikipedia/commons/5/5d/Black-striped_Sparrow_(Arremonops_conirostris).jpg',
         },
         { 
           title: 'Kingfisher', 
@@ -117,6 +128,7 @@ var populate = function() {
           scientificname: 'Alcedo atthis',
           description: 'It was a big one',
           location: 'Pond',
+          photo: 'https://upload.wikimedia.org/wikipedia/commons/9/99/Ceyx_erithaca.JPG',
         },
         ]
     },
@@ -132,6 +144,7 @@ var populate = function() {
           scientificname: 'Pterophyllum scalare',
           description: 'Totally cool!  Its got great colors',
           location: 'Bahamas',
+          photo: 'https://upload.wikimedia.org/wikipedia/commons/9/94/Pterophyllum_leopoldi.jpg',
         },
         { 
           title: 'Puffer Fish', 
@@ -139,6 +152,7 @@ var populate = function() {
           scientificname: 'Sphoeroides maculatus',
           description: 'It had all kinds of tiny spines',
           location: 'Bahamas',
+          photo: 'https://upload.wikimedia.org/wikipedia/commons/1/11/Arothron_meleagris_by_NPS_1.jpg',
         },
         { 
           title: 'Shark', 
@@ -146,6 +160,7 @@ var populate = function() {
           scientificname: 'Carcharodon carcharias',
           description: 'I almost died!!!!!',
           location: 'Bahamas',
+          photo: 'https://c1.staticflickr.com/3/2822/10091027656_8b9bb7235b_b.jpg',
         },
       ]
     }

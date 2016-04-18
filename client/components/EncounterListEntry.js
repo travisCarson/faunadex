@@ -31,10 +31,7 @@ export const EncounterListEntry = React.createClass({
       <div className='encounter' onClick={() => this.props.goToEncounter(enc, this.context.router)}>
         <div>Title: {enc.get('title')}</div>
         <div>Animal: {enc.get('animal')}</div>
-        <div>Scientific Name: {enc.get('scientificname')}</div>
-        <div>Description: {enc.get('description')}</div>
         <div>Location: {enc.get('location')}</div>
-        <div>Encounter Time: {enc.get('encounterTime')}</div>
         <div>Post Time: {enc.get('postTime')}</div>
         <div>User: {encUser}</div>
         <div id={enc.get('animal')} className='animal'></div>
