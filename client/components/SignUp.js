@@ -17,7 +17,7 @@ export const SignUp = React.createClass({
     return <div className='sign-up'>
       <h2>Sign Up</h2>
       <div className='error-message'>{this.props.errorMessage}</div>
-      <p>Already have an account?<a href="/#/signin">Sign in!</a></p>
+      <p>Already have an account? <a href="/#/signin">Sign in!</a></p>
       <div>Username: <input ref="username" /></div>
       <div>Password: <input type="password" ref="password" /></div>
       <button onClick={this.signUp}>Sign Up</button>
