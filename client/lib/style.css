@@ -1,3 +1,7 @@
+body {
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
 header {
   margin-bottom: 10px;
 }
@@ -64,5 +68,19 @@ header nav ul li a.active {
 
 .error-message {
   color: red;
+}
+
+.encounter-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.encounter {
+  background-color: #BBB;
+  margin: 5px;
+  padding: 3px;
+  width: 200px;
+  height: 200px;
 }
 
