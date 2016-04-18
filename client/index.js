@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-var $ = require('jquery');
+// var $ = require('jquery');
 import {App, AppContainer} from './components/App';
 import {SignIn, SignInContainer} from './components/SignIn';
 import {SignUp, SignUpContainer} from './components/SignUp';
