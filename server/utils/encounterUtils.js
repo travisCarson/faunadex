@@ -55,7 +55,6 @@ module.exports = {
   },
 
   retrieveEncounterById: function(req, res) {
-    console.log('retrieveEncounterById called with request: ', req.body.id);
     new Encounter( { id: req.body.id } )
     .fetch()
     .then(function(encounter) {
