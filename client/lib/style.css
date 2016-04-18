@@ -82,9 +82,10 @@ header nav ul li a.active {
   margin: 5px;
   padding: 3px;
   width: 200px;
-  height: 200px;
+  height: 230px;
   text-align: center;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 .encounter h3 {
@@ -94,7 +95,14 @@ header nav ul li a.active {
 }
 
 .encounter img {
-  width: 150px;
+  height: 100px;
+  padding: 5px;
+}
+
+.encounter .encuser {
+  margin-top: 10px;
+  font-style: italic;
+  font-size: 10px;
 }
 
 .encounter-details {

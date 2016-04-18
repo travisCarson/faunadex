@@ -33,7 +33,7 @@ export const EncounterListEntry = React.createClass({
         <h3>{enc.get('title')}</h3>
         <img src={ enc.get('photo')} />
         <div>{enc.get('animal')}, {enc.get('location')}</div>
-        <div>User: {encUser}</div>
+        <div className='encuser'>( Encountered by {encUser} )</div>
       </div>
     );
   }
