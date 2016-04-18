@@ -20,9 +20,9 @@ module.exports = {
     publicPath: 'http://' + ip + ':8080/',
     filename: 'bundle.js'
   },
-  externals: {
-    "jquery": "$"
-  },
+  // externals: {
+  //   "jquery": "$"
+  // },
   devServer: {
     contentBase: 'client/',
     hot: true

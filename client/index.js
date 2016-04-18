@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-var $ = require('jquery');
 import {App, AppContainer} from './components/App';
 import {SignIn, SignInContainer} from './components/SignIn';
 import {SignUp, SignUpContainer} from './components/SignUp';
@@ -54,19 +53,23 @@ const store = createStore(reducer, initalState, applyMiddleware(thunk));
 
 if (auth.isSignedIn()) {
   $.ajaxSetup({ headers: { 'x-access-token': window.localStorage.getItem('com.faunadex') } });
-  $.post('/api/user/getsignedinuser', function(data) {
-    store.dispatch({ type: 'SET_STATE', state: { user: { username: data.username } } });
-  });
+  $.post('/api/user/getsignedinuser')
+    .retry({ times: 5, timeout: 500 })
+    .done(function(data) {
+      store.dispatch({ type: 'SET_STATE', state: { user: { username: data.username } } });
+    });
 }
 
 store.dispatch(function(dispatch) {
-  $.get('/api/recentencounters', (data) => {
-    if (data) {
-      dispatch({ type: 'SET_STATE', state: { recentEncounters: data } });
-    } else {
-      dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
-    }
-  });
+  $.get('/api/recentencounters')
+    .retry({ times: 5, timeout: 500 })
+    .done((data) => {
+      if (data) {
+        dispatch({ type: 'SET_STATE', state: { recentEncounters: data } });
+      } else {
+        dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
+      }
+    });
 });
 
 // store.dispatch({
