@@ -15,6 +15,7 @@ export const SignUp = React.createClass({
   render: function() {
     return <div className='sign-up'>
       <h2>Sign Up</h2>
+      <div className='error-message'>{this.props.errorMessage}</div>
       <div>Username: <input ref="username" /></div>
       <div>Password: <input ref="password" /></div>
       <button onClick={this.signUp}>Sign Up</button>
@@ -29,7 +30,7 @@ function mapStateToProps(state) {
   return {
     username: state.getIn(['user', 'username']),
     descr: state.getIn(['user', 'description']),
-
+    errorMessage: state.get('errorMessage')
   };
 }
 
@@ -43,12 +44,16 @@ function mapDispatchToProps(dispatch) {
           username: username,
           password: password
         });
-        $.post('/api/user/signup', {username: username, password: password}, (data) => {
-          if (data) {
-            dispatch({ type: 'SET_STATE', state: { user: data } });
+        auth.signup(username, password, (err, data) => {
+          if (data.type === 'USER') {
+            dispatch({ type: 'SET_STATE', state: { user: data.user } });
+            dispatch({ type: 'CLEAR_ERRORS' });
             router.push('/');
+            return;
           } else {
-            dispatch({ type: 'SIGN_UP_FAIL' });
+            var message = '';
+            if (!err) { message = data.error; }
+            dispatch({ type: 'SIGN_UP_FAIL', message });
           }
         });
       });
