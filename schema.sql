@@ -29,8 +29,9 @@ DROP TABLE IF EXISTS posts;
 CREATE TABLE posts (
   id int NOT NULL AUTO_INCREMENT,
   userid int NOT NULL REFERENCES users,
-  forumid int NOT NULL REFERENCES forums,
+  encounterid int NOT NULL REFERENCES encounters,
   message varchar(255) NOT NULL,
+  posttime DATETIME NOT NULL, 
   PRIMARY KEY (id)
 );
 
