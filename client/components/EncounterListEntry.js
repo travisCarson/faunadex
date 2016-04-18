@@ -126,31 +126,34 @@ function mapDispatchToProps(dispatch) {
     goToEncounter: (enc, router) => {
       $.post('/api/encounter', {id: enc.get('id')}, (dbEncounter) => {
         if (dbEncounter) {
-          dispatch({type: 'GO_TO_ENCOUNTER',
-                    state: { 
-                      encounter: {username: enc.getIn(['user', 'username']),
-                                  title: dbEncounter.title,
-                                  description: dbEncounter.description,
-                                  location: dbEncounter.location,
-                                  photo: dbEncounter.photo,
-                                  animal: dbEncounter.animal,
-                                  scientificName: dbEncounter.scientificname,
-                                  encounterTime: dbEncounter.encountertime,
-                                  postTime: dbEncounter.posttime,
-                      }, 
-                    },
+          dispatch({
+            type: 'GO_TO_ENCOUNTER',
+            state: { 
+              encounter: {
+                username: enc.getIn(['user', 'username']),
+                title: dbEncounter.title,
+                description: dbEncounter.description,
+                location: dbEncounter.location,
+                photo: dbEncounter.photo,
+                animal: dbEncounter.animal,
+                scientificName: dbEncounter.scientificname,
+                encounterTime: dbEncounter.encountertime,
+                postTime: dbEncounter.posttime,
+              }, 
+            },
           });
         } else {
           dispatch({
             type: 'GO_TO_ENCOUNTER',
             state: {
-              encounter: {username: enc.getIn(['user', 'username']),
-                          title: enc.get('title'),
-                          description: enc.get('description'),
-                          location: enc.get('location'),
-                          encounterTime: enc.get('encounterTime'),
-                          postTime: enc.get('postTime'),
-                        },
+              encounter: {
+                username: enc.getIn(['user', 'username']),
+                title: enc.get('title'),
+                description: enc.get('description'),
+                location: enc.get('location'),
+                encounterTime: enc.get('encounterTime'),
+                postTime: enc.get('postTime'),
+              },
             },
           });
         }
