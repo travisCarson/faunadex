@@ -81,6 +81,15 @@ store.dispatch(function(dispatch) {
     });
 });
 
+var checkAuth = function() {
+  clearErrors();  
+  return auth.isSignedIn();
+}
+
+var clearErrors = function() {
+  store.dispatch({ type: 'CLEAR_ERRORS' });
+}
+
 // store.dispatch({
 //   type: 'SET_USERNAME',
 //   username: user.input.from.somewhere
@@ -97,11 +106,11 @@ ReactDOM.render(
       <NavContainer />
       <Router history={hashHistory}>
         <Route component={AppContainer} path="/" />
-        <Route component={SignInContainer} path="/signin" />
-        <Route component={SignUpContainer} path="/signup" />
-        <Route component={EncounterDetailsContainer} path="/encounterDetails" />
-        <Route component={NewEncounterContainer} onEnter={auth.isSignedIn} path="/newencounter" />
-        <Route component={UserProfileContainer} onEnter={auth.isSignedIn} path="/userprofile" />
+        <Route component={SignInContainer} onEnter={clearErrors} path="/signin" />
+        <Route component={SignUpContainer} onEnter={clearErrors} path="/signup" />
+        <Route component={EncounterDetailsContainer} onEnter={clearErrors} path="/encounterDetails" />
+        <Route component={NewEncounterContainer} onEnter={checkAuth} path="/newencounter" />
+        <Route component={UserProfileContainer} onEnter={checkAuth} path="/userprofile" />
       </Router>
     </div>
   </Provider>),

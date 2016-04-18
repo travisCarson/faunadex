@@ -62,4 +62,7 @@ header nav ul li a.active {
   background-color: green;
 }
 
+.error-message {
+  color: red;
+}
 
