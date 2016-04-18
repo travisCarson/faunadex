@@ -80,7 +80,7 @@ var populate = function() {
           scientificname: 'Ursus arctos',
           description: 'There were three of them, a momma, a popa and a baby bear',
           location: 'Yellowstone',
-          photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Ursus_arctos_middendorffi_qtl1.jpg',
+          photo: 'https://upload.wikimedia.org/wikipedia/commons/9/93/Grizzly_bear_brown_bear.jpg',
         },
         { 
           title: 'Mouse', 
