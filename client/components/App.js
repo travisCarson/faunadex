@@ -9,7 +9,7 @@ export const App = React.createClass({
   render: function() {
     var welcome = <div>Welcome to the Faunadex!</div>;
     if (this.props.username) {
-      var welcome = <div>Welcome back to the Faunadex {this.props.username}!</div>;
+      var welcome = <div>Welcome back to the Faunadex, {this.props.username}!</div>;
     }
     return (
       <div className='welcome'>
