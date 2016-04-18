@@ -13,7 +13,7 @@ import {EncounterListEntry, EncounterListEntryContainer} from './components/Enco
 import {NewEncounterContainer} from './components/NewEncounter';
 import {UserProfileContainer} from './components/UserProfile';
 import {NavContainer} from './components/Nav';
-import {EncounterDetailsContainer} from './components/encounterDetails';
+import {EncounterDetailsContainer} from './components/EncounterDetails';
 import auth from './lib/auth.js';
 // in ES6 you can assign variables from an object using 
 // what are called "Destructuring"
