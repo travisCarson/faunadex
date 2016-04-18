@@ -1,6 +1,7 @@
 var path = require('path');
 var userUtils = require('../utils/userUtils.js');
 var encounterUtils = require('../utils/encounterUtils.js');
+var postUtils = require('../utils/postUtils.js');
 
 module.exports = function (app, express) {
   app.use(express.static(path.join(__dirname, '../../client')));
@@ -24,7 +25,7 @@ module.exports = function (app, express) {
 
   //endpoints for getting and posting comments
   app.get('/api/posts/:encounterid', userUtils.authenticationRequired, function() {});
-  app.post('/api/posts/:encounterid', userUtils.authenticationRequired , function() {});
+  app.post('/api/posts/', userUtils.authenticationRequired , function() {});
 };
 
 
