@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --recursive test/",
+    "test": "grunt test",
     "start": "grunt startserver",
     "start-backend": "nodemon server/server.js",
     "start-dev-server": "webpack-dev-server --host 0.0.0.0 --port 8080 --hot --inline"
@@ -50,6 +50,8 @@
     "grunt": "^1.0.1",
     "grunt-concurrent": "^2.3.0",
     "grunt-contrib-watch": "^1.0.0",
+    "grunt-mocha-casperjs": "^1.4.4",
+    "grunt-mocha-test": "^0.12.7",
     "grunt-nodemon": "^0.4.1",
     "grunt-webpack-without-server": "^1.0.8",
     "ip": "^1.1.2",

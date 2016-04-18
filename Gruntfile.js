@@ -3,12 +3,29 @@ module.exports = function (grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
+    mocha_casperjs: {
+      files: {
+        src: ['test_client/**/*.js']
+      }
+    },
+
+    mochaTest: {
+      options: {
+        timeout: 4000
+      },
+      test: {
+        src: ['test_server/**/*.js']
+      }
+    },
+
     watch: {
       scripts: {
         files: ['client/**/*.js', '!client/bundle.js'],
         tasks: ['webpack']
       }
     },
+
     webpack: {
       options: webpackConfig,
       faunadex: {
@@ -23,12 +40,14 @@ module.exports = function (grunt) {
         
       }
     },
+
     nodemon: {
       dev: {
         script: 'server/server.js',
         watch: ['server']
       }
     },
+
     concurrent: {
       dev: {
         tasks: ['nodemon', 'watch'],
@@ -43,6 +62,13 @@ module.exports = function (grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-webpack-without-server');
   grunt.loadNpmTasks('grunt-nodemon');
+  grunt.loadNpmTasks('grunt-mocha-casperjs');
+  grunt.loadNpmTasks('grunt-mocha-test');
+
+  grunt.registerTask('test', '', function() {
+  var taskList = ['mochaTest', 'mocha_casperjs'];
+    grunt.task.run(taskList);
+  });
 
   grunt.registerTask('startserver', '', function () {
     var taskList = ['webpack', 'concurrent', 'nodemon', 'watch'];
