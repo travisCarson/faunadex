@@ -46,8 +46,8 @@ module.exports = {
     Encounters.reset()
       .fetch({withRelated: ['user']})
       .then(function(encounters) {
-        // return the last five encounters
-        res.status(200).send(encounters.slice(encounters.length - 5));
+        // return the last fifteen encounters
+        res.status(200).send(encounters.slice(encounters.length - 15));
       })
       .catch(function(error) {
         res.status(500).send(error.message);
