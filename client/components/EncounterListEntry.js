@@ -15,7 +15,7 @@ export const EncounterListEntry = React.createClass({
         <div>Location: {enc.get('location')}</div>
         <div>Encounter Time: {enc.get('encounterTime')}</div>
         <div>Post Time: {enc.get('postTime')}</div>
-        <div>User: {enc.get('user').get('username')}</div>
+        <div>User: {enc.getIn(['user', 'username'])}</div>
         <hr />
       </div>
     );
