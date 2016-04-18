@@ -53,7 +53,7 @@ describe('Basic Server Functions', function () {
     it('will respond to GET /api/recentencounters', function (done) {
       makeGET('/api/recentencounters', function(error, res, body) {
         expect(error).to.equal(null);
-        expect(res.statusCode).to.equal(401);
+        expect(res.statusCode).to.equal(200);
         done();
       });
     });
