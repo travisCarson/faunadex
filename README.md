@@ -2,7 +2,7 @@
 
 # Faunadex
 
-Track and share your animal encounters, see what animals your friends are encountering, learn about wonderful wildlife, and talk with other animal enthusiasts!
+Track and share your animal encounters, see what animals your friends are encountering, learn about wonderful wildlife, and talk with other animal enthusiasts! It utilizes the ARKive API to retrieve information and pictures about animals!
 
 ## Getting Started
 
@@ -61,9 +61,10 @@ Add additional notes about how to deploy this on a live system
 ## Built With
 
 * React
+* Redux
 * Express
 * Node
-* Postgres
+* MySQL
 
 ## Contributing
 
@@ -89,3 +90,4 @@ See also the list of [contributors](https://github.com/FarcicalPopsicle/faunadex
 
 * Hack Reactor
 * The amazing animals all around us
+* ARKive.org
