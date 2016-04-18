@@ -18,7 +18,7 @@ module.exports = function (app, express) {
   // creates a new encounter
   app.post('/api/user/encounter', userUtils.authenticationRequired, encounterUtils.createEncounter);
   // retrieves the most recent encounters from the site
-  app.get('/api/recentencounters', userUtils.authenticationRequired, encounterUtils.recentEncounters);
+  app.get('/api/recentencounters', encounterUtils.recentEncounters);
   // retrieves a single encounter
   app.post('/api/encounter', encounterUtils.retrieveEncounterById);
 };
