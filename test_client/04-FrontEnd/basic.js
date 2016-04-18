@@ -54,11 +54,11 @@ describe('Home page', function() {
           'input#username' : 'vanessa',
           'input#password' : 'vanessa' 
         });
-        this.echo('Filling in details');
+        // this.echo('Filling in details');
       });
 
       casper.thenClick('button', function() {
-        this.echo('->Clicked on Login');
+        // this.echo('->Clicked on Login');
       });   
 
     });
