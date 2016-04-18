@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import encounterFunctions from '../lib/encounter.js';
 
 // the first of two things that a React-Redux component exports is 
 // a standard React component which uses a bunch of props.
@@ -87,6 +88,7 @@ function mapDispatchToProps(dispatch) {
       $.ajax({
         url: src,
         type: 'GET',
+        dataType: 'jsonp',
         beforeSend: function(xhr) {xhr.setRequestHeader('Access-Control-Allow-Origin', 'allow');},
         success: function() {
           console.log(data);
@@ -121,39 +123,23 @@ function mapDispatchToProps(dispatch) {
       });
     },
     goToEncounter: (enc, router) => {
-      $.post('/api/encounter', {id: enc.get('id')}, (dbEncounter) => {
-        if (dbEncounter) {
-          dispatch({
-            type: 'GO_TO_ENCOUNTER',
-            state: { 
-              encounter: {
-                username: enc.getIn(['user', 'username']),
-                title: dbEncounter.title,
-                description: dbEncounter.description,
-                location: dbEncounter.location,
-                photo: dbEncounter.photo,
-                animal: dbEncounter.animal,
-                scientificName: dbEncounter.scientificname,
-                encounterTime: dbEncounter.encountertime,
-                postTime: dbEncounter.posttime,
-              }, 
+      encounterFunctions.encounter({id: enc.get('id')}, (err, dbEncounter) => {
+        dispatch({
+          type: 'GO_TO_ENCOUNTER',
+          state: {
+            encounter: {
+              username: enc.getIn(['user', 'username']),
+              title: dbEncounter.title,
+              description: dbEncounter.description,
+              location: dbEncounter.location,
+              photo: dbEncounter.photo,
+              animal: dbEncounter.animal,
+              scientificName: dbEncounter.scientificname,
+              encounterTime: dbEncounter.encountertime,
+              postTime: dbEncounter.posttime,
             },
-          });
-        } else {
-          dispatch({
-            type: 'GO_TO_ENCOUNTER',
-            state: {
-              encounter: {
-                username: enc.getIn(['user', 'username']),
-                title: enc.get('title'),
-                description: enc.get('description'),
-                location: enc.get('location'),
-                encounterTime: enc.get('encounterTime'),
-                postTime: enc.get('postTime'),
-              },
-            },
-          });
-        }
+          },
+        });
       });
       router.push('/encounterDetails');
     },
