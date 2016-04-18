@@ -15,7 +15,7 @@ export const EncounterListEntry = React.createClass({
     // arkiveEmbedCallback is a global variable at this moment
     // TODO somehow put arkiveEmbedCallback into this file
     // var arkiveEmbedCallback = this.arkiveEmbedCallback;
-    this.props.arkiveApi(this.props.key, this.props.encounter.get('scientificname').toLowerCase(), this.props.id, this.props.width, this.props.height, this.props.images, this.props.text, 'arkiveEmbedCallback');
+    // this.props.arkiveApi(this.props.key, this.props.encounter.get('scientificname').toLowerCase(), this.props.id, this.props.width, this.props.height, this.props.images, this.props.text, 'arkiveEmbedCallback');
   },
   render: function() {
     var enc = this.props.encounter;

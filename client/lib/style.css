@@ -37,6 +37,7 @@ header nav ul {
   padding: 0;
   background-color: #333;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 header nav ul li {
@@ -52,7 +53,7 @@ header nav ul li.signout-link {
 
 header nav ul li a {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: white;
   text-decoration: none;
   padding: 5px;
@@ -83,6 +84,7 @@ header nav ul li a.active {
   width: 200px;
   height: 200px;
   text-align: center;
+  border-radius: 5px;
 }
 
 .encounter h3 {
@@ -94,4 +96,39 @@ header nav ul li a.active {
 .encounter img {
   width: 150px;
 }
+
+.encounter-details {
+  width: 60%;
+  margin: auto;
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.encounter-details h3 {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.encounter-details .scientific-name {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.encounter-details img {
+  width: 100px;
+  float: left;
+  border-radius: 10px;
+  margin: 20px;
+  margin-top: 0;
+}
+
+.encounter-details .description {
+  margin-bottom: 10px;
+}
+
+
+
+
 
