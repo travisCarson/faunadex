@@ -32,7 +32,7 @@ export default function(state = Map(), action) {
     case 'CHANGE_USER_NAME':
       return state.merge({'user': {username: action.username}});
     case 'GO_TO_ENCOUNTER':
-      return state.merge({'encounter': action.encounter});
+      return state.set('encounter', action.state.encounter);
     case 'SIGN_IN_ATTEMPT':
       return signInAttempt(state, action);
     case 'SIGN_UP_ATTEMPT':

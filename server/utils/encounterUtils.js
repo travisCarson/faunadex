@@ -55,6 +55,18 @@ module.exports = {
       .catch(function(error) {
         res.status(500).send(error.message);
       });
-  }
+  },
+
+  retrieveEncounterById: function(req, res) {
+    console.log('retrieveEncounterById called with request: ', req.body.id);
+    new Encounter( { id: req.body.id } )
+    .fetch()
+    .then(function(encounter) {
+      res.status(200).send(encounter);
+    })
+    .catch(function(error) {
+      res.status(500).send(error.message);
+    });
+  },
 
 };

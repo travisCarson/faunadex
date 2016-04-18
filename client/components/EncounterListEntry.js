@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 // the first of two things that a React-Redux component exports is 
 // a standard React component which uses a bunch of props.
 export const EncounterListEntry = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired
+  },
   // TODO make the below function be used as the callback for arkiveApi
   // arkiveEmbedCallback: function(data) { 
   //   this.props.apiARKive(data);
@@ -25,7 +28,7 @@ export const EncounterListEntry = React.createClass({
       encUser = this.props.username;
     }
     return ( 
-      <div className='encounter'>
+      <div className='encounter' onClick={() => this.props.goToEncounter(enc, this.context.router)}>
         <div>Title: {enc.get('title')}</div>
         <div>Animal: {enc.get('animal')}</div>
         <div>Scientific Name: {enc.get('scientificname')}</div>
@@ -60,12 +63,6 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    goToEncounter: (event) => {
-      dispatch({
-        type: 'GO_TO_ENCOUNTER',
-        encounter: event.target.value 
-      })
-    },
     // the below creates a script tag, which makes the API request to the ARKive API
     // this is not ideal and a GET request would be much more managable and useful to interact
     // with React
@@ -125,9 +122,46 @@ function mapDispatchToProps(dispatch) {
           iframeAttr.src = iframe;
         }
       });
-    }
-  };
-}
+    },
+    goToEncounter: (enc, router) => {
+      $.post('/api/encounter', {id: enc.get('id')}, (dbEncounter) => {
+        if (dbEncounter) {
+          dispatch({
+            type: 'GO_TO_ENCOUNTER',
+            state: { 
+              encounter: {
+                username: enc.getIn(['user', 'username']),
+                title: dbEncounter.title,
+                description: dbEncounter.description,
+                location: dbEncounter.location,
+                photo: dbEncounter.photo,
+                animal: dbEncounter.animal,
+                scientificName: dbEncounter.scientificname,
+                encounterTime: dbEncounter.encountertime,
+                postTime: dbEncounter.posttime,
+              }, 
+            },
+          });
+        } else {
+          dispatch({
+            type: 'GO_TO_ENCOUNTER',
+            state: {
+              encounter: {
+                username: enc.getIn(['user', 'username']),
+                title: enc.get('title'),
+                description: enc.get('description'),
+                location: enc.get('location'),
+                encounterTime: enc.get('encounterTime'),
+                postTime: enc.get('postTime'),
+              },
+            },
+          });
+        }
+      });
+      router.push('/encounterDetails');
+    },
+  }
+};
 // Lastly, we export an object which tells what function to use to map
 // the state to the props
 export const EncounterListEntryContainer = connect(mapStateToProps, mapDispatchToProps)(EncounterListEntry);

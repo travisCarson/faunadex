@@ -25,6 +25,7 @@ module.exports = function (app, express) {
   app.get('/api/user/encounters/:userName', userUtils.authenticationRequired, encounterUtils.showAllEncountersFromUser);
   app.post('/api/user/encounter', userUtils.authenticationRequired, encounterUtils.createEncounter);
   app.get('/api/recentencounters', userUtils.authenticationRequired, encounterUtils.recentEncounters);
+  app.post('/api/encounter', encounterUtils.retrieveEncounterById);
 
   // app.post('/api/searchanimal', someController);
   // app.get('/api/friends/recentactivity', someController)
