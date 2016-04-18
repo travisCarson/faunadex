@@ -47,6 +47,8 @@ export default function(state = Map(), action) {
       return state.set('errorMessage', '');
     case 'CREATE_NEW_ENCOUNTER':
       return createNewEncounter(state, action);
+    case 'GET_ALL_COMMENTS':
+      return state.set('comments', action);
   }
   window.state = state;
   return state;
