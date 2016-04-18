@@ -5,7 +5,6 @@ import ReactDOM from 'react-dom';
 import {createStore, applyMiddleware} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
-// var $ = require('jquery');
 import {App, AppContainer} from './components/App';
 import {SignIn, SignInContainer} from './components/SignIn';
 import {SignUp, SignUpContainer} from './components/SignUp';
@@ -51,6 +50,17 @@ const store = createStore(reducer, initalState, applyMiddleware(thunk));
 // and the reducer does the work of returning a new state
 // Behind the scenes, you'll write reducers that merge new elements into
 // your state, which you can see in the client/reducers files
+
+$.post('/api/test/not/exist')
+  .retry({ times: 5, timeout: 500 })
+  .done((data) => {
+    console.log('Success?');
+  })
+  .fail(() => {
+    console.log('failed');
+  });
+
+
 
 if (auth.isSignedIn()) {
   $.ajaxSetup({ headers: { 'x-access-token': window.localStorage.getItem('com.faunadex') } });
