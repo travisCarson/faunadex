@@ -11,12 +11,16 @@ var populate = function() {
       description: 'joan is of an arc',
       encounters: [
         { 
-          title: 'Mean squirrel', 
+          title: 'Mean squirrel',
+          animal: 'Grey Squirrel',
+          scientificname: 'Sciurus carolinensis',
           description: 'I saw a squirrel and it bit me!',
           location: 'Central Park'
         },
         { 
           title: 'Silly rabbit', 
+          animal: 'Pygmy Rabbit',
+          scientificname: 'Brachylagus idahoensis',
           description: 'tricks are for kids, noooooooo',
           location: 'tv',
         },
@@ -30,21 +34,29 @@ var populate = function() {
       encounters: [
         { 
           title: 'Centar', 
+          animal: '',
+          scientificname: '',
           description: 'It shot my lamb with an arrow then ate it',
           location: 'The woods outside of Hogwarts',
         },
         { 
           title: 'Unicorn', 
+          animal: '',
+          scientificname: '',
           description: 'Im already hearing voices, just try to contradict me',
           location: 'Manhattan',
         },
         { 
           title: 'Griffin', 
+          animal: '',
+          scientificname: '',
           description: 'It was perched up high, on some cliffs somewhere',
           location: 'Mount Doom',
         },
         { 
           title: 'Manticore', 
+          animal: '',
+          scientificname: '',
           description: 'It tried to eat me, but I ran away',
           location: 'The beach',
         },
@@ -58,16 +70,22 @@ var populate = function() {
       encounters: [
         { 
           title: 'Bear', 
+          animal: 'Grizzly Bear',
+          scientificname: 'Ursus arctos',
           description: 'There were three of them, a momma, a popa and a baby bear',
           location: 'Yellowstone',
         },
         { 
           title: 'Mouse', 
+          animal: 'House Mouse',
+          scientificname: 'Mus musculus',
           description: 'It was so cute',
           location: 'My house',
         },
         { 
           title: 'Moth', 
+          animal: 'Atlas Moth',
+          scientificname: 'Attacus atlas',
           description: 'It was a big moth',
           location: 'My porch',
         },
@@ -81,16 +99,22 @@ var populate = function() {
       encounters: [
         { 
           title: 'Robin', 
+          animal: 'American Robin',
+          scientificname: 'Turdus migratorius',
           description: 'It had a red breast',
           location: 'London',
         },
         { 
           title: 'Sparrow', 
+          animal: 'Black-Striped Sparrow',
+          scientificname: 'Arremonops conirostris',
           description: 'African or European?',
           location: 'Bridge of doom',
         },
         { 
           title: 'Kingfisher', 
+          animal: 'Common Kingfisher',
+          scientificname: 'Alcedo atthis',
           description: 'It was a big one',
           location: 'Pond',
         },
@@ -104,16 +128,22 @@ var populate = function() {
       encounters: [
         { 
           title: 'Angelfish', 
+          animal: 'Pterophyllum scalare',
+          scientificname: 'Pterophyllum scalare',
           description: 'Totally cool!  Its got great colors',
           location: 'Bahamas',
         },
         { 
           title: 'Puffer Fish', 
+          animal: 'Norther Puffer',
+          scientificname: 'Sphoeroides maculatus',
           description: 'It had all kinds of tiny spines',
           location: 'Bahamas',
         },
         { 
           title: 'Shark', 
+          animal: 'Great White Shark',
+          scientificname: 'Carcharodon carcharias',
           description: 'I almost died!!!!!',
           location: 'Bahamas',
         },

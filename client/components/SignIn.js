@@ -10,7 +10,6 @@ export const SignIn = React.createClass({
     router: React.PropTypes.object.isRequired
   },
   signIn: function(e) {
-    console.log('username from props', this.props.username);
     e.preventDefault();
     this.props.dispatchSignIn(this.refs.username.value, this.refs.password.value, this.context.router);
   },
@@ -42,9 +41,7 @@ function mapDispatchToProps(dispatch) {
       dispatch((dispatch) => {
         dispatch({ type: 'SIGN_IN_ATTEMPT' });
         auth.login(username, password, function(err, data) {
-          console.log('data: ', data);
           if (data.username) {
-            console.log('got back username: ', data.username);
             dispatch({ type: 'SET_STATE', state: { user: { username: data.username, id: data.id} } });
             router.push('/');
           } else {

@@ -37,7 +37,14 @@ var initalState = Map({
   user: {}, //Represents the user logged in
   encounter: {}, //Represents the selected encouter
   encounters: [], //Represents all encounters the user has
-  recentEncounters: [] //Represents all the recent encounters
+  recentEncounters: [], //Represents all the recent encounters
+  arkiveApiKey: '4tqY8uUz1mcB5vu0W80z_RK8jgr2dfghJWjOOVtEWUU1',
+  arkiveApiSpeciesName: 'loxodonta%20africana', // note spaces replaced by %20
+  arkiveApiSpeciesId: undefined, 
+  arkiveApiWidth: 320,
+  arkiveApiHeight: 355,
+  arkiveApiImages: false, // whether to include thumbnails
+  arkiveApiText: true // whether to include species facts / description
 });
 const store = createStore(reducer, initalState, applyMiddleware(thunk));
 
