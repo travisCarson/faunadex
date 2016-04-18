@@ -12,7 +12,7 @@ export const EncounterListEntry = React.createClass({
     // arkiveEmbedCallback is a global variable at this moment
     // TODO somehow put arkiveEmbedCallback into this file
     // var arkiveEmbedCallback = this.arkiveEmbedCallback;
-    this.props.arkiveAp(this.props.key, this.props.encounter.get('scientificname').toLowerCase(), this.props.id, this.props.width, this.props.height, this.props.images, this.props.text, 'arkiveEmbedCallback');
+    this.props.arkiveApi(this.props.key, this.props.encounter.get('scientificname').toLowerCase(), this.props.id, this.props.width, this.props.height, this.props.images, this.props.text, 'arkiveEmbedCallback');
   },
   render: function() {
     var enc = this.props.encounter;
@@ -66,20 +66,9 @@ function mapDispatchToProps(dispatch) {
         encounter: event.target.value 
       })
     },
-    arkiveAp: (key, animal, animalId, width, height, imgs, text, cb) => {
-      var src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + animal 
-        + '?key=' + key + (animalId ? '&id=' + animalId : '') + '&mtype=all&w=' 
-        + width + '&h=' + height + '&tn=' + (imgs ? 1 : 0) + '&text=' 
-        + (text ? 1 : 0) + '&callback=' + cb;
-      $.ajax({
-        url: src,
-        type: 'GET',
-        beforeSend: function(xhr) {xhr.setRequestHeader('Access-Control-Allow-Origin', 'allow');},
-        success: function() {
-          console.log(data);
-        }
-      });
-    },
+    // the below creates a script tag, which makes the API request to the ARKive API
+    // this is not ideal and a GET request would be much more managable and useful to interact
+    // with React
     arkiveApi: (key, animal, animalId, width, height, imgs, text, cb) => {
       function async_load() {
         var s = document.createElement('script'); 
@@ -94,6 +83,23 @@ function mapDispatchToProps(dispatch) {
       };
       async_load();
     },
+    // the below function is an attempt to recreate the above, but with a GET request instead
+    // TODO make the below work
+    arkiveApiAjaxCall: (key, animal, animalId, width, height, imgs, text, cb) => {
+      var src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + animal 
+        + '?key=' + key + (animalId ? '&id=' + animalId : '') + '&mtype=all&w=' 
+        + width + '&h=' + height + '&tn=' + (imgs ? 1 : 0) + '&text=' 
+        + (text ? 1 : 0) + '&callback=' + cb;
+      $.ajax({
+        url: src,
+        type: 'GET',
+        beforeSend: function(xhr) {xhr.setRequestHeader('Access-Control-Allow-Origin', 'allow');},
+        success: function() {
+          console.log(data);
+        }
+      });
+    },
+    // TODO use the below for the callback to the ARKive API
     arkiveEmbedCallback: (data) => {
       dispatch((dispatch) => {
         var start = true;

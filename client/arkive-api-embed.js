@@ -1,5 +1,7 @@
 // This is here because the function below needs to be a global variable and defined so for the api call to ARKive
-// I don't want it to be global and want to move it to EncounterListEntry.js, but I couldn't figure out how
+// I don't want it to be global and want to move it to EncounterListEntry.js, but the request to the ARKive API
+// is done with script tags appended to the window object, which is outside of the React components
+// TODO move this to EncounterListEntry and figure out how to make requests to the ARKive API from inside React
 var arkiveApiWidth = 320;
 var arkiveApiHeight = 355;
 
