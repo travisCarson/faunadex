@@ -19,7 +19,7 @@ export const SignIn = React.createClass({
       <h2>Sign In</h2>
       <div className='error-message'>{this.props.signInErrorMessage}</div>
       <div>Username: <input id="username" ref="username" /></div>
-      <div>Password: <input id="password" ref="password" /></div>
+      <div>Password: <input type="password" id="password" ref="password" /></div>
       <button onClick={this.signIn}>Sign In</button>
     </form>;
   }

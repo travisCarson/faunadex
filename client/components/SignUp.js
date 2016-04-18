@@ -18,7 +18,7 @@ export const SignUp = React.createClass({
       <h2>Sign Up</h2>
       <div className='error-message'>{this.props.errorMessage}</div>
       <div>Username: <input ref="username" /></div>
-      <div>Password: <input ref="password" /></div>
+      <div>Password: <input type="password" ref="password" /></div>
       <button onClick={this.signUp}>Sign Up</button>
     </div>;
   }
