@@ -7,12 +7,12 @@ var bookshelf = require('bookshelf');
 module.exports = {
 
   createPost: function(req, res) {
-    Post.create({
+    new Post({
       encounterid: req.body.encounterid,
       userid: req.body.userid,
       message: req.body.message,
       posttime: new Date()
-    })
+    }).save()
       // send back a status code to signify success and the encounter for the front-end to use (if necessary)
       .then(function(post) {
         res.status(200).json(post);
