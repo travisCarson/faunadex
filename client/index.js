@@ -61,16 +61,22 @@ const store = createStore(reducer, initalState, applyMiddleware(thunk));
 // Behind the scenes, you'll write reducers that merge new elements into
 // your state, which you can see in the client/reducers files
 
-if (auth.isSignedIn()) {
-  $.ajaxSetup({ headers: { 'x-access-token': window.localStorage.getItem('com.faunadex') } });
-  $.post('/api/user/getsignedinuser')
-    .retry({ times: 5, timeout: 500 })
-    .done(function(data) {
-      store.dispatch({ type: 'SET_STATE', state: { user: data.user } });
-    });
-}
-
 store.dispatch(function(dispatch) {
+  if (auth.isSignedIn()) {
+    $.ajaxSetup({ headers: { 'x-access-token': window.localStorage.getItem('com.faunadex') } });
+    $.post('/api/user/getsignedinuser')
+      .retry({ times: 5, timeout: 500 })
+      .done(function(data) {
+        store.dispatch({ type: 'SET_STATE', state: { user: data.user } });
+        enc.userEncounters(data.user.username, function(err, data) {
+          if (data) {
+            dispatch({ type: 'SET_STATE', state: { encounters: data.encounters } });
+          } else {
+            dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
+          }
+        });
+      });
+  }
   enc.recentEncounters(function(err, data) {
     if (data) {
       dispatch({ type: 'SET_STATE', state: { recentEncounters: data } });
@@ -83,11 +89,11 @@ store.dispatch(function(dispatch) {
 var checkAuth = function() {
   clearErrors();  
   return auth.isSignedIn();
-}
+};
 
 var clearErrors = function() {
   store.dispatch({ type: 'CLEAR_ERRORS' });
-}
+};
 
 // store.dispatch({
 //   type: 'SET_USERNAME',
