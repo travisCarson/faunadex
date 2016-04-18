@@ -15,6 +15,7 @@ import {UserProfileContainer} from './components/UserProfile';
 import {NavContainer} from './components/Nav';
 import {EncounterDetailsContainer} from './components/EncounterDetails';
 import auth from './lib/auth.js';
+import enc from './lib/encounter.js';
 // in ES6 you can assign variables from an object using 
 // what are called "Destructuring"
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment 
@@ -70,15 +71,13 @@ if (auth.isSignedIn()) {
 }
 
 store.dispatch(function(dispatch) {
-  $.get('/api/recentencounters')
-    .retry({ times: 5, timeout: 500 })
-    .done((data) => {
-      if (data) {
-        dispatch({ type: 'SET_STATE', state: { recentEncounters: data } });
-      } else {
-        dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
-      }
-    });
+  enc.recentEncounters(function(err, data) {
+    if (data) {
+      dispatch({ type: 'SET_STATE', state: { recentEncounters: data } });
+    } else {
+      dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
+    }
+  });
 });
 
 var checkAuth = function() {
