@@ -12,7 +12,7 @@ export const EncounterListEntry = React.createClass({
     // arkiveEmbedCallback is a global variable at this moment
     // TODO somehow put arkiveEmbedCallback into this file
     // var arkiveEmbedCallback = this.arkiveEmbedCallback;
-    this.props.arkiveApi(this.props.key, this.props.animal, this.props.id, this.props.width, this.props.height, this.props.images, this.props.text, 'arkiveEmbedCallback');
+    this.props.arkiveAp(this.props.key, this.props.encounter.get('scientificname').toLowerCase(), this.props.id, this.props.width, this.props.height, this.props.images, this.props.text, 'arkiveEmbedCallback');
   },
   render: function() {
     var enc = this.props.encounter;
@@ -27,12 +27,14 @@ export const EncounterListEntry = React.createClass({
     return ( 
       <div className='encounter'>
         <div>Title: {enc.get('title')}</div>
+        <div>Animal: {enc.get('animal')}</div>
+        <div>Scientific Name: {enc.get('scientificname')}</div>
         <div>Description: {enc.get('description')}</div>
         <div>Location: {enc.get('location')}</div>
         <div>Encounter Time: {enc.get('encounterTime')}</div>
         <div>Post Time: {enc.get('postTime')}</div>
         <div>User: {encUser}</div>
-        <div id={enc.get('title').toLowerCase().split(' ').join('%20')} className='animal'></div>
+        <div id={enc.get('animal')} className='animal'></div>
         <hr />
       </div>
     );
@@ -64,6 +66,20 @@ function mapDispatchToProps(dispatch) {
         encounter: event.target.value 
       })
     },
+    arkiveAp: (key, animal, animalId, width, height, imgs, text, cb) => {
+      var src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + animal 
+        + '?key=' + key + (animalId ? '&id=' + animalId : '') + '&mtype=all&w=' 
+        + width + '&h=' + height + '&tn=' + (imgs ? 1 : 0) + '&text=' 
+        + (text ? 1 : 0) + '&callback=' + cb;
+      $.ajax({
+        url: src,
+        type: 'GET',
+        beforeSend: function(xhr) {xhr.setRequestHeader('Access-Control-Allow-Origin', 'allow');},
+        success: function() {
+          console.log(data);
+        }
+      });
+    },
     arkiveApi: (key, animal, animalId, width, height, imgs, text, cb) => {
       function async_load() {
         var s = document.createElement('script'); 
@@ -78,21 +94,29 @@ function mapDispatchToProps(dispatch) {
       };
       async_load();
     },
-    arkiveDOM: (data) => {
+    arkiveEmbedCallback: (data) => {
       dispatch((dispatch) => {
-        var iframeCreation = '<iframe id="frame" name="widget" src ="#" width="100%" height="1" marginheight="0" marginwidth="0" frameborder="no"></iframe>';
+        var start = true;
+        var iframeAttr;
+        var iframeCreation = '<iframe className="frame" name="widget" src ="#" width="100%" height="1" marginheight="0" marginwidth="0" frameborder="no"></iframe>';
         var iframe = window.location.protocol + "//" + (data.results[0].url);
-        if (data.error != 'null') {
-            // var $faunad = $('\"#' + arkiveApiSpeciesName + '\"');
-            // $(document.body).append($faunad);
-            var $fauna = $('<div></div>');
-            $fauna.attr('id', this.props.animal);
-            $fauna.html(iframeCreation);
-            $(document.body).append($fauna);
-            var iframeAttr = parent.document.getElementById("frame");
-            iframeAttr.height = this.props.height;
-            iframeAttr.width = this.props.width + 22;
-            iframeAttr.src = iframe;
+        console.log(iframe);
+        if (data.error !== 'null') {
+          var $fauna = $('<div></div>');
+          $fauna.attr('class', 'iframe');
+          $fauna.html(iframeCreation);
+          // use the below to add only one iframe to each encounter
+          // TODO make below unnecessary
+          $('.encounter .animal').each(function(index) {
+            if (!$(this).has('.iframe').length && start) {
+              $(this).append($fauna);
+              start = false;
+              iframeAttr = $('iframe', this)[0];
+            }
+          });
+          iframeAttr.height = arkiveApiHeight;
+          iframeAttr.width = arkiveApiWidth + 22;
+          iframeAttr.src = iframe;
         }
       });
     }
