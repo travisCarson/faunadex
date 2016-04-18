@@ -5,3 +5,10 @@ exports.recentEncounters = (callback) => {
       callback(null, data);
     });
 };
+
+exports.userEncounters = (username, callback) => {
+  $.get('/api/user/encounters/' + username)
+    .done((data) => {
+      callback(null, data);
+    });
+};
