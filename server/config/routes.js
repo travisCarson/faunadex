@@ -24,8 +24,8 @@ module.exports = function (app, express) {
   app.post('/api/encounter', encounterUtils.retrieveEncounterById);
 
   //endpoints for getting and posting comments
-  app.get('/api/posts/:encounterid', userUtils.authenticationRequired, function() {});
-  app.post('/api/posts/', userUtils.authenticationRequired , function() {});
+  app.get('/api/posts/:encounterid', userUtils.authenticationRequired, postUtils.showAllPostsForEncounter);
+  app.post('/api/posts/', userUtils.authenticationRequired, postUtils.createPost);
 };
 
 
