@@ -9,7 +9,6 @@ var bookshelf = require('bookshelf');
 module.exports = {
 
   createEncounter: function(req, res) {
-    console.log(req.body);
     Encounters.create({
       userid: req.body.userid,
       // forumid: req.body.forumid,
@@ -24,11 +23,9 @@ module.exports = {
     })
       // send back a status code to signify success and the encounter for the front-end to use (if necessary)
       .then(function(encounter) {
-        console.log('encounter created');
         res.status(200).json(encounter);
       })
       .catch(function(error) {
-        console.log('error creating encounter');
         res.status(500).send(error.message);
       });
   },
