@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import auth from '../lib/auth.js';
 
 // the first of two things that a React-Redux component exports is 
 // a standard React component which uses a bunch of props.
