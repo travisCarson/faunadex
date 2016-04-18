@@ -41,11 +41,15 @@ function mapDispatchToProps(dispatch) {
       dispatch((dispatch) => {
         dispatch({ type: 'SIGN_IN_ATTEMPT' });
         auth.login(username, password, function(err, data) {
-          if (data.username) {
-            dispatch({ type: 'SET_STATE', state: { user: { username: data.username, id: data.id} } });
+          if (!err && data.type === 'USER') {
+            console.log('got back username: ', data.user.username);
+            dispatch({ type: 'SET_STATE', state: { user: data.user } });
             router.push('/');
+            return;
           } else {
-            dispatch({ type: 'SIGN_IN_FAIL' });
+            var message = '';
+            if (!err) { message = data.error; }
+            dispatch({ type: 'SIGN_IN_FAIL', message });
           }
         });
       });

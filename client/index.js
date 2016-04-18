@@ -64,7 +64,7 @@ if (auth.isSignedIn()) {
   $.post('/api/user/getsignedinuser')
     .retry({ times: 5, timeout: 500 })
     .done(function(data) {
-      store.dispatch({ type: 'SET_STATE', state: { user: { username: data.username } } });
+      store.dispatch({ type: 'SET_STATE', state: { user: data.user } });
     });
 }
 

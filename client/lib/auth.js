@@ -8,13 +8,11 @@ exports.login = (username, password, callback) => {
   $.post('/api/user/signin', {username: username, password: password})
     .retry({ times: 5, timeout: 500 })
     .done((data) => {
-      if (data.username) {
+      if (data.type === 'USER') {
         window.localStorage.setItem('com.faunadex', data.token);
         $.ajaxSetup({ headers: { 'x-access-token': data.token } });
-        callback(null, data);
-      } else {
-        callback(new Error('Not Logged In'));
       }
+      callback(null, data);
     })
   .fail((jqXHR, msg) => {
     callback(new Error(msg));
