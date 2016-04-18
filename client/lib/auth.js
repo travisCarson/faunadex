@@ -6,6 +6,7 @@ exports.login = (username, password, callback) => {
   }
   
   $.post('/api/user/signin', {username: username, password: password})
+    .retry({ times: 5, timeout: 500 })
     .done((data) => {
       if (data.username) {
         window.localStorage.setItem('com.faunadex', data.token);
@@ -25,6 +26,7 @@ exports.isSignedIn = () => !!window.localStorage.getItem('com.faunadex');
 exports.signOut = function() {
   window.localStorage.removeItem('com.faunadex');
   $.get('/api/user/signout')
+    .retry({ times: 5, timeout: 500 })
     .done(function(data) {
       console.log('byebye!');
       window.location = '/';

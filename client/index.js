@@ -51,32 +51,25 @@ const store = createStore(reducer, initalState, applyMiddleware(thunk));
 // Behind the scenes, you'll write reducers that merge new elements into
 // your state, which you can see in the client/reducers files
 
-$.post('/api/test/not/exist')
-  .retry({ times: 5, timeout: 500 })
-  .done((data) => {
-    console.log('Success?');
-  })
-  .fail(() => {
-    console.log('failed');
-  });
-
-
-
 if (auth.isSignedIn()) {
   $.ajaxSetup({ headers: { 'x-access-token': window.localStorage.getItem('com.faunadex') } });
-  $.post('/api/user/getsignedinuser', function(data) {
-    store.dispatch({ type: 'SET_STATE', state: { user: { username: data.username } } });
-  });
+  $.post('/api/user/getsignedinuser')
+    .retry({ times: 5, timeout: 500 })
+    .done(function(data) {
+      store.dispatch({ type: 'SET_STATE', state: { user: { username: data.username } } });
+    });
 }
 
 store.dispatch(function(dispatch) {
-  $.get('/api/recentencounters', (data) => {
-    if (data) {
-      dispatch({ type: 'SET_STATE', state: { recentEncounters: data } });
-    } else {
-      dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
-    }
-  });
+  $.get('/api/recentencounters')
+    .retry({ times: 5, timeout: 500 })
+    .done((data) => {
+      if (data) {
+        dispatch({ type: 'SET_STATE', state: { recentEncounters: data } });
+      } else {
+        dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
+      }
+    });
 });
 
 // store.dispatch({
