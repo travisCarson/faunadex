@@ -1,6 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {EncounterList, EncounterListContainer} from './EncounterList';
+import enc from '../lib/encounter.js';
 
 export const UserProfile = React.createClass({
   componentDidMount: function() {
@@ -35,7 +36,7 @@ function mapDispatchToProps(dispatch) {
   return {
     retrieveUserEncounters: (username) => {
       dispatch((dispatch) => {
-        $.get('/api/user/encounters/' + username, (data) => {
+        enc.userEncounters(username, function(err, data) {
           if (data) {
             dispatch({ type: 'SET_STATE', state: { encounters: data.encounters } });
           } else {

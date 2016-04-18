@@ -53,7 +53,6 @@ function mapDispatchToProps(dispatch) {
         encountertime: encounterTime,
         photo: photo
       };
-      console.log(encounter);
       dispatch(encounter);
       router.push('/userprofile');
       $.post('/api/user/encounter', encounter);

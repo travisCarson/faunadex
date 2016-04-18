@@ -1,6 +1,5 @@
 exports.login = (username, password, callback) => {
   if (exports.isSignedIn()) {
-    console.log('already signed in');
     $.ajaxSetup({ headers: { 'x-access-token': window.localStorage.getItem('com.faunadex') } });
     return callback(null, true);
   }
@@ -21,7 +20,6 @@ exports.login = (username, password, callback) => {
 
 exports.signup = (username, password, callback) => {
   if (exports.isSignedIn()) {
-    console.log('already signed in');
     $.ajaxSetup({ headers: { 'x-access-token': window.localStorage.getItem('com.faunadex') } });
     return callback(null, true);
   }
@@ -47,7 +45,6 @@ exports.signOut = function() {
   $.get('/api/user/signout')
     .retry({ times: 5, timeout: 500 })
     .done(function(data) {
-      console.log('byebye!');
       window.location = '/';
     });
 };

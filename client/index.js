@@ -13,8 +13,9 @@ import {EncounterListEntry, EncounterListEntryContainer} from './components/Enco
 import {NewEncounterContainer} from './components/NewEncounter';
 import {UserProfileContainer} from './components/UserProfile';
 import {NavContainer} from './components/Nav';
-import {EncounterDetailsContainer} from './components/encounterDetails';
+import {EncounterDetailsContainer} from './components/EncounterDetails';
 import auth from './lib/auth.js';
+import enc from './lib/encounter.js';
 // in ES6 you can assign variables from an object using 
 // what are called "Destructuring"
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment 
@@ -60,35 +61,39 @@ const store = createStore(reducer, initalState, applyMiddleware(thunk));
 // Behind the scenes, you'll write reducers that merge new elements into
 // your state, which you can see in the client/reducers files
 
-if (auth.isSignedIn()) {
-  $.ajaxSetup({ headers: { 'x-access-token': window.localStorage.getItem('com.faunadex') } });
-  $.post('/api/user/getsignedinuser')
-    .retry({ times: 5, timeout: 500 })
-    .done(function(data) {
-      store.dispatch({ type: 'SET_STATE', state: { user: data.user } });
-    });
-}
-
 store.dispatch(function(dispatch) {
-  $.get('/api/recentencounters')
-    .retry({ times: 5, timeout: 500 })
-    .done((data) => {
-      if (data) {
-        dispatch({ type: 'SET_STATE', state: { recentEncounters: data } });
-      } else {
-        dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
-      }
-    });
+  if (auth.isSignedIn()) {
+    $.ajaxSetup({ headers: { 'x-access-token': window.localStorage.getItem('com.faunadex') } });
+    $.post('/api/user/getsignedinuser')
+      .retry({ times: 5, timeout: 500 })
+      .done(function(data) {
+        store.dispatch({ type: 'SET_STATE', state: { user: data.user } });
+        enc.userEncounters(data.user.username, function(err, data) {
+          if (data) {
+            dispatch({ type: 'SET_STATE', state: { encounters: data.encounters } });
+          } else {
+            dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
+          }
+        });
+      });
+  }
+  enc.recentEncounters(function(err, data) {
+    if (data) {
+      dispatch({ type: 'SET_STATE', state: { recentEncounters: data } });
+    } else {
+      dispatch({ type: 'GET_ENCOUNTERS_FAIL' });
+    }
+  });
 });
 
 var checkAuth = function() {
   clearErrors();  
   return auth.isSignedIn();
-}
+};
 
 var clearErrors = function() {
   store.dispatch({ type: 'CLEAR_ERRORS' });
-}
+};
 
 // store.dispatch({
 //   type: 'SET_USERNAME',
