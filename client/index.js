@@ -46,6 +46,7 @@ var initalState = Map({
   arkiveApiHeight: 355,
   arkiveApiImages: false, // whether to include thumbnails
   arkiveApiText: true // whether to include species facts / description
+  errorMessage: ''
 });
 const store = createStore(reducer, initalState, applyMiddleware(thunk));
 

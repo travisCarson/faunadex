@@ -17,6 +17,7 @@ export const SignIn = React.createClass({
   render: function() {
     return <form className='sign-in'>
       <h2>Sign In</h2>
+      <div className='error-message'>{this.props.signInErrorMessage}</div>
       <div>Username: <input id="username" ref="username" /></div>
       <div>Password: <input id="password" ref="password" /></div>
       <button onClick={this.signIn}>Sign In</button>
@@ -31,6 +32,7 @@ function mapStateToProps(state) {
   return {
     username: state.getIn(['user', 'username']),
     descr: state.getIn(['user', 'description']),
+    signInErrorMessage: state.get('errorMessage')
   };
 }
 
@@ -44,6 +46,7 @@ function mapDispatchToProps(dispatch) {
           if (!err && data.type === 'USER') {
             console.log('got back username: ', data.user.username);
             dispatch({ type: 'SET_STATE', state: { user: data.user } });
+            dispatch({ type: 'CLEAR_ERRORS' });
             router.push('/');
             return;
           } else {
