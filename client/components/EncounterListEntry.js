@@ -16,7 +16,7 @@ export const EncounterListEntry = React.createClass({
     // arkiveEmbedCallback is a global variable at this moment
     // TODO somehow put arkiveEmbedCallback into this file
     // var arkiveEmbedCallback = this.arkiveEmbedCallback;
-    this.props.arkiveApi(this.props.key, this.props.encounter.get('scientificname').toLowerCase(), this.props.id, this.props.width, this.props.height, this.props.images, this.props.text, 'arkiveEmbedCallback');
+    // this.props.arkiveApi(this.props.key, this.props.encounter.get('scientificname').toLowerCase(), this.props.id, this.props.width, this.props.height, this.props.images, this.props.text, 'arkiveEmbedCallback');
   },
   render: function() {
     var enc = this.props.encounter;
@@ -30,19 +30,16 @@ export const EncounterListEntry = React.createClass({
     }
     return ( 
       <div className='encounter' onClick={() => this.props.goToEncounter(enc, this.context.router)}>
-        <div>Title: {enc.get('title')}</div>
-        <div>Animal: {enc.get('animal')}</div>
-        <div>Location: {enc.get('location')}</div>
-        <div>Post Time: {enc.get('postTime')}</div>
+        <h3>{enc.get('title')}</h3>
+        <img src={ enc.get('photo')} />
+        <div>{enc.get('animal')}, {enc.get('location')}</div>
         <div>User: {encUser}</div>
-        <div id={enc.get('animal')} className='animal'></div>
-        <hr />
       </div>
     );
   }
 });
 
-        // <div id="arkiveIframe"></div>
+// <div id="arkiveIframe"></div>
 // Next, you have to write a function that returns an object which
 // tells React-Redux how to map everything in the store to any
 // props refered to in the above component

@@ -1,3 +1,7 @@
+body {
+  font-family: Tahoma, Geneva, sans-serif;
+}
+
 header {
   margin-bottom: 10px;
 }
@@ -33,6 +37,7 @@ header nav ul {
   padding: 0;
   background-color: #333;
   overflow: hidden;
+  border-radius: 5px;
 }
 
 header nav ul li {
@@ -48,7 +53,7 @@ header nav ul li.signout-link {
 
 header nav ul li a {
   display: block;
-  font-size: 10px;
+  font-size: 12px;
   color: white;
   text-decoration: none;
   padding: 5px;
@@ -65,4 +70,65 @@ header nav ul li a.active {
 .error-message {
   color: red;
 }
+
+.encounter-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.encounter {
+  background-color: #BBB;
+  margin: 5px;
+  padding: 3px;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  border-radius: 5px;
+}
+
+.encounter h3 {
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+}
+
+.encounter img {
+  width: 150px;
+}
+
+.encounter-details {
+  width: 60%;
+  margin: auto;
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.encounter-details h3 {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 20px;
+}
+
+.encounter-details .scientific-name {
+  text-align: center;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.encounter-details img {
+  width: 100px;
+  float: left;
+  border-radius: 10px;
+  margin: 20px;
+  margin-top: 0;
+}
+
+.encounter-details .description {
+  margin-bottom: 10px;
+}
+
+
+
+
 
