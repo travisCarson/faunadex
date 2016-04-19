@@ -17,7 +17,7 @@ var populate = function() {
           scientificname: 'Sciurus carolinensis',
           description: 'I saw a squirrel and it bit me!',
           location: 'Central Park',
-          photo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Sciurus_carolinensis_in_Hyde_Park,_London_spring_2013.JPG',
+          photo: 'http://s0.geograph.org.uk/geophotos/02/71/19/2711928_53cc9833.jpg',
         },
         { 
           title: 'Silly rabbit', 
