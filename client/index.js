@@ -40,8 +40,8 @@ var initalState = Map({
   encounter: {}, //Represents the selected encouter
   encounters: [], //Represents all encounters the user has
   recentEncounters: [], //Represents all the recent encounters
-  arkiveApiKey: '4tqY8uUz1mcB5vu0W80z_RK8jgr2dfghJWjOOVtEWUU1',
-  arkiveApiSpeciesName: 'loxodonta%20africana', // note spaces replaced by %20
+  arkiveApiKey: '8b45akeHxpSnDlmzvw_cEy_lwjzFITo64TMRHaQWbfg1',
+  arkiveApiSpeciesName: '', // note spaces replaced by %20
   arkiveApiSpeciesId: undefined, 
   arkiveApiWidth: 320,
   arkiveApiHeight: 355,
