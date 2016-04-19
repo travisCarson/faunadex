@@ -20,6 +20,10 @@ export const SignUp = React.createClass({
       <p>Already have an account? <a href="/#/signin">Sign in!</a></p>
       <div>Username: <input ref="username" /></div>
       <div>Password: <input type="password" ref="password" /></div>
+      <p>Tell us about yourself!</p>
+      <div> Description: <input type="description" ref="description" /></div>
+      <p>Don't be shy! Upload a photo!</p>
+      <div>Photo URL: <input type="user-photo" ref="avatar" /></div>
       <button onClick={this.signUp}>Sign Up</button>
     </div>;
   }
