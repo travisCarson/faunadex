@@ -66,48 +66,39 @@ function mapDispatchToProps(dispatch) {
     },
     // the below function is an attempt to recreate the above, but with a GET request instead
     // TODO make the below work
-    arkiveApiAjaxCall: (key, animal, animalId, width, height, imgs, text, cb) => {
-      var src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + animal
-        + '?key=' + key + (animalId ? '&id=' + animalId : '') + '&mtype=all&w='
-        + width + '&h=' + height + '&tn=' + (imgs ? 1 : 0) + '&text='
-        + (text ? 1 : 0) + '&callback=' + cb;
-      $.ajax({
-        url: src,
-        type: 'GET',
-        dataType: 'jsonp',
-        beforeSend: function(xhr) {xhr.setRequestHeader('Access-Control-Allow-Origin', 'allow');},
-        success: function() {
-          console.log(data);
-        }
-      });
-    },
+    // arkiveApiAjaxCall: (key, animal, animalId, width, height, imgs, text, cb) => {
+    //   var src = 'https://api.arkive.org/v2/embedScript/species/scientificName/' + animal
+    //     + '?key=' + key + (animalId ? '&id=' + animalId : '') + '&mtype=all&w='
+    //     + width + '&h=' + height + '&tn=' + (imgs ? 1 : 0) + '&text='
+    //     + (text ? 1 : 0) + '&callback=' + cb;
+    //   $.ajax({
+    //     url: src,
+    //     type: 'GET',
+    //     dataType: 'jsonp',
+    //     beforeSend: function(xhr) {xhr.setRequestHeader('Access-Control-Allow-Origin', 'allow');},
+    //     success: function() {
+    //       console.log(data);
+    //     }
+    //   });
+    // },
     // TODO use the below for the callback to the ARKive API
-    arkiveEmbedCallback: (data) => {
-      dispatch((dispatch) => {
-        var start = true;
-        var iframeAttr;
-        var iframeCreation = '<iframe className="frame" name="widget" src ="#" width="100%" height="1" marginheight="0" marginwidth="0" frameborder="no"></iframe>';
-        var iframe = window.location.protocol + "//" + (data.results[0].url);
-        console.log(iframe);
-        if (data.error !== 'null') {
-          var $fauna = $('<div></div>');
-          $fauna.attr('class', 'iframe');
-          $fauna.html(iframeCreation);
-          // use the below to add only one iframe to each encounter
-          // TODO make below unnecessary
-          $('.encounter .animal').each(function(index) {
-            if (!$(this).has('.iframe').length && start) {
-              $(this).append($fauna);
-              start = false;
-              iframeAttr = $('iframe', this)[0];
-            }
-          });
-          iframeAttr.height = arkiveApiHeight;
-          iframeAttr.width = arkiveApiWidth + 22;
-          iframeAttr.src = iframe;
-        }
-      });
-    },
+    // arkiveEmbedCallback: (data) => {
+    //   dispatch((dispatch) => {
+    //     var iframeCreation = '<iframe id="frame" name="widget" src ="#" width="100%" height="1" marginheight="0" marginwidth="0" frameborder="no"></iframe>';
+    //     var iframe = window.location.protocol + "//" + (data.results[0].url);
+    //     if (data.error !== 'null') {
+    //       var $fauna = $('<div></div>');
+    //       $fauna.attr('class', 'iframe');
+    //       $fauna.html(iframeCreation);
+    //       $('.encounter-details').append($fauna);
+    //       var iframeAttr = parent.document.getElementById('frame');
+    //       console.log(parent.document.getElementById('frame'));
+    //       iframeAttr.height = arkiveApiHeight;
+    //       iframeAttr.width = arkiveApiWidth + 22;
+    //       iframeAttr.src = iframe;
+    //     }
+    //   });
+    // }
   };
 }
 
