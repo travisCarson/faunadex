@@ -4,19 +4,7 @@
 
 Track and share your animal encounters, see what animals your friends are encountering, learn about wonderful wildlife, and talk with other animal enthusiasts! It utilizes the ARKive API to retrieve information and pictures about animals!
 
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
-
-### Prerequisities
-
-What things you need to install the software and how to install them
-
-```
-Give examples
-```
-
-### Installing
+## Installing
 1.  Install MySQL.  See the following: http://www.willfulbard.com/2016/04/installing-mysql-on-a-mac/
 
 2.  Run the database create script by running `mysql -u root -p faunadex < schema.sql`, then enter your root password and you're golden.
@@ -29,30 +17,6 @@ Give examples
 
 6.  Run `npm test` to run the tests.  Tests in the test_client directory are run by mocha-casperjs, and tests in the test_server directory are run my plain mocha.
 
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
 
 ## Built With
 
