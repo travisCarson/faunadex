@@ -8,12 +8,12 @@ export const Comment = React.createClass({
   render: function() {
     return (
       <div className="comment">
-        <p> {this.props.username} </p>
-        <p> {this.props.body} </p>
+        <div> {this.props.comment.message} </div>
+        <div> {this.props.comment.username} </div>
       </div>   
     );
   }
-};
+});
 
 
 function mapStateToProps(state) {

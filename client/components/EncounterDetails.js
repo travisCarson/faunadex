@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {CommentListContainer} from './CommentList.js';
 
 export const EncounterDetails = React.createClass({
   componentDidMount: function() {
@@ -22,6 +23,9 @@ export const EncounterDetails = React.createClass({
         <div className="encounter-time">Encounter Time: {encounterTime}</div>
         <div className="post-time">Post Time: {postTime}</div>
         <div className="username">User: {enc.username}</div>
+
+        <CommentListContainer encounterid={ enc.id } />
+
       </div>
       );
   }
