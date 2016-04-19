@@ -55,8 +55,8 @@ function mapDispatchToProps(dispatch) {
             },
           },
         });
+        router.push('/encounterDetails');
       });
-      router.push('/encounterDetails');
     },
   }
 };
