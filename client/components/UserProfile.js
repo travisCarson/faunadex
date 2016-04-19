@@ -11,10 +11,10 @@ export const UserProfile = React.createClass({
   render: function() {
     return (
       <div className='user-profile'>
-        <h3 className='user-headline'> {this.props.username} </h3>
+        <h2 className='user-headline'> {this.props.username} </h2>
         <img className='user-avatar' src={this.props.avatar} />
         <p className='user-description'> {this.props.description} </p>
-        <p>Recent Activity</p>
+        <p>{this.props.username + "'s"} recent activity</p>
         <div>
           <EncounterListContainer encounters={this.props.encounters} />
         </div>
