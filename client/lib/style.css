@@ -145,6 +145,9 @@ header nav ul li a.active {
   margin-bottom: 10px;
 }
 
+.user-profile .user-avatar {
+  width: 300px;
+}
 
 
 
