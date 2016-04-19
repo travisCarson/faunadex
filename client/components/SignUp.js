@@ -10,7 +10,11 @@ export const SignUp = React.createClass({
     router: React.PropTypes.object.isRequired
   },
   signUp: function() {
-    this.props.dispatchSignUp(this.refs.username.value, this.refs.password.value, this.context.router);
+    this.props.dispatchSignUp(this.refs.username.value, 
+                              this.refs.password.value, 
+                              this.refs.description.value,
+                              this.refs.avatar.value,  
+                              this.context.router);
   },
 
   render: function() {
@@ -20,6 +24,10 @@ export const SignUp = React.createClass({
       <p>Already have an account? <a href="/#/signin">Sign in!</a></p>
       <div>Username: <input ref="username" /></div>
       <div>Password: <input type="password" ref="password" /></div>
+      <p>Tell us about yourself!</p>
+      <div> Description: <input type="description" ref="description" /></div>
+      <p>Don't be shy! Upload a photo!</p>
+      <div>Photo URL: <input type="user-photo" ref="avatar" /></div>
       <button onClick={this.signUp}>Sign Up</button>
     </div>;
   }
@@ -39,14 +47,16 @@ function mapStateToProps(state) {
 // There is also a function for mapping functions to the dispatching of actions
 function mapDispatchToProps(dispatch) {
   return {
-    dispatchSignUp: (username, password, router) => {
+    dispatchSignUp: (username, password, description, avatar, router) => {
       dispatch((dispatch) => {
         dispatch({
           type: 'SIGN_UP_ATTEMPT',
           username: username,
-          password: password
+          password: password, 
+          description: description,
+          avatar: avatar,
         });
-        auth.signup(username, password, (err, data) => {
+        auth.signup(username, password, description, avatar, (err, data) => {
           if (data.type === 'USER') {
             dispatch({ type: 'SET_STATE', state: { user: data.user } });
             dispatch({ type: 'CLEAR_ERRORS' });
