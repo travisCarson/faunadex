@@ -43,6 +43,7 @@ function mapDispatchToProps(dispatch) {
           type: 'GO_TO_ENCOUNTER',
           state: {
             encounter: {
+              id: enc.get('id'),
               username: enc.getIn(['user', 'username']),
               title: dbEncounter.title,
               description: dbEncounter.description,
