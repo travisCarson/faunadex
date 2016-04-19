@@ -9,6 +9,7 @@ var populate = function() {
       username: 'joan',
       password: 'joan',
       description: 'joan is of an arc',
+      avatar: 'https://i.ytimg.com/vi/Fwwn8kISBTE/hqdefault.jpg',
       encounters: [
         { 
           title: 'Mean squirrel',
@@ -33,6 +34,7 @@ var populate = function() {
       username: 'mary',
       password: 'mary',
       description: 'mary had a little lamb',
+      avatar: 'https://pixabay.com/static/uploads/photo/2015/07/11/19/18/woman-841164_960_720.jpg',
       encounters: [
         { 
           title: 'Centar', 
@@ -73,6 +75,7 @@ var populate = function() {
       username: 'vanessa',
       password: 'vanessa',
       description: 'vanessa lives in the woods',
+      avatar: 'http://orig02.deviantart.net/e8c9/f/2015/139/6/f/tiger_lady_by_annemaria48-d8tzpjk.jpg',
       encounters: [
         { 
           title: 'Bear', 
@@ -105,6 +108,7 @@ var populate = function() {
       username: 'bobby',
       password: 'bobby',
       description: 'bobby likes birds',
+      avatar: 'https://pixabay.com/static/uploads/photo/2013/08/25/08/02/dog-and-man-175549_960_720.jpg',
       encounters: [
         { 
           title: 'Robin', 
@@ -137,6 +141,7 @@ var populate = function() {
       username: 'jamie',
       password: 'jamie',
       description: 'jamie loves to go suba diving',
+      avatar: 'https://upload.wikimedia.org/wikipedia/commons/4/42/Kevin_Richardson_with_hyenas.jpg',
       encounters: [
         { 
           title: 'Angelfish', 
@@ -171,7 +176,8 @@ var populate = function() {
     new User({
       username: u.username,
       password: u.password,
-      description: u.description
+      description: u.description, 
+      avatar: u.avatar,
     }).save().then(function(user) {
       u.encounters.forEach(function(e) {
         var t = new Date(Math.floor(Math.random() * now));

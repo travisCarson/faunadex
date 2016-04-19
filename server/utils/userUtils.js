@@ -11,7 +11,7 @@ var createSession = function(req, res, user) {
   var token = jwt.encode(user, secret);
   res.json({
     type: 'USER',
-    user: { username: user.get('username'), id: user.get('id') },
+    user: { username: user.get('username'), id: user.get('id'), avatar: user.get('avatar'), description: user.get('description') },
     token: token,
     error: ''
   });

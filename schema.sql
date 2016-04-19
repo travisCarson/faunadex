@@ -7,7 +7,7 @@ CREATE TABLE users (
   username varchar(25) NOT NULL,
   password varchar(62) NOT NULL,
   description varchar(255) NOT NULL DEFAULT '',
-  avatar varchar(255) NOT NULL DEFAULT 'http://vignette3.wikia.nocookie.net/yugioh/images/0/05/Male_silhouette.png', 
+  avatar varchar(255) NOT NULL DEFAULT 'https://upload.wikimedia.org/wikipedia/commons/3/37/No_person.jpg', 
   PRIMARY KEY (id)
 );
 
