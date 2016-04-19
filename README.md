@@ -17,22 +17,18 @@ Give examples
 ```
 
 ### Installing
+1.  Install MySQL.  See the following:
 
-A step by step series of examples that tell you have to get a development env running
+2.  Run the database create script by running `mysql -u root -p faunadex < schema.sql`, then enter your root password and you're golden.
 
-Stay what the step will be
+3.  Run `npm install` and `npm install -g grunt nodemon mocha chai phantomjs casperjs mocha-casperjs casper-chai`
 
-```
-Give the example
-```
+4.  Run the testdata creation script by running `node createTestData.js`.  At the present there is a bug in this script which prevents it from stopping.  Simply wait about 10 seconds and ^c to stop the script.
 
-And repeat
+5.  Run `npm start` to start the server on http://localhost:1337.  This starts both a nodemon instance that watches the server directory and a grunt watch instance that watches the client directory and has webpack recompile on change.
 
-```
-until finished
-```
+6.  Run `npm test` to run the tests.  Tests in the test_client directory are run by mocha-casperjs, and tests in the test_server directory are run my plain mocha.
 
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
