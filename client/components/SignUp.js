@@ -10,7 +10,11 @@ export const SignUp = React.createClass({
     router: React.PropTypes.object.isRequired
   },
   signUp: function() {
-    this.props.dispatchSignUp(this.refs.username.value, this.refs.password.value, this.context.router);
+    this.props.dispatchSignUp(this.refs.username.value, 
+                              this.refs.password.value, 
+                              this.refs.description.value,
+                              this.refs.avatar.value,  
+                              this.context.router);
   },
 
   render: function() {
@@ -43,14 +47,16 @@ function mapStateToProps(state) {
 // There is also a function for mapping functions to the dispatching of actions
 function mapDispatchToProps(dispatch) {
   return {
-    dispatchSignUp: (username, password, router) => {
+    dispatchSignUp: (username, password, description, avatar, router) => {
       dispatch((dispatch) => {
         dispatch({
           type: 'SIGN_UP_ATTEMPT',
           username: username,
-          password: password
+          password: password, 
+          description: description,
+          avatar: avatar,
         });
-        auth.signup(username, password, (err, data) => {
+        auth.signup(username, password, description, avatar, (err, data) => {
           if (data.type === 'USER') {
             dispatch({ type: 'SET_STATE', state: { user: data.user } });
             dispatch({ type: 'CLEAR_ERRORS' });

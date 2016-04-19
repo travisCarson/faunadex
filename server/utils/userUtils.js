@@ -30,12 +30,14 @@ exports.signOutUser = function(req, res) {
 exports.createUser = function(req, res) {
   var username = req.body.username;
   var password = req.body.password;
+  var description = req.body.description;
+  var avatar = req.body.avatar;
 
   new User({ username: username })
     .fetch()
     .then(function(user) {
       if (!user) {
-        new User({ username: username, password: password })
+        new User({ username: username, password: password, description: description, avatar: avatar })
           .save()
           .then(function(newUser) { 
             createSession(req, res, newUser); 

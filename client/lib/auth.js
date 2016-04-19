@@ -18,13 +18,13 @@ exports.login = (username, password, callback) => {
   });
 };
 
-exports.signup = (username, password, callback) => {
+exports.signup = (username, password, description, avatar, callback) => {
   if (exports.isSignedIn()) {
     $.ajaxSetup({ headers: { 'x-access-token': window.localStorage.getItem('com.faunadex') } });
     return callback(null, true);
   }
 
-  $.post('/api/user/signup', {username: username, password: password})
+  $.post('/api/user/signup', {username: username, password: password, description: description, avatar: avatar})
     .retry({ times: 5, timeout: 500 })
     .done((data) => {
       if (data.type === 'USER') {
