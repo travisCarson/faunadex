@@ -7,11 +7,11 @@ require('./config/middleware.js')(app, express);
 require('./config/routes.js')(app, express);
 
 if(!module.parent){ 
-  app.listen(1337);
+  app.listen(80);
 }
 
 
-console.log('1337 server started!');
+console.log('80 server started!');
 
 module.exports = app;
 
