@@ -17,7 +17,7 @@ Give examples
 ```
 
 ### Installing
-1.  Install MySQL.  See the following:
+1.  Install MySQL.  See the following: http://www.willfulbard.com/2016/04/installing-mysql-on-a-mac/
 
 2.  Run the database create script by running `mysql -u root -p faunadex < schema.sql`, then enter your root password and you're golden.
 
