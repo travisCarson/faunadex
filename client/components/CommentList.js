@@ -38,11 +38,12 @@ export const CommentList = React.createClass({
 
   render: function() {
     return (
-      <div className="comment-list">
+      <fieldset className="comment-list">
+        <legend>Comments</legend>
         {this.props.comments.map(comment => <CommentContainer comment={comment} />)}
         <input ref="commentBody" />
         <button onClick={() => this.newComment(this.refs.commentBody.value)}>Add Comment</button>
-      </div>
+      </fieldset>
     );
   }
 });
