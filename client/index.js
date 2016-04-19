@@ -40,7 +40,7 @@ var initalState = Map({
   encounter: {}, //Represents the selected encouter
   encounters: [], //Represents all encounters the user has
   recentEncounters: [], //Represents all the recent encounters
-  arkiveApiKey: 'M9qiplrvGUUbuWcTPF_v-eY0ZlmtJswaH9X-PFvdrBk1',
+  arkiveApiKey: '8b45akeHxpSnDlmzvw_cEy_lwjzFITo64TMRHaQWbfg1',
   arkiveApiSpeciesName: '', // note spaces replaced by %20
   arkiveApiSpeciesId: undefined, 
   arkiveApiWidth: 320,
