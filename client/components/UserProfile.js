@@ -14,7 +14,8 @@ export const UserProfile = React.createClass({
         <h2 className='user-headline'> {this.props.username} </h2>
         <img className='user-avatar' src={this.props.avatar} />
         <p className='user-description'> {this.props.description} </p>
-        <p>{this.props.username + "'s"} recent activity</p>
+        <hr />
+        <p>{this.props.username + "'s"} encounters:</p>
         <div>
           <EncounterListContainer encounters={this.props.encounters} />
         </div>
