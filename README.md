@@ -26,9 +26,6 @@ Track and share your animal encounters, see what animals your friends are encoun
 * Node
 * MySQL
 
-## Contributing
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 <!--## Versioning-->
 
