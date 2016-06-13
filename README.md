@@ -36,11 +36,10 @@ Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduc
 
 ## Authors
 
-* **Alexander Turinske** - *Initial work* - [alexanderturinske](https://github.com/alexanderturinske)
-* **Will Wheeler** - *Initial work* - [willfulbard](https://github.com/willfulbard)
 * **Travis Carson** - *Initial work* - [travisCarson](https://github.com/travisCarson)
+* **Will Wheeler** - *Initial work* - [willfulbard](https://github.com/willfulbard)
+* **Alexander Turinske** - *Initial work* - [alexanderturinske](https://github.com/alexanderturinske)
 
-See also the list of [contributors](https://github.com/FarcicalPopsicle/faunadex/contributors) who participated in this project.
 
 <!--## License-->
 
